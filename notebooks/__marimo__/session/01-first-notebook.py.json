@@ -1,0 +1,770 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.24.2",
+    "script_metadata_hash": "da873d5d09e69dbc37de3cbfd95dec06"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "f140325dac078e0ce683a390f306fc98",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"your-first-notebook\">Your First Notebook</h1></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "UMwJ",
+      "code_hash": "50825ae0e8746f55581c883409e5352a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "hello, world. I am emma\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "ORzm",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "8eccc2874bd4a25a67b56a0f5288c2c6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"how-this-notebook-works\">How This Notebook Works</h1>\n<span class=\"paragraph\">Every section starts with a mark.</span>\n<ul>\n<li><strong>\u25b6\ufe0f Run and read.</strong> In class this runs on screen first. Run the cell yourself and read what it shows</li>\n<li><strong>\ud83d\ude4b Predict first.</strong> Write down what you expect before you run anything</li>\n<li><strong>\u270f\ufe0f Your turn.</strong> Write the code yourself, in new cells</li>\n<li><strong>\ud83d\ude80 This week's work.</strong> Finish it after class and push it</li>\n</ul>\n<span class=\"paragraph\">Save as you go with <code>Ctrl+S</code> (Windows) or <code>Cmd+S</code> (macOS).</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "c05af1acb7fb61e96fa582120abc88fd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"a-name-holding-several-things\">\u25b6\ufe0f A Name Holding Several Things</h1>\n<span class=\"paragraph\">A name, which most books and every job posting call a <strong>variable</strong>, holds a value.\n<code>=</code> puts the value there, and that is called an <strong>assignment</strong>. Read it as\n<em>put this in that</em>.</span>\n<span class=\"paragraph\">The five numbers below are the freight charged on orders <code>10248</code> through <code>10252</code>.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a71 Variables and values, \u00a711 Lists</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "6de01bc20f8c7c1d9758fe420366fdaa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain+float:99.99\", \"text/plain+float:22.25\", \"text/plain+float:25.0\", \"text/plain+float:20.25\", \"text/plain+float:36.25\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "14a04c3e9180f0188c38b1c23f12b8aa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"add-three-cells\">\u270f\ufe0f Add Three Cells</h1>\n<span class=\"paragraph\">Add three cells below with the <strong>+</strong> button. Put one line in each.</span>\n<ol>\n<li>The freight on the <strong>first</strong> order: <code>freight_charges[0]</code></li>\n<li><strong>How many</strong> orders there are: <code>len(freight_charges)</code></li>\n<li>The <strong>total</strong>: <code>total = sum(freight_charges)</code>, then <code>total</code> on the next line</li>\n</ol>\n<span class=\"paragraph\">Keep them in separate cells. The next section depends on it.</span>\n<span class=\"paragraph\"><code>len</code> and <code>sum</code> are <strong>functions</strong>, and what you put in the brackets is the <strong>argument</strong>.</span>\n<span class=\"paragraph\"><em>The number in brackets is an </em><em>index</em><em>, and Python counts from zero, so\n<code>freight_charges[0]</code> is the first one.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zFoT",
+      "code_hash": "abd5a46c9b2d6515004aada631c3ff55",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>99.99</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qcJm",
+      "code_hash": "47c11c10e5fa42f4ae3d744af66eaac0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>5</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "OaJd",
+      "code_hash": "9ee3b9473de20e0aa2a7386570a664db",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>203.74</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "26b4c34487e23e3a6a8a25ca45d5c821",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"before-you-run-anything\">\ud83d\ude4b Before You Run Anything</h1>\n<span class=\"paragraph\">Write all four answers down before you run anything.</span>\n<ol>\n<li>Cell A says <code>x = 5</code>. Cell B says <code>print(x)</code>. You change A to <code>x = 50</code>.\n   <strong>What does B print?</strong></li>\n<li>Cell A says <code>orders = 3</code>. Cell B says <code>orders * 12</code>. You <strong>delete cell A</strong>.\n   <strong>What happens to B?</strong></li>\n<li>Two different cells both say <code>total = ...</code>. <strong>What happens?</strong></li>\n<li>You put <code>print(total)</code> <strong>above</strong> the cell that says <code>total = 5</code>.\n   <strong>Does it run?</strong></li>\n</ol>\n<span class=\"paragraph\">Four experiments follow. Do them in order, and undo each one before the next.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ygYV",
+      "code_hash": "d4475896e1bd370365e4d57f0eb2275d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dKWe",
+      "code_hash": "e940e10a0401836c9a08230c9088d64b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "gIZB",
+      "code_hash": "03dd522e20411d75f5892d7dd1b90685",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "10\n110\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "FUrQ",
+      "code_hash": "b91ac09f6b868fd8872a27face261bf2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PGJQ",
+      "code_hash": "2b7c51df281b2fc6582c23c40bc59bcd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>36</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "XEpJ",
+      "code_hash": "32fa9abb563b44dc2d47434c709f8ae2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>20</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "eUpR",
+      "code_hash": "81f363aa87dc3107f3965a9a27d223ef",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>20</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "slxQ",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "94a57b4d2f7415c80ebbf5f23c594311",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"experiment-1\">Experiment 1</h2>\n<span class=\"paragraph\">Change <code>16.75</code> to <code>999.99</code> in the <code>freight_charges</code> cell. Run only that cell.</span>\n<span class=\"paragraph\">Watch your three cells.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "a38d32dbbb47ac81ee857a8e4f587493",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"experiment-2\">Experiment 2</h2>\n<span class=\"paragraph\">Delete the <code>freight_charges</code> cell. Watch your three cells.</span>\n<span class=\"paragraph\">Then bring it back: undo, or type the line again.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "1c7f5d35f40512380e4e63a7d3602152",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"experiment-3\">Experiment 3</h2>\n<span class=\"paragraph\">Add a cell anywhere and put <code>total = 1</code> in it.</span>\n<span class=\"paragraph\">Delete it again once you have seen what happens.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "c560a73c50a639b3232304257ed0738d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"experiment-4\">Experiment 4</h2>\n<span class=\"paragraph\">Drag the cell holding <code>total = sum(freight_charges)</code> <strong>below</strong> the cell that shows\n<code>total</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "77da7510c24b20cf9a9ed3dd3452fbe1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"what-happened\">\u25b6\ufe0f What Happened</h1>\n<ol>\n<li><strong>Everything that used the number recomputed by itself.</strong> You ran one cell.</li>\n<li><strong>The cells using the deleted name went blank.</strong> No cell keeps showing a value\n   whose source is gone.</li>\n<li><strong>You got an error.</strong> A name is defined in exactly one cell, so you can never\n   be looking at a <code>total</code> that some other cell changed.</li>\n<li><strong>It ran.</strong> This notebook works out what depends on what and runs in that\n   order. The name for that dependency map is a <strong>DAG</strong>, a directed acyclic graph,\n   which is why a cell cannot depend on itself. Where a cell sits on the page is a\n   layout choice.</li>\n</ol>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a71 Variables and values</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "1057f06a192ac3338dafec878b1a2ac3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"a-second-name\">\u25b6\ufe0f A Second Name</h1>\n<span class=\"paragraph\"><code>orders</code> holds the five order numbers, each in the same position as its charge.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "fcd5fe5a90d3e8ec5b572d836365a5bf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[10248, 10249, 10250, 10251, 10252]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "24a98ea6d88d50be86f90cf02fd1775b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"explore\">\ud83d\ude4b Explore</h1>\n<span class=\"paragraph\">One line per cell. Write down what you expect before you run it. Every one of these\ndepends on the <strong>type</strong> of the thing you hand it.</span>\n<ol>\n<li><code>freight_charges[-1]</code></li>\n<li><code>freight_charges[:3]</code>, which is a <strong>slice</strong></li>\n<li><code>orders[0]</code> and <code>freight_charges[0]</code>. What do those two have in common?</li>\n<li><code>category = \"Confections\"</code>, then <code>len(category)</code>. <code>len</code> counted five things a moment ago. What is it counting now?</li>\n<li><code>sum(orders)</code>. It runs. Should it?</li>\n<li><code>orders * 2</code>, then <code>orders + freight_charges</code>. Neither one is an error.</li>\n<li><code>sorted(freight_charges)</code>, then <code>sorted(freight_charges, reverse=True)</code>. What did <code>reverse=True</code> change, and did <code>freight_charges</code> itself change?</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZYdX",
+      "code_hash": "c0a7a809473e29effbb39c4685dd71f9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>36.25</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SdBN",
+      "code_hash": "20bab0561e08ed42ac58e6591d9ef83f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain+float:99.99\", \"text/plain+float:22.25\", \"text/plain+float:25.0\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hrzh",
+      "code_hash": "05ebc636a6e146738183f16d21239d8c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>10248</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "KsTp",
+      "code_hash": "abd5a46c9b2d6515004aada631c3ff55",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>99.99</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PYJy",
+      "code_hash": "e4712679f318d013776735f3aa1a8654",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>11</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YKDe",
+      "code_hash": "3185adb3fd9ee53e74b5778d920b025e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>51250</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "tSsz",
+      "code_hash": "9bc49e3290532a62dc314f7119c56471",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[10248, 10249, 10250, 10251, 10252, \"text/plain+float:99.99\", \"text/plain+float:22.25\", \"text/plain+float:25.0\", \"text/plain+float:20.25\", \"text/plain+float:36.25\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "cIkS",
+      "code_hash": "f44005f1cfa5d7a802e96bb8be5a0cfe",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain+float:99.99\", \"text/plain+float:36.25\", \"text/plain+float:25.0\", \"text/plain+float:22.25\", \"text/plain+float:20.25\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "6d0b81807515509cd78ab5d6bcdf23b9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"what-type-is-it\">\u25b6\ufe0f What Type Is It</h1>\n<span class=\"paragraph\">What kind of value is each thing in these two lists?</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "e4fe7720112bf52771a7c6e23b6680c8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain:<class 'float'>\", \"text/plain:<class 'int'>\", \"text/plain:<class 'str'>\", \"text/plain:<class 'bool'>\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "e37bd35d034f1b1250af1bc0ff154ca7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">A value's <strong>type</strong> decides what you can do with it. These four come up in almost every notebook: <code>float</code> for a number with a decimal point, <code>int</code> for a whole number, <code>str</code> for text, and <code>bool</code> for <code>True</code> or <code>False</code>.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a72 Types</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "e772d821a86328a255a3c0e7072f418c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"text-that-looks-like-a-number\">\ud83d\ude4b Text That Looks Like a Number</h1>\n<span class=\"paragraph\">Write down what each line gives, then put each one in a cell of your own.</span>\n<ol>\n<li><code>\"16.75\" + \"22.25\"</code></li>\n<li><code>16.75 + \"22.25\"</code></li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "61c872df0f30ee9fc863188843e1827f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"what-came-back\">\u25b6\ufe0f What Came Back</h1>\n<span class=\"paragraph\">The first line gives <code>'16.7522.25'</code>. Both values are text, so <code>+</code> joins them end to end.</span>\n<span class=\"paragraph\">The second stops with <code>TypeError: unsupported operand type(s) for +: 'float' and 'str'</code>, because Python will not add a number to text.</span>\n<span class=\"paragraph\">A list of prices that arrives as text behaves like the first line. It runs, and the result is wrong.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a72 Types</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "f055d6c47921af028d1e478512b0c4ef",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"compare-two-charges\">\u270f\ufe0f Compare Two Charges</h1>\n<span class=\"paragraph\">In cells of your own:</span>\n<ol>\n<li>Is the first charge above 20? <code>freight_charges[0] &gt; 20</code></li>\n<li>Is the last charge the largest? <code>freight_charges[-1] == max(freight_charges)</code></li>\n<li>Check the type of either answer with <code>type()</code>.</li>\n</ol>\n<span class=\"paragraph\"><code>==</code> asks whether two values are equal. A single <code>=</code> stores a value.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a73 Expressions and operators</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "c769b53cfa5c0d31eb4774ccc90cead4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"a-sentence-with-a-number\">\u25b6\ufe0f A Sentence With a Number</h1>\n<span class=\"paragraph\">How do you put a number from the list into a sentence somebody can read?</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "ab81ca09e82b5615c45e533a8eb8a2d5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Order 10248 paid $99.99 in freight.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "3412983ccee1651667e60ce26c8ebab7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">The <code>f</code> before the quotes makes this an <strong>f-string</strong>. Python works out anything inside <code>{ }</code> and places it in the text. <code>:.2f</code> shows exactly two decimal places.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a76 f-strings</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "ae8593286258fa717ee70a219c0780b9",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"a-sentence-of-your-own\">\u270f\ufe0f A Sentence of Your Own</h1>\n<span class=\"paragraph\">In a cell of your own, print one sentence that states the total freight and the average charge, each with two decimal places. Use the <code>total</code> you made earlier, and divide it by <code>len(freight_charges)</code> for the average.</span>\n<span class=\"paragraph\">Your sentence should show <code>$120.50</code> and <code>$24.10</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "820c55de11633da2a9d03c20e93517b6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"keep-only-some\">\u25b6\ufe0f Keep Only Some</h1>\n<span class=\"paragraph\">Which orders paid more than 20 in freight?</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "99d2afc68739f124c36b434e4f86adcf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain+float:99.99\", \"text/plain+float:22.25\", \"text/plain+float:25.0\", \"text/plain+float:20.25\", \"text/plain+float:36.25\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "cfb66343400f3ca3ff1c2cef1cf4eb77",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><code>for</code> takes each charge in the list in turn and runs the indented lines once for it. <code>if</code> runs its indented line only when its condition is <code>True</code>, and <code>.append()</code> adds that charge to the end of <code>over_20</code>, which started empty.</span>\n<span class=\"paragraph\">The indent is part of the code. Leave it out and Python stops with an <code>IndentationError</code>.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a74 Conditionals, \u00a712 Iterating over a list with <code>for</code>, \u00a713 Filtering and the accumulator</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "eaff85162f208add7648c4d43810498a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"charges-below-25\">\u270f\ufe0f Charges Below 25</h1>\n<span class=\"paragraph\">In cells of your own:</span>\n<ol>\n<li>Build a list of the charges below 25, the same way.</li>\n<li>Print one sentence with an f-string that says how many charges are in it and what they add up to.</li>\n<li>Change <code>&lt;</code> to <code>&lt;=</code> and run it again. Which order joined the list, and why?</li>\n</ol>\n<span class=\"paragraph\">Your loop needs names of its own. <code>charge</code> and <code>over_20</code> already belong to the cell above, and a name lives in exactly one cell, which is what Experiment 3 showed.</span>\n<span class=\"paragraph\">With the list as it started, your sentence should show three charges and <code>$59.25</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "3c0f55b2f8582e207416da282626db3d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"read-the-last-line-first\">\u25b6\ufe0f Read the Last Line First</h1>\n<span class=\"paragraph\">When a cell fails, marimo shows Python's error message under it.</span>\n<span class=\"paragraph\">Add a cell with <code>freight_charges[5]</code> and run it. You get an <code>IndexError</code>.</span>\n<span class=\"paragraph\">The <strong>last line</strong> names the error and states what went wrong: <code>list index out of range</code>. The list has five items, at positions 0 to 4, so position 5 does not exist. The lines above it show where Python was when it stopped.</span>\n<span class=\"paragraph\">Delete the cell once you have read it.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a710 Reading a traceback</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "ceef6bdc4617e1512188a28309983104",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"break-it-three-ways\">\u270f\ufe0f Break It Three Ways</h1>\n<span class=\"paragraph\">Each line below fails. Put each one in a cell of your own and run it. Under each, add a markdown cell that explains the last line of the error in your own words.</span>\n<ol>\n<li><code>import pandsa</code>, a package name with a typo</li>\n<li><code>open(\"sales.csv\")</code>, a file that is not in your project</li>\n<li><code>new_charges = [16.75, 22.25</code>, with the closing bracket missing</li>\n</ol>\n<span class=\"paragraph\">You should meet three different kinds of error. Keep your markdown cells, and delete the broken cells so the notebook runs clean.</span>\n<span class=\"paragraph\">If marimo offers to install <code>pandsa</code>, do not. No package has that name, so the install fails.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a79 Modules and <code>import</code>, \u00a710 Reading a traceback</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "830409d9361fd16a4b5b79956f3dae62",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"a-line-that-does-not-break\">\ud83d\ude4b A Line That Does Not Break</h1>\n<span class=\"paragraph\">Write down what this gives, then run it in a cell of your own.</span>\n<span class=\"paragraph\"><code>max([\"9.50\", \"16.75\", \"22.25\"])</code></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "b3a11deac49dcba187ae6c47dcc0854c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"why-the-smallest-price-came-out-on-top\">\u25b6\ufe0f Why the Smallest Price Came Out on Top</h1>\n<span class=\"paragraph\">It returns <code>'9.50'</code>, with no error.</span>\n<span class=\"paragraph\">The three values are text, so Python compares them as text, one character at a time. <code>\"9\"</code> comes after <code>\"2\"</code> and <code>\"1\"</code>, so <code>\"9.50\"</code> counts as the largest. Written as numbers, <code>max([9.50, 16.75, 22.25])</code> returns <code>22.25</code>.</span>\n<span class=\"paragraph\">\ud83d\udcd6 Handbook: Python \u00a72 Types</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "9604a4334a5c681e4d051bb1c7468616",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"read-this-one-on-paper\">\u270f\ufe0f Read This One on Paper</h1>\n<span class=\"paragraph\"><strong>By hand, with no agent.</strong> When code an agent wrote is the thing that broke, reading the error yourself is how you find out why.</span>\n<span class=\"paragraph\">A file called <code>hello.py</code>, with its line numbers:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>1  freight_charges = [16.75, 22.25, \"pending\", 9.50]\n2\n3  total = sum(freight_charges)\n4  print(total)\n</code></pre></div>\n<span class=\"paragraph\">Running it prints:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>Traceback (most recent call last):\n  File \"/Users/you/oim7510/hello.py\", line 3, in &lt;module&gt;\n    total = sum(freight_charges)\nTypeError: unsupported operand type(s) for +: 'float' and 'str'\n</code></pre></div>\n<ol>\n<li>Which line does Python name?</li>\n<li>Which line would you change, and why is it a different line from the one Python named?</li>\n<li>What would you change it to? More than one answer is defensible, so state the rule you chose.</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "220c060dad06108b309d7d0e848cd4d6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"the-list-as-a-bar-chart\">\u25b6\ufe0f The List as a Bar Chart</h1>\n<blockquote>\n<span class=\"paragraph\"><strong>Advanced.</strong> Nothing later depends on this.</span>\n</blockquote>\n<span class=\"paragraph\">A chart needs <strong>matplotlib</strong>, which your project does not have yet. Add it in VS Code's Terminal:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>uv add matplotlib\n</code></pre></div>\n<span class=\"paragraph\">Then paste this into a new cell. Change a number in <code>freight_charges</code> and the bars move on their own.</span>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"kn\">import</span><span class=\"w\"> </span><span class=\"nn\">matplotlib.pyplot</span><span class=\"w\"> </span><span class=\"k\">as</span><span class=\"w\"> </span><span class=\"nn\">plt</span>\n\n<span class=\"n\">_fig</span><span class=\"p\">,</span> <span class=\"n\">_ax</span> <span class=\"o\">=</span> <span class=\"n\">plt</span><span class=\"o\">.</span><span class=\"n\">subplots</span><span class=\"p\">(</span><span class=\"n\">figsize</span><span class=\"o\">=</span><span class=\"p\">(</span><span class=\"mi\">6</span><span class=\"p\">,</span> <span class=\"mf\">2.6</span><span class=\"p\">))</span>\n<span class=\"n\">_ax</span><span class=\"o\">.</span><span class=\"n\">bar</span><span class=\"p\">([</span><span class=\"nb\">str</span><span class=\"p\">(</span><span class=\"n\">_o</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">_o</span> <span class=\"ow\">in</span> <span class=\"n\">orders</span><span class=\"p\">],</span> <span class=\"n\">freight_charges</span><span class=\"p\">)</span>\n<span class=\"n\">_ax</span><span class=\"o\">.</span><span class=\"n\">set_ylabel</span><span class=\"p\">(</span><span class=\"s2\">\"freight\"</span><span class=\"p\">)</span>\n<span class=\"n\">_fig</span>\n</code></pre></div>\n<span class=\"paragraph\">The square brackets inside <code>_ax.bar(...)</code> are a <strong>list comprehension</strong>, which <strong>iterates</strong> over <code>orders</code> and turns each number into text.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "3d8a46394aacb87f7fbca6175b3d5175",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"push-it\">\u270f\ufe0f Push It</h1>\n<ol>\n<li>Change one number in the <code>freight_charges</code> list. Watch your three cells update.</li>\n<li>Save the file <strong>inside your repository, in the <code>notebooks/</code> folder</strong>.</li>\n<li>In <strong>GitHub Desktop</strong>: write a commit message, click <strong>Commit to main</strong>,\n   then <strong>Push origin</strong>.</li>\n<li>Open <strong>github.com</strong>, go to your repository, and click on the notebook.</li>\n</ol>\n<span class=\"paragraph\"><em>Nothing there? Check that GitHub Desktop is showing the right repository at\nthe top left, and that the file you saved is inside that repository's folder.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "aeb144ec827e787994efccd05da6699e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"a-question-about-your-own-numbers\">\ud83d\ude80 A Question About Your Own Numbers</h1>\n<span class=\"paragraph\">Pick a question from your own work or life that a short list of numbers can answer, such as what you spent on groceries each month since March, or how many minutes your commute took each day last week.</span>\n<span class=\"paragraph\"><strong>Where it goes.</strong> A new notebook in your <code>notebooks/</code> folder, made from the page that <code>uv run marimo edit</code> opens. Commit and push it before the next session.</span>\n<span class=\"paragraph\"><strong>What you write.</strong> Code, in cells. Every number in your answer comes out of a cell, and none is typed into a sentence by hand. The question, the rule and the check go in markdown cells.</span>\n<span class=\"paragraph\"><strong>An answer looks like this:</strong> <code>Groceries from March to August cost $1,284.50, or $214.08 a month.</code></span>\n<span class=\"paragraph\"><strong>Done looks like this:</strong></span>\n<ol>\n<li>A markdown cell with the question.</li>\n<li>Your numbers in one list, and a second list of labels (months, dates, names) in the same order. One sentence in markdown says what a single number in your list stands for.</li>\n<li>One value that arrived broken, as text or with a symbol in it, such as <code>\"n/a\"</code> or <code>\"$1,200\"</code>. Run your calculation once with it in the list and write the last line of the error in your own words. Then choose a rule for that value, state it in markdown, and apply it in code: build a clean list with a <code>for</code> loop and an <code>if</code>, the way Keep Only Some does. Delete the cell that raised, so the notebook runs clean.</li>\n<li>Your answer as one sentence printed with an f-string, from the clean list, with the numbers formatted to two decimal places.</li>\n<li><strong>How I know these numbers are right</strong>: one check done a different way, such as by hand, on a calculator, or in a second cell. In OIM6301 the check has to be a cell that runs.</li>\n<li>One number changed, and a note that names what updated by itself.</li>\n</ol>\n<span class=\"paragraph\"><strong>Where AI sits in this</strong></span>\n<table>\n<thead>\n<tr>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>By hand</strong></td>\n<td>Nothing in this project</td>\n</tr>\n<tr>\n<td><strong>AI writes, you check</strong></td>\n<td>Any line of code. Ask the agent in marimo's panel, which runs on your Babson key, and read each cell before you click <strong>Keep cell</strong></td>\n</tr>\n<tr>\n<td><strong>You direct, you verify</strong></td>\n<td>The check in point 5. Choose how to check the number, and explain why that check is independent</td>\n</tr>\n<tr>\n<td><strong>You choose the question</strong></td>\n<td>The question, and the rule for the value that arrived broken</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\"><strong>The verification question.</strong> Pick one piece of AI output you did not accept as-is. What did it give you, what did you change, and how did you know? Point to the commit or the cell. If the agent got it right the first time: what did you do to verify that?</span>\n<blockquote>\n<span class=\"paragraph\"><strong>Advanced</strong></span>\n<ul>\n<li>Add a slider with <code>mo.ui.slider</code> that changes one assumption, and make your sentence follow it</li>\n<li>Draw your list as a bar chart with its labels, after running <code>uv add matplotlib</code></li>\n<li>Answer a second question that needs something not covered yet, such as which month changed most from the one before, and explain the agent's line in your own words</li>\n<li>Send the notebook to somebody outside this course and write down the question they asked</li>\n</ul>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
