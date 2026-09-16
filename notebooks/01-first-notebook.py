@@ -633,10 +633,12 @@ def _():
     return
 
 
-@app.cell
-def _():
-    new_charges = [16.75, 22.25,]
-    return
+app._unparsable_cell(
+    r"""
+    new_charges = [16.75, 22.25,
+    """,
+    name="_"
+)
 
 
 @app.cell(hide_code=True)
