@@ -104,7 +104,7 @@ def _(mo):
 
 @app.cell
 def _():
-    freight_charges = [99.99, 22.25, 25.00, 20.25, 36.25]
+    freight_charges = [16.00, 22.25, 25.00, 20.25, 36.25]
     freight_charges
     return (freight_charges,)
 
@@ -146,7 +146,7 @@ def _(freight_charges):
 def _(freight_charges):
     total =sum(freight_charges)
     total
-    return
+    return (total,)
 
 
 @app.cell(hide_code=True)
@@ -417,6 +417,18 @@ def _(mo):
     return
 
 
+@app.cell
+def _():
+    "16.75" + "22.25"
+    return
+
+
+@app.cell
+def _():
+    16.75 + "22.25"
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -448,6 +460,18 @@ def _(mo):
 
     📖 Handbook: Python §3 Expressions and operators
     """)
+    return
+
+
+@app.cell
+def _(freight_charges):
+    freight_charges[0]>20
+    return
+
+
+@app.cell
+def _(freight_charges):
+    freight_charges[-1] == max(freight_charges)
     return
 
 
@@ -486,6 +510,13 @@ def _(mo):
 
     Your sentence should show `$120.50` and `$24.10`.
     """)
+    return
+
+
+@app.cell
+def _(freight_charges, total):
+
+    print(f"Total Freight was ${total:.2f} and the average charge was ${total / len(freight_charges):.2f}")
     return
 
 
@@ -539,6 +570,18 @@ def _(mo):
     return
 
 
+@app.cell
+def _(freight_charges):
+    below_25 = []
+    for freight in freight_charges:
+        if freight < 25:
+            below_25.append(freight)
+    below_25
+
+    print(f"There are {len(below_25)} freight charges below $25 and they add up to ${sum(below_25):.2f}.")
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -577,6 +620,25 @@ def _(mo):
     return
 
 
+@app.cell
+def _():
+    import pandsa
+
+    return
+
+
+@app.cell
+def _():
+    open("sales.csv")
+    return
+
+
+@app.cell
+def _():
+    new_charges = [16.75, 22.25,]
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -586,6 +648,12 @@ def _(mo):
 
     `max(["9.50", "16.75", "22.25"])`
     """)
+    return
+
+
+@app.cell
+def _():
+    max(["9.50" , "16.75" , "22.25"])
     return
 
 
@@ -600,6 +668,17 @@ def _(mo):
 
     📖 Handbook: Python §2 Types
     """)
+    return
+
+
+@app.cell
+def _():
+    max([9.50 , 16.75 , 22.25])
+    return
+
+
+@app.cell
+def _():
     return
 
 
@@ -633,6 +712,17 @@ def _(mo):
     3. What would you change it to? More than one answer is defensible, so state the rule you chose.
     """)
     return
+
+
+app._unparsable_cell(
+    r"""
+    1. it names line 3 the total sum line with a typeerror 
+    2. i would change line 1
+    3. Replace "pending" to avoid mixing numbers with a string 
+
+    """,
+    name="_"
+)
 
 
 @app.cell(hide_code=True)
