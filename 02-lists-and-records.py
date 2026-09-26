@@ -247,7 +247,6 @@ app._unparsable_cell(
             print(cost_)
             print(f'Pre-tax: ${whatever:.2f}, total: ${cost_:.2f}'
             print()
-    
     """,
     name="_"
 )
@@ -382,6 +381,11 @@ def _(mo):
     return
 
 
+@app.cell
+def _():
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -426,7 +430,7 @@ def _(mo):
 
 @app.cell
 def _():
-    score = 95
+    score = 75
     if score >= 90:
         print("A")
 
@@ -436,7 +440,7 @@ def _():
         print("Pass")
     else: 
         print("Fail")
-    
+
     return
 
 
@@ -484,20 +488,19 @@ def _():
 def _(statuses):
     shipped_count = 0
     not_shipped_count = 0
+
     for status in statuses:
         #print (status)
         if status == "shipped":
             shipped_count += 1
         else:
             not_shipped_count += 1
-        
-    print(shipped_count)
-    print(not_shipped_count)
-    return
 
+    percent_shipped = shipped_count / len(statuses) * 100
 
-@app.cell
-def _():
+    print(f"{shipped_count} orders shipped")
+    print(f"{not_shipped_count} orders not shipped")
+    print(f"{percent_shipped:.2f}% of orders shipped")
     return
 
 
@@ -524,9 +527,19 @@ def _(mo):
 
 @app.cell
 def _():
+
     order_lines = ["notebook", "pen"]
     order_lines.append(["stapler", "tape"])
     len(order_lines)
+    return
+
+
+@app.cell
+def _():
+    order_lines = ["notebook", "pen"]
+    order_lines.extend(["stapler", "tape"])
+    len(order_lines)
+    order_lines[2]
     return
 
 
