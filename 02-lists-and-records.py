@@ -396,12 +396,14 @@ def _(mo):
     own, added with the **+** button.
 
     **A ·**
-
+    the first print will get printed when a score satisfies two
     **C ·**
+    append paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line.
 
     **D ·**
-
+    tickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did.
     **E ·**
+    I would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too.
     """)
     return
 
@@ -529,17 +531,21 @@ def _(mo):
 def _():
 
     order_lines = ["notebook", "pen"]
-    order_lines.append(["stapler", "tape"])
-    len(order_lines)
+    order_lines.extend(["stapler", "tape"])
+    order_lines
     return
 
 
 @app.cell
 def _():
-    order_lines = ["notebook", "pen"]
-    order_lines.extend(["stapler", "tape"])
-    len(order_lines)
-    order_lines[2]
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    append paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line.
+    """)
     return
 
 
@@ -576,6 +582,14 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    tickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     ## E · The price list that changed by itself
 
     A shop builds its sale prices from its regular prices, adds one more sale price, and
@@ -602,10 +616,39 @@ def _(mo):
 
 @app.cell
 def _():
+    return
+
+
+@app.cell
+def _():
     prices = [12.50, 8.00, 19.99]
-    sale_prices = prices
+    sale_prices = prices[:]
     sale_prices.append(4.99)
     prices
+
+    return prices, sale_prices
+
+
+@app.cell
+def _(sale_prices):
+    discounted = []
+    for price in sale_prices:
+        discounted.append(price - 0.01 * price)
+    discounted
+    return
+
+
+@app.cell
+def _(prices, sale_prices):
+    prices is sale_prices
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too.
+    """)
     return
 
 
