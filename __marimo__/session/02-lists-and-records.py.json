@@ -8,14 +8,7 @@
     {
       "id": "Hbol",
       "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -34,14 +27,7 @@
     {
       "id": "vblA",
       "code_hash": null,
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -60,14 +46,7 @@
     {
       "id": "lEQa",
       "code_hash": "9c47b204cf0bfe8903793de03daa76b1",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -86,192 +65,73 @@
     {
       "id": "Xref",
       "code_hash": "6a64f352fa0a0c5e807810f40516ba55",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "Enter the cost:  5\nEnter tax:  6\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "SFPL",
       "code_hash": "bd584f485531dc8a8612f58924a3ce3c",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>11.0</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "BYtC",
       "code_hash": "b0a667d7b380e2b5e7a10dfb635eac49",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>11.0</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "RGSE",
       "code_hash": "5d0a9ecf541aa51ea94bc5446946d5cf",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>50.0</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "Kclp",
       "code_hash": "ec5527a6c62e392eae5528bf8a812dd2",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "The total cost is $50.00.\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "emfo",
       "code_hash": "9bc20ec431429cc424aa1c2fdfac1894",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&lt;class &#x27;float&#x27;&gt;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "Hstk",
       "code_hash": "57e35cd8812a161bca030e80246d6e07",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "multiple-defs",
-          "evalue": "The variable 'charges' was defined by another cell",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "nWHF",
       "code_hash": "296399645ecad7c74560111055395329",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "Name `charges` is not defined. It was expected to be defined in ",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_27104\\__marimo__cell_nWHF_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"nb\">type</span><span class=\"p\">(</span><span class=\"n\">charges</span><span class=\"p\">)</span>\n<span class=\"w\">         </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'charges' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "iLit",
       "code_hash": "c8542f3342c60750fc05b491e269b787",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "Name `charges` is not defined. It was expected to be defined in ",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_27104\\__marimo__cell_iLit_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">charges</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">3</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'charges' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "ZHCJ",
       "code_hash": "5c37af4dfa3de9ab4d8567c941591293",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "Name `charges` is not defined. It was expected to be defined in ",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_27104\\__marimo__cell_ZHCJ_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">charges</span><span class=\"p\">[</span><span class=\"mi\">1</span> <span class=\"p\">:</span> <span class=\"mi\">4</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'charges' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "ROlb",
       "code_hash": "93eaf401e82d82c0b7d18ee484456e01",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "syntax",
-          "evalue": "line 10\n    print(f'Pre-tax: ${whatever:.2f}, total: ${cost_:.2f}'\n         ^\nSyntaxError: '(' was never closed\n",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "qnkX",
       "code_hash": null,
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -290,27 +150,13 @@
     {
       "id": "Vxnm",
       "code_hash": "e828ed0c56f500836d56db28d5a9797f",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "multiple-defs",
-          "evalue": "The variable 'charge' was defined by another cell",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "DnEU",
       "code_hash": "010cd6caf9377760071d7f07fabeb6d2",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "multiple-defs",
-          "evalue": "The variable 'charge' was defined by another cell",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -329,74 +175,25 @@
     {
       "id": "ecfG",
       "code_hash": "41b677e5a767bdc6d8289670f64a4304",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "Name `charges` is not defined. It was expected to be defined in ",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_27104\\__marimo__cell_ecfG_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">charges</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'charges' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "Pvdt",
       "code_hash": "efc656077a3e2ebeaa7723ca4ff21678",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "Name `charges` is not defined. It was expected to be defined in ",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_27104\\__marimo__cell_Pvdt_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">charges</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'charges' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "ZBYS",
       "code_hash": "c33d04356fed101f03103b3a587b36ee",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "Name `charges` is not defined. It was expected to be defined in ",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_27104\\__marimo__cell_ZBYS_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">charges</span><span class=\"p\">[</span><span class=\"mi\">5</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'charges' is not defined</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "aLJB",
       "code_hash": "3162e71c11ea9d96662b50a13fe21705",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "multiple-defs",
-          "evalue": "The variable 'charges' was defined by another cell",
-          "traceback": []
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -413,33 +210,26 @@
       "console": []
     },
     {
-      "id": "CNDD",
-      "code_hash": null,
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": []
-    },
-    {
       "id": "xXTn",
-      "code_hash": "61e399e66039f41603d77697dd18b174",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"your-written-answers\">Your written answers</h3>\n<span class=\"paragraph\">Four of the drills below ask for a sentence. This cell is where they go. Click into\nit, write under the letter, and press <code>Ctrl+Enter</code>. Code still goes in cells of your\nown, added with the <strong>+</strong> button.</span>\n<span class=\"paragraph\"><strong>A \u00b7</strong>\nthe first print will get printed when a score satisfies two\n<strong>C \u00b7</strong>\nappend paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line. </span>\n<span class=\"paragraph\"><strong>D \u00b7</strong>\ntickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did. \n<strong>E \u00b7</strong>\nI would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too. </span></span>"
-          }
-        }
-      ],
+      "code_hash": null,
+      "outputs": [],
       "console": []
     },
     {
       "id": "AjVT",
+      "code_hash": "02c9e0c8cbafaa2844031dc9a4691995",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"your-written-answers\">Your written answers</h3>\n<span class=\"paragraph\">Four of the drills below ask for a sentence. This cell is where they go. Click into\nit, write under the letter, and press <code>Ctrl+Enter</code>. Code still goes in cells of your\nown, added with the <strong>+</strong> button.</span>\n<span class=\"paragraph\"><strong>A \u00b7</strong>\nthe first print will get printed when a score satisfies two\n<strong>C \u00b7</strong>\nappend paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line.</span>\n<span class=\"paragraph\"><strong>D \u00b7</strong>\ntickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did.\n<strong>E \u00b7</strong>\nI would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
       "code_hash": "9b6d1aeb948c609622d2cb77220b7d81",
       "outputs": [
         {
@@ -452,27 +242,13 @@
       "console": []
     },
     {
-      "id": "pHFh",
-      "code_hash": "c5e58be389fe9ef2de62711a6f0b6bf0",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "Pass\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "id": "NCOB",
+      "code_hash": "951b3c533df6ba1fb631777bb8bac8fb",
+      "outputs": [],
+      "console": []
     },
     {
-      "id": "NCOB",
+      "id": "aqbW",
       "code_hash": "c84867ac13a74b75251d67f16503cbff",
       "outputs": [
         {
@@ -485,20 +261,13 @@
       "console": []
     },
     {
-      "id": "aqbW",
+      "id": "TRpd",
       "code_hash": null,
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "TRpd",
+      "id": "TXez",
       "code_hash": "fb022f81dfbffed89f3565af612fe5ec",
       "outputs": [
         {
@@ -511,37 +280,16 @@
       "console": []
     },
     {
-      "id": "TXez",
+      "id": "dNNg",
       "code_hash": "413f573172b95d2cba69850b5e98a1e1",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"shipped\", \"pending\", \"shipped\", \"cancelled\", \"shipped\"]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "dNNg",
+      "id": "yCnT",
       "code_hash": "e2181444370a15d48233363c86776448",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "3 orders shipped\n2 orders not shipped\n60.00% of orders shipped\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
       "id": "wlCL",
@@ -559,37 +307,30 @@
     {
       "id": "kqZH",
       "code_hash": "fed920d246c784a6bc72d931b2cefea0",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"notebook\", \"pen\", \"stapler\", \"tape\"]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "uYZW",
+      "id": "wAgl",
       "code_hash": null,
       "outputs": [],
       "console": []
     },
     {
-      "id": "mkCf",
-      "code_hash": "8999a8fdca19798f79709d261db0de1e",
+      "id": "rEll",
+      "code_hash": "db826350c0acc229657330ad13295dbd",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">append paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line. </span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">append paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line.</span></span>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "wAgl",
+      "id": "dGlV",
       "code_hash": "6935532a36f420a3c62570d37b41c982",
       "outputs": [
         {
@@ -602,40 +343,26 @@
       "console": []
     },
     {
-      "id": "rEll",
+      "id": "SdmI",
       "code_hash": "01a8d5269858a498482cb962fade9d87",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"AAPL\", \"MSFT\", \"NVDA\"]"
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "['AAPL', 'MSFT', 'NVDA']\nNone\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
-      "id": "Jikj",
-      "code_hash": "b4580be1e635f340aaad4cf12a6b868e",
+      "id": "lgWD",
+      "code_hash": "2c615794cc0dbd3eaa5b252b453ed328",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">tickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did. </span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">tickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did.</span></span>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "dGlV",
+      "id": "yOPj",
       "code_hash": "f405b348260f91aaa0a73e40c618af25",
       "outputs": [
         {
@@ -648,65 +375,44 @@
       "console": []
     },
     {
-      "id": "wAAf",
+      "id": "fwwy",
       "code_hash": null,
       "outputs": [],
       "console": []
     },
     {
-      "id": "SdmI",
-      "code_hash": "ddc15d3117f9a0dd60713d1471cb4657",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"text/plain+float:12.5\", \"text/plain+float:8.0\", \"text/plain+float:19.99\"]"
-          }
-        }
-      ],
+      "id": "LJZf",
+      "code_hash": "fef8050147ab6b97e03e371500ce2207",
+      "outputs": [],
       "console": []
     },
     {
-      "id": "vTLt",
+      "id": "urSm",
       "code_hash": "c54d4862b14c9ac3c88fe964907dab8d",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"text/plain+float:12.375\", \"text/plain+float:7.92\", \"text/plain+float:19.7901\", \"text/plain+float:4.9401\"]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "RzXj",
+      "id": "jxvo",
       "code_hash": "da56d086dd6116a545e315bc3806642d",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "mWxS",
+      "code_hash": "76e95b5ef6552eafe5f3b6367817af71",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/html": "<pre class='text-xs'>False</pre>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too.</span></span>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "BOId",
-      "code_hash": "471c54d6753f5da6ff79a4bf62034eaf",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too. </span></span>"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
-      "id": "lgWD",
+      "id": "CcZR",
       "code_hash": "8e5e2a59e9f4c3607fa0b5cb1f86f715",
       "outputs": [
         {
@@ -719,27 +425,13 @@
       "console": []
     },
     {
-      "id": "yOPj",
+      "id": "YWSi",
       "code_hash": "e22c9fe5df8633ecd9c695b5510cb87f",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "10050\n150\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
-      "id": "fwwy",
+      "id": "zlud",
       "code_hash": "1d4cd33d87f69cef37de87f6bdd519ca",
       "outputs": [
         {
@@ -752,7 +444,7 @@
       "console": []
     },
     {
-      "id": "LJZf",
+      "id": "tZnO",
       "code_hash": "b9a8a3f558e3abd939892755cdb675a5",
       "outputs": [
         {
@@ -765,20 +457,13 @@
       "console": []
     },
     {
-      "id": "urSm",
+      "id": "xvXZ",
       "code_hash": "53f7fdf6f5abd48e8964538bd017999e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"OrderID\": 10248, \"CustomerID\": \"VINET\", \"ShipCountry\": \"France\", \"ShipCity\": \"Reims\", \"OrderDate\": \"2016-07-04\", \"ShippedDate\": \"2016-07-16\", \"Freight\": \"text/plain+float:16.75\"}"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "jxvo",
+      "id": "CLip",
       "code_hash": "692b58e986493ab11653c79bccc2af34",
       "outputs": [
         {
@@ -791,20 +476,13 @@
       "console": []
     },
     {
-      "id": "mWxS",
+      "id": "YECM",
       "code_hash": "332446c7b3958fd46ca5386ebac32217",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;France&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "CcZR",
+      "id": "cEAS",
       "code_hash": "b4c4fb6a4f42fd5d98b6b18739a03241",
       "outputs": [
         {
@@ -817,7 +495,7 @@
       "console": []
     },
     {
-      "id": "YWSi",
+      "id": "iXej",
       "code_hash": "0ed1e9cc210d89a44e791cc8866fac27",
       "outputs": [
         {
@@ -830,20 +508,13 @@
       "console": []
     },
     {
-      "id": "zlud",
+      "id": "EJmg",
       "code_hash": "2e78ba09148c2840a0ce57701f538f5b",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>30</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "tZnO",
+      "id": "UmEG",
       "code_hash": "215e85cc1d798eb376e760e2e6876215",
       "outputs": [
         {
@@ -856,20 +527,13 @@
       "console": []
     },
     {
-      "id": "xvXZ",
+      "id": "vEBW",
       "code_hash": "56ae7cf264083e0936598623c21b783a",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;France&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "CLip",
+      "id": "kLmu",
       "code_hash": "362a604c80a321d2e4d5c0c5e80b4671",
       "outputs": [
         {
@@ -882,7 +546,7 @@
       "console": []
     },
     {
-      "id": "YECM",
+      "id": "IpqN",
       "code_hash": "276567fb8e96c73de1480e5e345ad8c1",
       "outputs": [
         {
@@ -895,7 +559,7 @@
       "console": []
     },
     {
-      "id": "cEAS",
+      "id": "dxZZ",
       "code_hash": "1a951e63750454427afca99d94d5c044",
       "outputs": [
         {
@@ -908,7 +572,7 @@
       "console": []
     },
     {
-      "id": "iXej",
+      "id": "dlnW",
       "code_hash": "33f3e6ba51f144e4af890984773e0cfc",
       "outputs": [
         {
@@ -921,20 +585,13 @@
       "console": []
     },
     {
-      "id": "EJmg",
+      "id": "TTti",
       "code_hash": "ee04f5dc9b3e474ede5f3f883c3aa33e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[{\"Symbol\": \"AAPL\", \"Shares\": 100, \"Price\": \"text/plain+float:173.93\"}, {\"Symbol\": \"MSFT\", \"Shares\": 50, \"Price\": \"text/plain+float:319.53\"}, {\"Symbol\": \"GOOG\", \"Shares\": 80, \"Price\": \"text/plain+float:131.36\"}, {\"Symbol\": \"AMZN\", \"Shares\": 200, \"Price\": \"text/plain+float:129.33\"}, {\"Symbol\": \"NVDA\", \"Shares\": 20, \"Price\": \"text/plain+float:410.17\"}, {\"Symbol\": \"TSLA\", \"Shares\": 150, \"Price\": \"text/plain+float:255.7\"}]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "UmEG",
+      "id": "RKFZ",
       "code_hash": "d7c2e174de0e810f192e0ebcd5f38e05",
       "outputs": [
         {
@@ -947,20 +604,13 @@
       "console": []
     },
     {
-      "id": "vEBW",
+      "id": "IaQp",
       "code_hash": "84a6141f626588f299934afdd739184b",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;C:\\\\Users\\\\emma\\\\OneDrive - Babson College\\\\Documents\\\\GitHub\\\\data\\\\portfolio.csv&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "kLmu",
+      "id": "IWgg",
       "code_hash": "d8cb88a4a782aa1a3abecba9ae2a81aa",
       "outputs": [
         {
