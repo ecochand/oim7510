@@ -695,10 +695,14 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "marimo", extra = ["recommended"] },
+    { name = "requests" },
 ]
 
 [package.metadata]
-requires-dist = [{ name = "marimo", extras = ["recommended"], specifier = ">=0.24.2" }]
+requires-dist = [
+    { name = "marimo", extras = ["recommended"], specifier = ">=0.24.2" },
+    { name = "requests", specifier = ">=2.34.2" },
+]
 
 [[package]]
 name = "openai"
