@@ -950,6 +950,11 @@ def _(mo):
 def _(mo):
     mo.md(r"""
     I would start by multiplying shares by price for each symbol. Then I would sum them together for a total
+
+    totalcost = 0
+    totalcost = totalcost + price * shares
+
+    totalcost
     """)
     return
 

@@ -700,12 +700,12 @@
     },
     {
       "id": "ahos",
-      "code_hash": "1c9abab3c589ca8a8424bb6eea92b694",
+      "code_hash": "dc9b55e0bc037ac8b19cb62236aebf52",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would start by multiplying shares by price for each symbol. Then I would sum them together for a total </span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would start by multiplying shares by price for each symbol. Then I would sum them together for a total </span>\n<span class=\"paragraph\">totalcost = 0 \ntotalcost = totalcost + price * shares</span>\n<span class=\"paragraph\">totalcost </span></span>"
           }
         }
       ],
