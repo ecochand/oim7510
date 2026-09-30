@@ -8,7 +8,14 @@
     {
       "id": "Hbol",
       "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
       "console": []
     },
     {
@@ -459,7 +466,14 @@
     {
       "id": "xvXZ",
       "code_hash": "53f7fdf6f5abd48e8964538bd017999e",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"OrderID\": 10248, \"CustomerID\": \"VINET\", \"ShipCountry\": \"France\", \"ShipCity\": \"Reims\", \"OrderDate\": \"2016-07-04\", \"ShippedDate\": \"2016-07-16\", \"Freight\": \"text/plain+float:16.75\"}"
+          }
+        }
+      ],
       "console": []
     },
     {
@@ -478,7 +492,14 @@
     {
       "id": "YECM",
       "code_hash": "332446c7b3958fd46ca5386ebac32217",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;France&#x27;</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {
@@ -493,6 +514,26 @@
         }
       ],
       "console": []
+    },
+    {
+      "id": "Yndg",
+      "code_hash": "1750e9e558d7f3dcf0998e55862d3f2b",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "'freight'",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_4344\\__marimo__cell_Yndg_.py\"</span>, line <span class=\"m\">2</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">first_order</span><span class=\"p\">[</span><span class=\"s2\">\"freight\"</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~^^^^^^^^^^^</span>\n<span class=\"gr\">KeyError</span>: <span class=\"n\">'freight'</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
     },
     {
       "id": "iXej",
@@ -510,7 +551,14 @@
     {
       "id": "EJmg",
       "code_hash": "2e78ba09148c2840a0ce57701f538f5b",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>30</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {
@@ -529,7 +577,14 @@
     {
       "id": "vEBW",
       "code_hash": "56ae7cf264083e0936598623c21b783a",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;France&#x27;</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {
@@ -540,6 +595,65 @@
           "type": "data",
           "data": {
             "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"the-orders-table\">\u270f\ufe0f The Orders Table</h2>\n<span class=\"paragraph\">Each question is one of the moves from section 2, done to records.</span>\n<ol>\n<li>What is the <strong>total freight</strong> across all 30 orders?</li>\n<li>How many orders have <strong>no <code>ShippedDate</code></strong>? That field holds <code>None</code> for them, and\n   <code>if order[\"ShippedDate\"] is None:</code> is how you ask.</li>\n<li>Which order has the <strong>largest</strong> freight, and what is it?</li>\n</ol>\n<span class=\"paragraph\"><strong>Check yourself:</strong> 827.00 \u00b7 3 \u00b7 order 10263 at 56.00.</span>\n<span class=\"paragraph\">Then ask your agent, and ask which concepts its answer used.</span>\n<span class=\"paragraph\"><strong>Going further.</strong> Look at the three orders with no <code>ShippedDate</code>. What do they have\nin common that the other 27 do not? The answer is not about shipping.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pvpe",
+      "code_hash": "d3cc666a0ba0e466fd4047aa9a43912a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>30</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "FgPD",
+      "code_hash": "9ffb8f80e59d9a830678fdff95282428",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "827.0\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "xvkq",
+      "code_hash": "2b1ffca3c54eacec14cd21670e6657f1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>3</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kDrS",
+      "code_hash": "6f907817ce8dea7291afe526a31b474f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"OrderID\": 10263, \"CustomerID\": \"ERNSH\", \"ShipCountry\": \"Austria\", \"ShipCity\": \"Graz\", \"OrderDate\": \"2016-07-23\", \"ShippedDate\": \"2016-07-31\", \"Freight\": \"text/plain+float:56.0\"}"
           }
         }
       ],
@@ -560,12 +674,12 @@
     },
     {
       "id": "dxZZ",
-      "code_hash": "1a951e63750454427afca99d94d5c044",
+      "code_hash": "ffe859204eaf3441a4fd0c53e0ea4fb9",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><em>One row is ...</em></span>\n<span class=\"paragraph\"><em>(Replace this line with your own sentence. If this cell shows you code instead of\ntext, use the cell menu to turn it into a markdown cell.)</em></span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><em>One row is ...</em></span>\n<span class=\"paragraph\">a results line from your code. Such as \"emma is 25 years old\"</span></span>"
           }
         }
       ],
@@ -585,9 +699,42 @@
       "console": []
     },
     {
+      "id": "ahos",
+      "code_hash": "1c9abab3c589ca8a8424bb6eea92b694",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would start by multiplying shares by price for each symbol. Then I would sum them together for a total </span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
       "id": "TTti",
       "code_hash": "ee04f5dc9b3e474ede5f3f883c3aa33e",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[{\"Symbol\": \"AAPL\", \"Shares\": 100, \"Price\": \"text/plain+float:173.93\"}, {\"Symbol\": \"MSFT\", \"Shares\": 50, \"Price\": \"text/plain+float:319.53\"}, {\"Symbol\": \"GOOG\", \"Shares\": 80, \"Price\": \"text/plain+float:131.36\"}, {\"Symbol\": \"AMZN\", \"Shares\": 200, \"Price\": \"text/plain+float:129.33\"}, {\"Symbol\": \"NVDA\", \"Shares\": 20, \"Price\": \"text/plain+float:410.17\"}, {\"Symbol\": \"TSLA\", \"Shares\": 150, \"Price\": \"text/plain+float:255.7\"}]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qtdu",
+      "code_hash": "333014ab043e6139751be7c0ef308499",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>116302.7</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {

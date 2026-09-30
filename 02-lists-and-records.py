@@ -442,7 +442,6 @@ def _():
         print("Pass")
     else: 
         print("Fail")
-
     return
 
 
@@ -625,7 +624,6 @@ def _():
     sale_prices = prices[:]
     sale_prices.append(4.99)
     prices
-
     return prices, sale_prices
 
 
@@ -761,6 +759,14 @@ def _(mo):
     return
 
 
+@app.cell
+def _(first_order):
+    first_order["Freight"]
+    first_order["freight"]
+    first_order[0]
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -850,6 +856,47 @@ def _(mo):
     return
 
 
+@app.cell
+def _(orders):
+    len(orders)
+
+    return
+
+
+@app.cell
+def _(orders):
+    #what is the total freight across all 30 orders 
+    total_freight = 0
+    for order in orders:
+        total_freight += order["Freight"]
+
+    print(total_freight)
+    return
+
+
+@app.cell
+def _(orders):
+    #How many orders have no ShippedDate? That field holds None for them, and if order["ShippedDate"] is None: is how you ask.
+    no_ship_count = 0 
+    for _order in orders:
+            if _order["ShippedDate"] is None:
+                    no_ship_count = no_ship_count + 1
+    no_ship_count
+    return
+
+
+@app.cell
+def _(orders):
+    #Which order has the largest freight, and what is it?
+    biggest = orders[0]
+    for _order in orders:
+        if _order["Freight"] > biggest["Freight"]:
+            biggest = _order
+        
+    biggest
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -872,8 +919,7 @@ def _(mo):
     mo.md(r"""
     *One row is ...*
 
-    *(Replace this line with your own sentence. If this cell shows you code instead of
-    text, use the cell menu to turn it into a markdown cell.)*
+    a results line from your code. Such as "emma is 25 years old"
     """)
     return
 
@@ -900,6 +946,14 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I would start by multiplying shares by price for each symbol. Then I would sum them together for a total
+    """)
+    return
+
+
 @app.cell
 def _():
     portfolio = [
@@ -911,7 +965,16 @@ def _():
         {"Symbol": "TSLA", "Shares": 150, "Price": 255.70},
     ]
     portfolio
-    return
+    return (portfolio,)
+
+
+@app.cell
+def _(portfolio):
+    total_cost = 0
+    for holding in portfolio: 
+            total_cost = total_cost + holding["Shares"] * holding["Price"]
+    total_cost
+    return (total_cost,)
 
 
 @app.cell(hide_code=True)
