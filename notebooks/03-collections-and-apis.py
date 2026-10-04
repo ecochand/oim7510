@@ -155,7 +155,8 @@ def _(mo):
 
     Several questions below ask for a sentence. This cell is where they go. Click into it, write under the letter, and press `Ctrl+Enter` (Windows) or `Cmd+Enter` (macOS).
 
-    **B ·**
+    **B ·** france, germany, usa, and brazil
+
 
     **C ·**
 
@@ -192,6 +193,41 @@ def _():
     return (closing_prices,)
 
 
+@app.cell
+def _(closing_prices):
+    closing_prices["AAPL"]
+    return
+
+
+@app.cell
+def _(closing_prices):
+    print(closing_prices.get("TSLA"))
+    return
+
+
+@app.cell
+def _(closing_prices):
+    above_200 = []
+    for ticker, price in closing_prices.items():
+            if price > 200:
+                    above_200.append(ticker)
+    above_200
+    return
+
+
+@app.cell
+def _(closing_prices):
+    highest_price = 0
+    highest_ticker = None
+    for ticker_4, price_4 in closing_prices.items():
+            if price_4 > highest_price: 
+                highest_price = price_4
+                highest_ticker = ticker_4
+    
+    highest_ticker
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -217,6 +253,19 @@ def _():
     ]
     len(ship_countries)
     return (ship_countries,)
+
+
+@app.cell
+def _(ship_countries):
+    country_counts = {}
+
+    for country in ship_countries: 
+            if country in country_counts:
+                    country_counts[country]+= 1
+            else: 
+                    country_counts[country] = 1
+    country_counts
+    return
 
 
 @app.cell(hide_code=True)

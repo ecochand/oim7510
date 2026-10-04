@@ -1,0 +1,850 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.24.2",
+    "script_metadata_hash": "d848f9de174660e41a371f5f58ae3c23"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "0e18527d8e3184d50fef381a7be5c93a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"collections-and-apis\">Collections and APIs</h1>\n<span class=\"paragraph\">This session starts in last week's notebook, <code>02-lists-and-records.py</code>, with sections 4 to 6. This notebook picks up after them with the rest of what a dictionary can do, then tuples and sets, then how to choose between them, and then data that comes from a server.</span>\n<table>\n<thead>\n<tr>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\u270f\ufe0f</td>\n<td>Your turn. Add cells with the <strong>+</strong> button</td>\n</tr>\n<tr>\n<td>\ud83d\ude80</td>\n<td>This week's work</td>\n</tr>\n</tbody>\n</table></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "7f7b20410427f9c8eb00dd8484700d73",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Work with your agent the same way as in notebook 2.</strong> Try it yourself first, or write the steps in words. Then ask your agent, ask it to explain any line you could not have written, and ask which concepts its answer used.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "db0d8fe62d9d4be4ddc8cfa56551963e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Before section 5</strong>, install <code>requests</code> once. Leave marimo running, open a second Terminal with the <strong>+</strong> in VS Code's Terminal panel, and run:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>uv add requests\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "00f961655b137a7c35d7f0fc3176aa37",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"1-more-on-dictionaries\">1. More on Dictionaries</h1>\n<span class=\"paragraph\">Last week you read one field out of a record. A dictionary can also be changed after it is made: a value replaced, a key added. Run the cell below and read what the quote holds at the end.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "3ec179977eb886c2c66062090edededa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"Symbol\": \"GOOG\", \"Price\": \"text/plain+float:133.1\", \"Currency\": \"USD\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "fa78846656269b180856d4eef11fb493",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"asking-before-you-read\">Asking before you read</h2>\n<span class=\"paragraph\"><code>goog_quote[\"Volume\"]</code> would stop with a <code>KeyError</code>, because there is no such key. The first way to ask: <code>in</code> answers <code>True</code> or <code>False</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "eea132fed27efd6f1db408185f7d665e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>True</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "d1c133979c9b6cabe61a60c9e1674845",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">The second way: <code>.get()</code> gives <code>None</code> when the key is missing, or the fallback you hand it as a second value.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "d36c2544a9da3d7ca41366697fa9ad45",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>0</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "736087488aefd6c08cb24cddd3d14be8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"reading-every-field\">Reading every field</h2>\n<span class=\"paragraph\"><code>.items()</code> hands you each key together with its value, and the loop takes them as two names. Section 2 explains why two names on the left work.</span>\n<span class=\"paragraph\"><strong>The underscore in <code>_field</code> and <code>_value</code> keeps those names inside this one cell.</strong> Without it they would belong to the whole notebook, and a cell of your own could not use <code>field</code> or <code>value</code> again.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "c6eaa2401b0fa36823b5bb26bdb54aba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"Symbol: GOOG\", \"Price: 133.1\", \"Currency: USD\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "ef36c02623b1b0d7ca9d7b6420650b63",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"counting-with-a-dictionary\">Counting with a dictionary</h2>\n<span class=\"paragraph\">A week of order statuses. The dictionary starts empty, and each status either gets its first count or adds one to the count it already has. <code>.get(_status, 0)</code> is what makes the first time work.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "a098e7088e3366c7409a5de0cd5ca558",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"shipped\": 4, \"pending\": 2, \"cancelled\": 1}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "a6fef899df34d25d8b1d490e4451d7e5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h3 id=\"your-written-answers\">Your written answers</h3>\n<span class=\"paragraph\">Several questions below ask for a sentence. This cell is where they go. Click into it, write under the letter, and press <code>Ctrl+Enter</code> (Windows) or <code>Cmd+Enter</code> (macOS).</span>\n<span class=\"paragraph\"><strong>B \u00b7</strong> france, germany, usa, and brazil</span>\n<span class=\"paragraph\"><strong>C \u00b7</strong></span>\n<span class=\"paragraph\"><strong>D \u00b7</strong></span>\n<span class=\"paragraph\"><strong>G \u00b7</strong></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "58dc8270546fd2fd62eebb9d4c463be7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"a-closing-prices\">\u270f\ufe0f A \u00b7 Closing prices</h2>\n<span class=\"paragraph\">Four closing prices, keyed by ticker. Add a cell for each question.</span>\n<ol>\n<li>What was the price of <code>AAPL</code>?</li>\n<li>Ask for <code>TSLA</code> with square brackets, read the error, then ask again in a way that gives <code>None</code>.</li>\n<li>Which tickers closed above $200? Build them into a list.</li>\n<li>Which ticker closed highest? Keep the highest price seen so far in a loop, and the ticker that goes with it.</li>\n</ol>\n<span class=\"paragraph\"><em>Check yourself: 260.81 \u00b7 <code>KeyError: 'TSLA'</code>, then <code>None</code> \u00b7 <code>['AAPL', 'MSFT', 'GOOG']</code> \u00b7 <code>MSFT</code>.</em></span>\n<span class=\"paragraph\"><strong>Going further.</strong> Every price goes up 10%. Build a new dictionary with the new prices and leave <code>closing_prices</code> as it was.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "b3baada9d1fcfdd58bb210c538eb3881",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"AAPL\": \"text/plain+float:260.81\", \"NVDA\": \"text/plain+float:186.0\", \"MSFT\": \"text/plain+float:404.88\", \"GOOG\": \"text/plain+float:308.42\"}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VTeu",
+      "code_hash": "1ac612db125e3b2944b69318890e73bd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>260.81</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zciM",
+      "code_hash": "9ea9563c14eb10e3276f1cd1791ae8fe",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "None\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "kCLv",
+      "code_hash": "b50461773b4c27ca9e03919d8e438f90",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"AAPL\", \"MSFT\", \"GOOG\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "KdNC",
+      "code_hash": "571a4d079ad41236356dc3e364d5d4c8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;MSFT&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "38e3929260a968d03b1c60e535823939",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"b-orders-by-country\">\u270f\ufe0f B \u00b7 Orders by country</h2>\n<span class=\"paragraph\">The countries the 30 orders in notebook 2 shipped to, in the same order.</span>\n<ol>\n<li><strong>Add a cell</strong> that counts the orders to each country, the way <code>status_counts</code> counts statuses above.</li>\n<li><strong>In the written answers cell</strong>, answer: which country or countries had the most orders?</li>\n</ol>\n<span class=\"paragraph\"><em>Check yourself: France 4, Venezuela 3, Argentina 1, and 12 countries in all.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "cf013d266ae6857b91858009b7c8ab48",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>30</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ixPL",
+      "code_hash": "0fd3c963e7d9be796c2ba5556e1583b6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"France\": 4, \"Germany\": 4, \"Brazil\": 4, \"Belgium\": 1, \"Switzerland\": 2, \"Venezuela\": 3, \"Austria\": 3, \"Mexico\": 1, \"USA\": 4, \"Sweden\": 1, \"Finland\": 2, \"Argentina\": 1}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "3576afafe4f102de73f70bcc988d0156",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"2-tuples\">2. Tuples</h1>\n<span class=\"paragraph\">A tuple holds a few values in order, like a list, and <strong>cannot be changed after it is made</strong>. It suits one thing with several parts: a single holding is a ticker, a number of shares and a purchase price.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "28bb1887819d424fa39aa23560629d78",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"GOOG\", 3]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "7c943e39264a8aef1d3cc8633eb583a7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>A tuple refuses to change.</strong> <code>first_holding[1] = 75</code> stops with:</span>\n<div class=\"language-verilog codehilite\"><pre><span></span><code><span class=\"nl\">TypeError:</span><span class=\"w\"> </span><span class=\"p\">'</span><span class=\"n\">tuple</span><span class=\"p\">'</span><span class=\"w\"> </span><span class=\"n\">object</span><span class=\"w\"> </span><span class=\"n\">does</span><span class=\"w\"> </span><span class=\"k\">not</span><span class=\"w\"> </span><span class=\"n\">support</span><span class=\"w\"> </span><span class=\"n\">item</span><span class=\"w\"> </span><span class=\"n\">assignment</span>\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "e71c30995427d2372c2b45f530459055",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"unpacking\">Unpacking</h2>\n<span class=\"paragraph\">Three names on the left take the three parts in order, which reads better than <code>first_holding[1] * first_holding[2]</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "8cb4b4c9b56148cf5915a10cbe0dd092",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;GOOG cost $13,136.00&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "509a47f88e82e63dc61ce34410d09c99",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">The count has to match. Two names for three parts stops with:</span>\n<div class=\"language-text codehilite\"><pre><span></span><code>ValueError: too many values to unpack (expected 2, got 3)\n</code></pre></div>\n<span class=\"paragraph\">When you want only the first part, <code>*_</code> takes the rest and throws it away: <code>first_symbol, *_ = first_holding</code>.</span>\n<span class=\"paragraph\">This is also what <code>for _field, _value in goog_quote.items():</code> did in section 1. Each item is a tuple of two, unpacked into two names.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "bf81f0030fc2e70a06a4810783a2cb1a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"a-function-can-hand-back-a-tuple\">A function can hand back a tuple</h2>\n<span class=\"paragraph\">250 units, packed 12 to a case. <code>divmod</code> gives the full cases and what is left over, as one tuple.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "95a3924e5bdeb1262241b6861ecbb4f2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[20, 10]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "c92111f8ba93cd61e7dac40805e86c03",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"a-tuple-can-be-a-key\">A tuple can be a key</h2>\n<span class=\"paragraph\">The market closes on fixed dates, and a date is a month and a day. A tuple can be a dictionary key because it cannot change. A list cannot:</span>\n<div class=\"language-carbon codehilite\"><pre><span></span><code><span class=\"nx\">TypeError</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"nx\">cannot</span><span class=\"w\"> </span><span class=\"nx\">use</span><span class=\"w\"> </span><span class=\"err\">'</span><span class=\"nx\">list</span><span class=\"err\">'</span><span class=\"w\"> </span><span class=\"k\">as</span><span class=\"w\"> </span><span class=\"nx\">a</span><span class=\"w\"> </span><span class=\"nx\">dict</span><span class=\"w\"> </span><span class=\"nx\">key</span><span class=\"w\"> </span><span class=\"p\">(</span><span class=\"nx\">unhashable</span><span class=\"w\"> </span><span class=\"k\">type</span><span class=\"p\">:</span><span class=\"w\"> </span><span class=\"err\">'</span><span class=\"nx\">list</span><span class=\"err\">'</span><span class=\"p\">)</span>\n</code></pre></div></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "f01f1fda7f571e14bf2a6509ace69186",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;Independence Day&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "cb4baa718dd7852085fc8ba738deffb8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"3-sets\">3. Sets</h1>\n<span class=\"paragraph\">A set holds each value once and keeps no order. It answers two questions well: which distinct values are there, and is this one among them.</span>\n<span class=\"paragraph\">A client traded these tickers this week, some of them more than once.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "3ec454296bb0dc1ab5b1eba9bb86ad77",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[7, 4, [\"AAPL\", \"GOOG\", \"MSFT\", \"TSLA\"]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "e8e9d094fc7d0401397d4d636d248303",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><code>\"IBM\" in traded_tickers</code> is <code>False</code>. A set has no positions, so <code>traded_tickers[0]</code> stops with <code>TypeError: 'set' object is not subscriptable</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "63c7a81e8331a57d1b8de839772f6fb3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Two sets combine three ways. Compare the client's tickers with the six in the portfolio:</span>\n<table>\n<thead>\n<tr>\n<th></th>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>&amp;</code></td>\n<td>in both</td>\n<td><code>{'AAPL', 'GOOG', 'MSFT', 'TSLA'}</code></td>\n</tr>\n<tr>\n<td><code>-</code></td>\n<td>in the first and not the second</td>\n<td><code>{'AMZN', 'NVDA'}</code></td>\n</tr>\n<tr>\n<td><code>\\|</code></td>\n<td>in either</td>\n<td>all six</td>\n</tr>\n</tbody>\n</table></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "fd30a3b2532bb06bb2b05ca93f53b70c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[\"AAPL\", \"GOOG\", \"MSFT\", \"TSLA\"], [\"AMZN\", \"NVDA\"]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "c6c75ddcafc956ac599c5182c747b1f7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"4-choosing-a-data-structure\">4. Choosing a Data Structure</h1>\n<table>\n<thead>\n<tr>\n<th></th>\n<th>read by</th>\n<th>can change</th>\n<th>keeps each value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>list</strong></td>\n<td>position</td>\n<td>yes</td>\n<td>as often as it appears</td>\n</tr>\n<tr>\n<td><strong>tuple</strong></td>\n<td>position</td>\n<td>no</td>\n<td>as often as it appears</td>\n</tr>\n<tr>\n<td><strong>dictionary</strong></td>\n<td>key</td>\n<td>yes</td>\n<td>keys once each</td>\n</tr>\n<tr>\n<td><strong>set</strong></td>\n<td>membership only</td>\n<td>yes</td>\n<td>once</td>\n</tr>\n</tbody>\n</table></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "1f8ec4989f418d94de26cf9165d7d390",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Four questions, asked in order, from <a href=\"/handbooks/python/02-collections/#19-choosing-a-data-structure\">Python \u00a719</a>:</span>\n<ol>\n<li><strong>Are you only asking whether you have seen a value before?</strong> A set. Stop here.</li>\n<li><strong>Is it one thing with named parts?</strong> A dictionary. If the parts must never change, a tuple.</li>\n<li><strong>Is it many of the same thing?</strong> A list.</li>\n<li><strong>Does each of those things have named parts?</strong> Then a list of dictionaries, which is a table.</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "2687f8e179dd9abafc8e640ae9eef324",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"c-which-structure\">\u270f\ufe0f C \u00b7 Which structure</h2>\n<span class=\"paragraph\"><strong>In the written answers cell</strong>, name the structure for each, with one reason:</span>\n<ol>\n<li>The lines on one order, which the customer can add to, remove from and reorder</li>\n<li>Every customer who has ordered from you this year, each once</li>\n<li>The units sold of each product, looked up by product name</li>\n<li>One shipment's carrier, tracking number and ship date, which must not change once recorded</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "eaa7dc8bc1c38a0f67724dfe79a290ae",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"d-the-portfolio-again\">\u270f\ufe0f D \u00b7 The portfolio again</h2>\n<span class=\"paragraph\">Notebook 2 held the six holdings as a list of dictionaries. Here they are as a list of tuples, one holding per tuple.</span>\n<ol>\n<li><strong>By hand, no agent.</strong> In the written answers cell, state which of the two shapes you would rather work with for this question, and why.</li>\n<li><strong>Add a cell</strong> that computes what it costs to buy the whole portfolio. Unpack each holding into three names in the <code>for</code> line, and start each name with an underscore: <code>for _symbol, _shares, _price in holdings:</code>.</li>\n<li><strong>Then ask your agent</strong> for its version, and ask it to explain the line you would not have written.</li>\n</ol>\n<span class=\"paragraph\"><em>Check yourself: $116,302.70, the same as notebook 2.</em></span>\n<span class=\"paragraph\"><strong>Going further.</strong> Which holding cost the most? Build a dictionary from ticker to cost, then find the largest. <em>TSLA, $38,355.00.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "c8f862e56b4e11f6d7863336e449abd5",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "80ac93ce1158d39d28b9c7f255b5c0d2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><blockquote>\n<span class=\"paragraph\"><strong>Advanced \u00b7 A year of trades.</strong> A client made the trades below this year, one tuple per trade: date, ticker, <code>\"buy\"</code> or <code>\"sell\"</code>, shares, price. When the client sells, which of the shares bought earlier were the ones sold? The usual rule is <strong>first in, first out</strong>: a sale uses up the oldest shares first. Selling 120 AAPL on April 15 uses the 100 bought in January, then 20 of the 50 bought in March.</span>\n<ol>\n<li><strong>By hand, no agent.</strong> In the written answers cell, write the algorithm in words: what you keep for each ticker, and what happens to it on a sale.</li>\n<li><strong>Then work it out with your agent</strong>, and keep going until you can explain every line.</li>\n<li>Find the gain on each sale, the total, and the shares left.</li>\n</ol>\n<span class=\"paragraph\"><em>Check yourself: gains of $7,900.00 in all, $6,700.00 on AAPL and $1,200.00 on MSFT. Left: 20 AAPL bought at $240.00, and 10 MSFT at $380.00.</em></span>\n<span class=\"paragraph\"><strong>Going further.</strong> Work it out again with <strong>average cost</strong>, where a sale uses the average price of every share held. The total changes. Which rule would the client rather report this year, and why?</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "fa923984c3255ec447f3c2f9d1ae94e5",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "14f7cd4877cce0e4ddc59b2059d2e199",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"5-asking-a-server\">5. Asking a Server</h1>\n<span class=\"paragraph\">An <strong>API</strong> is a web address that answers with data. Open-Meteo is a free weather service that needs no key and no sign-up.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
+      "code_hash": "8e41e132c0014809fc7c6d99010a66d6",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "yOPj",
+      "code_hash": "b6080cd361c22f299a5a16f332dc3b04",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">The address below asks for the current temperature and wind at Babson's coordinates. <code>requests.get</code> sends the request, and <code>timeout=10</code> gives up after 10 seconds, so a server that never answers cannot hang your notebook.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fwwy",
+      "code_hash": "b0a00ff4650826e66e32fe0666f52a91",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "LJZf",
+      "code_hash": "9ca0b6832430b8774e2b359e92902d58",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>200</strong> means the server understood the request and answered it. <code>.json()</code> turns what it sent into Python, and what comes back is a dictionary.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "urSm",
+      "code_hash": "25e9c1190b53d7f608172bbf33825be4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "jxvo",
+      "code_hash": "bfc8683999bf41d5fa95b968a6d7ac0f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Some of its values are dictionaries too. <code>[\"current\"]</code> picks the inner dictionary and <code>[\"temperature_2m\"]</code> picks one field out of it, the same two steps as <code>orders[0][\"ShipCountry\"]</code> last week.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "mWxS",
+      "code_hash": "11b5f79650a5781c25cfe837407d6333",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "CcZR",
+      "code_hash": "c3425bba2f14018ddc2c77f648f7f0c1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Read what came back before you trust it.</strong></span>\n<ul>\n<li><strong>The units are in <code>current_units</code>.</strong> Leave <code>wind_speed_unit=mph</code> out of the address and the wind arrives in km/h beside a temperature in \u00b0F.</li>\n<li><strong>The coordinates are not the ones you sent.</strong> Compare <code>latitude</code> and <code>longitude</code> in the reply with the address. The service answers for the nearest point on its own grid.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YWSi",
+      "code_hash": "633b6cde8fbf36c51e0cad83b24a6182",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"when-the-request-is-wrong\">When the request is wrong</h2>\n<span class=\"paragraph\">A latitude of 422 does not exist. The server answers <strong>400</strong>, which means <em>your request was wrong</em>, and its reply says why.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "zlud",
+      "code_hash": "80c6a8567fd12b007ce7e420740ff83e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "tZnO",
+      "code_hash": "a808c15a06a4a161083f4687541bd128",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"a-status-code-is-not-an-answer\">A status code is not an answer</h2>\n<span class=\"paragraph\">Open-Meteo also finds places by name. Search for a misspelled town and read both the status and the reply.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xvXZ",
+      "code_hash": "5bd422ed104db59bf08fcd74f9c7c304",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "CLip",
+      "code_hash": "79e04dc9b5727678afbbc571d99b4d01",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>200, and nothing inside.</strong> A correct spelling returns a <code>results</code> key holding a list of places. This reply has no <code>results</code> key at all, so <code>misspelled_reply.json()[\"results\"]</code> stops with a <code>KeyError</code>. <code>.get()</code> from section 1 asks safely:</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "YECM",
+      "code_hash": "9e24f0f5b2cd162f0e0a7f9d94eefd0c",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "cEAS",
+      "code_hash": "068ff4723243a56161860dcad659cc27",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><table>\n<thead>\n<tr>\n<th>Status</th>\n<th>What it means</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>200</strong></td>\n<td>the server understood you and answered</td>\n</tr>\n<tr>\n<td><strong>400</strong></td>\n<td>your request was wrong, and the reply usually says how</td>\n</tr>\n<tr>\n<td><strong>404</strong></td>\n<td>there is nothing at that address</td>\n</tr>\n<tr>\n<td><strong>429</strong></td>\n<td>too many requests; wait before asking again</td>\n</tr>\n<tr>\n<td><strong>500</strong></td>\n<td>the server broke</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\"><strong>The status code tells you whether the server understood the request. Whether you got an answer is in the reply</strong>, and you have to read it.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iXej",
+      "code_hash": "9b744f95f434d09a4522ab2b8b9b534b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"6-your-turn\">6. \u270f\ufe0f Your Turn</h1>\n<span class=\"paragraph\"><strong>E \u00b7 The wind in a sentence.</strong> Add a cell that takes the wind speed and its unit out of <code>babson_weather</code> and puts both into one sentence with an f-string. <em>Check yourself: the unit reads <code>mp/h</code>, which is how this service writes miles per hour.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "EJmg",
+      "code_hash": "ad89aa8c2d83a0b134f6b703f4e3576d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>F \u00b7 Another town.</strong> Search for <code>Wellesley</code> the way the misspelled search did, with the correct spelling. Take the first place out of <code>results</code>, then its <code>latitude</code>, <code>longitude</code> and <code>admin1</code>. <em>Check yourself: latitude 42.29649, in Massachusetts.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "UmEG",
+      "code_hash": "21d3ca8f95327f43ccfb133da060a48a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>G \u00b7 The first result.</strong> Search for <code>Babson Park</code> and look at the first place in <code>results</code>. In the written answers cell, answer under <strong>G</strong>: which state is it in, and what would code that always takes <code>[0]</code> have done with it?</span>\n<span class=\"paragraph\"><strong>Going further.</strong> Use F's coordinates to ask for Wellesley's current temperature. Build the address with an f-string, so that changing the town changes the forecast.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vEBW",
+      "code_hash": "993c8a3d00fea66424451e25fc63bfe3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><blockquote>\n<span class=\"paragraph\"><strong>Advanced \u00b7 H \u00b7 A week of forecasts.</strong> Add <code>&amp;daily=temperature_2m_max,temperature_2m_min</code> to the Babson address. The <code>daily</code> part of the reply holds three lists side by side: dates, highs and lows, matched by position. <a href=\"/handbooks/python/02-collections/#19-choosing-a-data-structure\">Python \u00a719</a> shows how that shape goes wrong. Turn it into a list of dictionaries, one per day, each with a date, a high and a low.</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kLmu",
+      "code_hash": "4bf25d1302150d2ee75e97a52bb32a39",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><blockquote>\n<span class=\"paragraph\"><strong>Advanced \u00b7 I \u00b7 A second API.</strong> Kraken, a cryptocurrency exchange, publishes prices with no key: <code>https://api.kraken.com/0/public/Ticker?pair=XBTUSD</code>. Request it, then change the pair to <code>XBTUSX</code>. Compare the status code and the reply with Open-Meteo's misspelled search. Both answer 200 to a request that failed, and each shows the failure in its own way.</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "IpqN",
+      "code_hash": "d33a80332bb754e18621714c2c9aee30",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"this-weeks-work\">\ud83d\ude80 This Week's Work</h1>\n<ol>\n<li><strong>Notebook 2, sections 4 to 6</strong>, including your <em>One row is...</em> sentence</li>\n<li><strong>Everything above in this notebook</strong> that is not marked <strong>Advanced</strong>, in your repository under <code>notebooks/</code></li>\n<li><strong><code>AGENTS.md</code></strong> in the top folder of your repository, committed</li>\n<li><strong>Commit as you go</strong>, with messages that state what changed, and push before you stop</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dxZZ",
+      "code_hash": "a76520898c0a49d002fbce90b67204b1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>What you can do now:</strong></span>\n<ul class=\"task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can change a dictionary, and read from it safely when a key may be missing</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can count with a dictionary</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can unpack a tuple into names</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can find the distinct values in a list, and what two lists share</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can choose between a list, a tuple, a dictionary and a set, and state why</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can request data from an API and read both its status code and its reply</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}
