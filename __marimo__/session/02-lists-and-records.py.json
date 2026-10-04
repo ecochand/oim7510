@@ -8,14 +8,7 @@
     {
       "id": "Hbol",
       "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -108,7 +101,14 @@
     {
       "id": "Hstk",
       "code_hash": "57e35cd8812a161bca030e80246d6e07",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'charges' was defined by another cell",
+          "traceback": []
+        }
+      ],
       "console": []
     },
     {
@@ -182,25 +182,60 @@
     {
       "id": "ecfG",
       "code_hash": "41b677e5a767bdc6d8289670f64a4304",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>16.75</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {
       "id": "Pvdt",
       "code_hash": "efc656077a3e2ebeaa7723ca4ff21678",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>36.25</pre>"
+          }
+        }
+      ],
       "console": []
     },
     {
       "id": "ZBYS",
       "code_hash": "c33d04356fed101f03103b3a587b36ee",
-      "outputs": [],
-      "console": []
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "exception",
+          "evalue": "list index out of range",
+          "traceback": null
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_16136\\__marimo__cell_ZBYS_.py\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">charges</span><span class=\"p\">[</span><span class=\"mi\">5</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~^^^</span>\n<span class=\"gr\">IndexError</span>: <span class=\"n\">list index out of range</span>\n</pre></div>\n</span>",
+          "mimetype": "application/vnd.marimo+traceback"
+        }
+      ]
     },
     {
       "id": "aLJB",
       "code_hash": "3162e71c11ea9d96662b50a13fe21705",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain+float:16.75\", \"text/plain+float:22.25\", \"text/plain+float:25.0\", \"text/plain+float:20.25\", \"text/plain+float:36.25\"]"
+          }
+        }
+      ],
       "console": []
     },
     {
@@ -466,14 +501,7 @@
     {
       "id": "xvXZ",
       "code_hash": "53f7fdf6f5abd48e8964538bd017999e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"OrderID\": 10248, \"CustomerID\": \"VINET\", \"ShipCountry\": \"France\", \"ShipCity\": \"Reims\", \"OrderDate\": \"2016-07-04\", \"ShippedDate\": \"2016-07-16\", \"Freight\": \"text/plain+float:16.75\"}"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -492,14 +520,7 @@
     {
       "id": "YECM",
       "code_hash": "332446c7b3958fd46ca5386ebac32217",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;France&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -516,27 +537,13 @@
       "console": []
     },
     {
-      "id": "Yndg",
+      "id": "iXej",
       "code_hash": "1750e9e558d7f3dcf0998e55862d3f2b",
-      "outputs": [
-        {
-          "type": "error",
-          "ename": "exception",
-          "evalue": "'freight'",
-          "traceback": null
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stderr",
-          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"C:\\Users\\emma\\AppData\\Local\\Temp\\marimo_4344\\__marimo__cell_Yndg_.py\"</span>, line <span class=\"m\">2</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"n\">first_order</span><span class=\"p\">[</span><span class=\"s2\">\"freight\"</span><span class=\"p\">]</span>\n<span class=\"w\">    </span><span class=\"pm\">~~~~~~~~~~~^^^^^^^^^^^</span>\n<span class=\"gr\">KeyError</span>: <span class=\"n\">'freight'</span>\n</pre></div>\n</span>",
-          "mimetype": "application/vnd.marimo+traceback"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
-      "id": "iXej",
+      "id": "EJmg",
       "code_hash": "0ed1e9cc210d89a44e791cc8866fac27",
       "outputs": [
         {
@@ -549,20 +556,13 @@
       "console": []
     },
     {
-      "id": "EJmg",
+      "id": "UmEG",
       "code_hash": "2e78ba09148c2840a0ce57701f538f5b",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>30</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "UmEG",
+      "id": "vEBW",
       "code_hash": "215e85cc1d798eb376e760e2e6876215",
       "outputs": [
         {
@@ -575,20 +575,13 @@
       "console": []
     },
     {
-      "id": "vEBW",
+      "id": "kLmu",
       "code_hash": "56ae7cf264083e0936598623c21b783a",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;France&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "kLmu",
+      "id": "IpqN",
       "code_hash": "362a604c80a321d2e4d5c0c5e80b4671",
       "outputs": [
         {
@@ -601,66 +594,31 @@
       "console": []
     },
     {
-      "id": "pvpe",
-      "code_hash": "d3cc666a0ba0e466fd4047aa9a43912a",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>30</pre>"
-          }
-        }
-      ],
+      "id": "dxZZ",
+      "code_hash": "dcdb5686d152ccc2cbdedf160299d54e",
+      "outputs": [],
       "console": []
     },
     {
-      "id": "FgPD",
+      "id": "dlnW",
       "code_hash": "9ffb8f80e59d9a830678fdff95282428",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "827.0\n",
-          "mimetype": "text/plain"
-        }
-      ]
+      "outputs": [],
+      "console": []
     },
     {
-      "id": "xvkq",
+      "id": "TTti",
       "code_hash": "2b1ffca3c54eacec14cd21670e6657f1",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>3</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "kDrS",
-      "code_hash": "6f907817ce8dea7291afe526a31b474f",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"OrderID\": 10263, \"CustomerID\": \"ERNSH\", \"ShipCountry\": \"Austria\", \"ShipCity\": \"Graz\", \"OrderDate\": \"2016-07-23\", \"ShippedDate\": \"2016-07-31\", \"Freight\": \"text/plain+float:56.0\"}"
-          }
-        }
-      ],
+      "id": "RKFZ",
+      "code_hash": "68535df6f6a3ad01b2965c2d6d30a56e",
+      "outputs": [],
       "console": []
     },
     {
-      "id": "IpqN",
+      "id": "IaQp",
       "code_hash": "276567fb8e96c73de1480e5e345ad8c1",
       "outputs": [
         {
@@ -673,7 +631,7 @@
       "console": []
     },
     {
-      "id": "dxZZ",
+      "id": "IWgg",
       "code_hash": "ffe859204eaf3441a4fd0c53e0ea4fb9",
       "outputs": [
         {
@@ -686,7 +644,7 @@
       "console": []
     },
     {
-      "id": "dlnW",
+      "id": "fCoF",
       "code_hash": "33f3e6ba51f144e4af890984773e0cfc",
       "outputs": [
         {
@@ -699,46 +657,32 @@
       "console": []
     },
     {
-      "id": "ahos",
-      "code_hash": "dc9b55e0bc037ac8b19cb62236aebf52",
+      "id": "LkGn",
+      "code_hash": "8ba4a0aba52596b5c1085c85ad5bfc8e",
       "outputs": [
         {
           "type": "data",
           "data": {
-            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would start by multiplying shares by price for each symbol. Then I would sum them together for a total </span>\n<span class=\"paragraph\">totalcost = 0 \ntotalcost = totalcost + price * shares</span>\n<span class=\"paragraph\">totalcost </span></span>"
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">I would start by multiplying shares by price for each symbol. Then I would sum them together for a total</span>\n<span class=\"paragraph\">totalcost = 0\ntotalcost = totalcost + price * shares</span>\n<span class=\"paragraph\">totalcost</span></span>"
           }
         }
       ],
       "console": []
     },
     {
-      "id": "TTti",
+      "id": "zVRe",
       "code_hash": "ee04f5dc9b3e474ede5f3f883c3aa33e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[{\"Symbol\": \"AAPL\", \"Shares\": 100, \"Price\": \"text/plain+float:173.93\"}, {\"Symbol\": \"MSFT\", \"Shares\": 50, \"Price\": \"text/plain+float:319.53\"}, {\"Symbol\": \"GOOG\", \"Shares\": 80, \"Price\": \"text/plain+float:131.36\"}, {\"Symbol\": \"AMZN\", \"Shares\": 200, \"Price\": \"text/plain+float:129.33\"}, {\"Symbol\": \"NVDA\", \"Shares\": 20, \"Price\": \"text/plain+float:410.17\"}, {\"Symbol\": \"TSLA\", \"Shares\": 150, \"Price\": \"text/plain+float:255.7\"}]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "qtdu",
+      "id": "woaO",
       "code_hash": "333014ab043e6139751be7c0ef308499",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>116302.7</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "RKFZ",
+      "id": "HnMC",
       "code_hash": "d7c2e174de0e810f192e0ebcd5f38e05",
       "outputs": [
         {
@@ -751,13 +695,13 @@
       "console": []
     },
     {
-      "id": "IaQp",
+      "id": "wadT",
       "code_hash": "84a6141f626588f299934afdd739184b",
       "outputs": [],
       "console": []
     },
     {
-      "id": "IWgg",
+      "id": "VCRE",
       "code_hash": "d8cb88a4a782aa1a3abecba9ae2a81aa",
       "outputs": [
         {

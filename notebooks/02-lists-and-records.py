@@ -141,17 +141,119 @@ def _(mo):
 def _():
     # Your own example of each name.
 
-    # 1. value:
-    # 2. name and assignment:
-    # 3. type:
-    # 4. list:
-    # 5. index:
-    # 6. loop:
-    # 7. condition:
+    # 1. value: 16.75
+    # 2. name and assignment: total = sum(charges)
+    # 3. type: 16.75
+    # 4. list:[16.75, 22.25, 25.00]
+    # 5. index: charges[0]
+    # 6. loop: for charge in charges:
+    # 7. condition: if charge < 25
     # 8. f-string:
-    # 9. many into one number:
-    # 10. function and argument:
-    # 11. error:
+    # 9. many into one number: sum(charges)
+    # 10. function and argument: sorted(charges, reverse = True)
+    # 11. error: NameError, IndexError, Syntax Error
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    total = sum(charges)
+    16.75
+    list:[16.75, 22.25, 25.00]
+    index: charges[0]
+    loop: for charge in charges:
+    condition: if charge < 25
+    f-string:
+    many into one number: sum(charges)
+    function and argument: sorted(charges, reverse = True)
+    error: NameError, IndexError, Syntax Error
+    """)
+    return
+
+
+@app.cell
+def _():
+    cost = float(input ("Enter the cost: "))
+    tax = float(input("Enter tax: "))
+    return cost, tax
+
+
+@app.cell
+def _(cost, tax):
+    cost + tax
+    return
+
+
+@app.cell
+def _(cost, tax):
+    float(cost) + float(tax)
+    return
+
+
+@app.cell
+def _(cost):
+    total_cost = cost * 10
+    total_cost
+    return (total_cost,)
+
+
+@app.cell
+def _(total_cost):
+    print(f'The total cost is ${total_cost:.2f}.')
+    return
+
+
+@app.cell
+def _(cost):
+    type(cost)
+    return
+
+
+@app.cell
+def _():
+    charges = [16.75, 22.25, 25.00, 100, 200, 300]
+    return (charges,)
+
+
+@app.cell
+def _(charges):
+    type(charges)
+    return
+
+
+@app.cell
+def _(charges):
+    charges[-3]
+    return
+
+
+@app.cell
+def _(charges):
+    charges[1 : 4]
+    return
+
+
+app._unparsable_cell(
+    r"""
+    i = 0 
+    for whatever in charges: 
+            i +=1
+            print (f'round {i}')
+            print (whatever)
+            tax_ = whatever * 0.0625
+            print(tax_)
+            cost_ = whatever + tax_ 
+            print(cost_)
+            print(f'Pre-tax: ${whatever:.2f}, total: ${cost_:.2f}'
+            print()
+    """,
+    name="_"
+)
+
+
+@app.cell
+def _():
     return
 
 
@@ -172,6 +274,26 @@ def _(mo):
     Tonight you will do them to records. In October you will do them to a table in
     pandas, and in November to a database table.
     """)
+    return
+
+
+@app.cell
+def _(charges):
+    for charge in charges: 
+            tax_ = charge + charge *0.0625
+            cost_ = charge + tax_
+            print(f'Pre-tax: ${charge:.2f}, total: ${cost_:.2f}')
+    return
+
+
+@app.cell
+def _(charges):
+    #sum all the charges under $25
+    s = 0
+    for charge in charges:
+        if charge < 25:
+                s = s + charge
+    print(f'Total charges below $25 is {s}')
     return
 
 
@@ -204,10 +326,28 @@ def _(mo):
 
 
 @app.cell
+def _(charges):
+    charges[0]
+    return
+
+
+@app.cell
+def _(charges):
+    charges[-1]
+    return
+
+
+@app.cell
+def _(charges):
+    charges[5]
+    return
+
+
+@app.cell
 def _():
     charges = [16.75, 22.25, 25.00, 20.25, 36.25]
     charges
-    return
+    return (charges,)
 
 
 @app.cell(hide_code=True)
@@ -256,13 +396,14 @@ def _(mo):
     own, added with the **+** button.
 
     **A ·**
-
-
+    the first print will get printed when a score satisfies two
     **C ·**
+    append paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line.
 
     **D ·**
-
+    tickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did.
     **E ·**
+    I would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too.
     """)
     return
 
@@ -291,11 +432,29 @@ def _(mo):
 
 @app.cell
 def _():
-    score = 95
-    if score >= 60:
-        print("Pass")
-    elif score >= 90:
+    score = 75
+    if score >= 90:
         print("A")
+
+    elif score >=80:
+        print("B")
+    elif score >= 60:
+        print("Pass")
+    else: 
+        print("Fail")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    A: the first print will get printed when a score satisfies two
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _():
     return
 
 
@@ -323,6 +482,26 @@ def _(mo):
 def _():
     statuses = ["shipped", "pending", "shipped", "cancelled", "shipped"]
     statuses
+    return (statuses,)
+
+
+@app.cell
+def _(statuses):
+    shipped_count = 0
+    not_shipped_count = 0
+
+    for status in statuses:
+        #print (status)
+        if status == "shipped":
+            shipped_count += 1
+        else:
+            not_shipped_count += 1
+
+    percent_shipped = shipped_count / len(statuses) * 100
+
+    print(f"{shipped_count} orders shipped")
+    print(f"{not_shipped_count} orders not shipped")
+    print(f"{percent_shipped:.2f}% of orders shipped")
     return
 
 
@@ -349,9 +528,23 @@ def _(mo):
 
 @app.cell
 def _():
+
     order_lines = ["notebook", "pen"]
-    order_lines.append(["stapler", "tape"])
-    len(order_lines)
+    order_lines.extend(["stapler", "tape"])
+    order_lines
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    append paired with order_lines[2] seperated the answer into two lines. I got a list lenght of 4 lines when I added the extend method and removed the additional order_lines[2] line.
+    """)
     return
 
 
@@ -388,6 +581,14 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    tickers.sort() printed none because the sort function isn't meant to return anything, it is just an organizational function. The list changed due to the function but it did not createa  value to print like sorted(tickers) did.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     ## E · The price list that changed by itself
 
     A shop builds its sale prices from its regular prices, adds one more sale price, and
@@ -414,10 +615,38 @@ def _(mo):
 
 @app.cell
 def _():
+    return
+
+
+@app.cell
+def _():
     prices = [12.50, 8.00, 19.99]
-    sale_prices = prices
+    sale_prices = prices[:]
     sale_prices.append(4.99)
     prices
+    return prices, sale_prices
+
+
+@app.cell
+def _(sale_prices):
+    discounted = []
+    for price in sale_prices:
+        discounted.append(price - 0.01 * price)
+    discounted
+    return
+
+
+@app.cell
+def _(prices, sale_prices):
+    prices is sale_prices
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I would want the two names to refer to the same list when I am want a change through one name to be reflected underneath the other too.
+    """)
     return
 
 
@@ -530,6 +759,14 @@ def _(mo):
     return
 
 
+@app.cell
+def _(first_order):
+    first_order["Freight"]
+    first_order["freight"]
+    first_order[0]
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -619,6 +856,47 @@ def _(mo):
     return
 
 
+@app.cell
+def _(orders):
+    len(orders)
+
+    return
+
+
+@app.cell
+def _(orders):
+    #what is the total freight across all 30 orders 
+    total_freight = 0
+    for order in orders:
+        total_freight += order["Freight"]
+
+    print(total_freight)
+    return
+
+
+@app.cell
+def _(orders):
+    #How many orders have no ShippedDate? That field holds None for them, and if order["ShippedDate"] is None: is how you ask.
+    no_ship_count = 0 
+    for _order in orders:
+            if _order["ShippedDate"] is None:
+                    no_ship_count = no_ship_count + 1
+    no_ship_count
+    return
+
+
+@app.cell
+def _(orders):
+    #Which order has the largest freight, and what is it?
+    biggest = orders[0]
+    for _order in orders:
+        if _order["Freight"] > biggest["Freight"]:
+            biggest = _order
+        
+    biggest
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -641,8 +919,7 @@ def _(mo):
     mo.md(r"""
     *One row is ...*
 
-    *(Replace this line with your own sentence. If this cell shows you code instead of
-    text, use the cell menu to turn it into a markdown cell.)*
+    a results line from your code. Such as "emma is 25 years old"
     """)
     return
 
@@ -669,6 +946,19 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I would start by multiplying shares by price for each symbol. Then I would sum them together for a total
+
+    totalcost = 0
+    totalcost = totalcost + price * shares
+
+    totalcost
+    """)
+    return
+
+
 @app.cell
 def _():
     portfolio = [
@@ -680,7 +970,16 @@ def _():
         {"Symbol": "TSLA", "Shares": 150, "Price": 255.70},
     ]
     portfolio
-    return
+    return (portfolio,)
+
+
+@app.cell
+def _(portfolio):
+    total_cost = 0
+    for holding in portfolio: 
+            total_cost = total_cost + holding["Shares"] * holding["Price"]
+    total_cost
+    return (total_cost,)
 
 
 @app.cell(hide_code=True)
