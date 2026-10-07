@@ -1,0 +1,556 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.24.2",
+    "script_metadata_hash": "d848f9de174660e41a371f5f58ae3c23"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "1d0db38904205bec4d6f6f6a1f6cec3e",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "fa1c847d0b721be6a866d98f10b69524",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"functions-and-apis\">Functions and APIs</h1>\n<span class=\"paragraph\">This session moves between two notebooks. It opens with section 4 of notebook 3, <code>03-collections-and-apis.py</code>, then comes here for section 1, on functions. After the break it goes back for section 5 of notebook 3, the first requests to a server, and returns here for the rest: reading an API built for this course, and sending data to it.</span>\n<table>\n<thead>\n<tr>\n<th></th>\n<th></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>\u270f\ufe0f</td>\n<td>Your turn. Add cells with the <strong>+</strong> button</td>\n</tr>\n<tr>\n<td>\ud83d\ude80</td>\n<td>This week's work</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">For a written answer, add a cell under the question, open the cell's <strong>\u22ef</strong> menu and choose <strong>Convert to Markdown</strong>.</span>\n<span class=\"paragraph\">Every \u270f\ufe0f is part of this week's work. Those marked <strong>Advanced</strong> are optional; try them once the rest is done.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "d891588d6e10a12c262ad077a15c056b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Work with your agent the same way as in notebook 3.</strong> Try it yourself first, or write the steps in words. Then ask your agent, ask it to explain any line you could not have written, and ask which concepts its answer used.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "a8a6c51bac549ae5247c14493533ec13",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"1-functions\">1. Functions</h1>\n<span class=\"paragraph\">Notebooks 2 and 3 each computed what the portfolio costs, and each time the loop was written out again. A <strong>function</strong> gives that work a name, so it is written once and used on any portfolio. You have called functions since the first day: <code>len(...)</code>, <code>round(...)</code>, <code>print(...)</code>. Each takes something in and gives something back, the way <code>SUM(A1:A6)</code> does in a spreadsheet.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "06795360ec9763e087c49cb5588c2c9a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Start with the smallest one. <code>def</code> starts a function, and <code>add_tax</code> is its name, a verb and a noun for what it does. <code>amount</code> in brackets is its <strong>parameter</strong>, what it takes in, and <code>return</code> is what it gives back. Defining it runs nothing; it runs each time it is called. Massachusetts sales tax is 6.25%, so the function multiplies by 1.0625.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "ca2ac0a7aad14823f2bd2758cd901e5e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "b9a3dad2977289276ed8dbc74e102af3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>106.25</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "5f64dd94c496a257231a6d32da4385f6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">If the tax rate changes, you edit the one line inside <code>add_tax</code>, and every call uses the new rate.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "c8f862e56b4e11f6d7863336e449abd5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[\"AAPL\", 100, \"text/plain+float:173.93\"], [\"MSFT\", 50, \"text/plain+float:319.53\"], [\"GOOG\", 80, \"text/plain+float:131.36\"], [\"AMZN\", 200, \"text/plain+float:129.33\"], [\"NVDA\", 20, \"text/plain+float:410.17\"], [\"TSLA\", 150, \"text/plain+float:255.7\"]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "e17c0c935a6894f9b0a913ce52991ff3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Names inside a function belong to that function.</strong> <code>symbol</code>, <code>shares</code> and <code>cost_so_far</code> exist only while it runs, so they need no underscore, and two functions can each use <code>price</code> without colliding.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "5972c5742a2be0f99522ee4be2cdbb74",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "fbcdd90c11ec2831b00fa6033a5c4c9a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>116302.7</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "bd7ee892fc676a6cf6a7cb23022de5db",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">A second client holds two funds and one stock. The same function answers for them, with no new loop.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "428b4c0c99c1cdc56d12353697857ed6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[\"VTI\", 120, \"text/plain+float:228.4\"], [\"BND\", 300, \"text/plain+float:72.15\"], [\"AAPL\", 40, \"text/plain+float:173.93\"]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "f081abd5f16aabef5649ae6239b827c2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>56010.2</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "eb51551cc1b953d497d83074f8864c79",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Why programs are built from functions:</strong></span>\n<ul>\n<li><strong>A change happens in one place.</strong> Add a trading fee inside <code>compute_cost</code> and every portfolio's cost follows.</li>\n<li><strong>The name says what the work is for.</strong> <code>compute_cost(retirement_holdings)</code> reads as a sentence; a loop has to be read line by line.</li>\n<li><strong>Everything it needs comes in through the brackets.</strong> So you can test it on a portfolio whose answer you already know, such as notebook 3's $116,302.70.</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "kLvK",
+      "code_hash": "9bb92ca08553fdc13792197cb9f1fd98",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Underweight\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "30bc962c16a83e62af1603e2656f8ec1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"a-functions-of-your-own\">\u270f\ufe0f A \u00b7 Functions of your own</h2>\n<ol>\n<li>Add a cell that defines <code>count_shares(portfolio)</code>. It returns the total number of shares in a portfolio. Call it on both portfolios. <em>Check yourself: <code>600</code> and <code>460</code>.</em></li>\n<li>Add a cell that defines <code>find_largest(portfolio)</code>. It returns the ticker and the cost of the holding that cost the most, as a tuple. Call it on both portfolios. <em>Check yourself: <code>('TSLA', 38355.0)</code> and <code>('VTI', 27408.0)</code>.</em></li>\n</ol>\n<span class=\"paragraph\"><strong>Going further.</strong> Add a second parameter, <code>n</code>, and return the <code>n</code> largest holdings, largest first.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "056a1aa629d6f6d618e4be5ac43dae47",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"b-without-return\">\u270f\ufe0f B \u00b7 Without <code>return</code></h2>\n<span class=\"paragraph\">Copy <code>count_shares</code> into a new cell under a new name, and put <code>print(...)</code> where the <code>return</code> was. Call it and keep the result in a name. In a markdown cell under it, answer: what does that name hold, and what could the next cell do with it?</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "ddcc597ad8d2a511c60b96b824e2527a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"2-calling-an-api\">2. Calling an API</h1>\n<span class=\"paragraph\">Calling an <strong>API</strong> is like calling a function someone else wrote, running on their computer. You call it with a web address, their server runs its code, and the result comes back to you.</span>\n<table>\n<thead>\n<tr>\n<th></th>\n<th>Calling a function you wrote</th>\n<th>Calling an API</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>You call it with</strong></td>\n<td><code>get_towns(\"Norfolk\")</code></td>\n<td><code>oim.zhili.dev/ma/towns?county=Norfolk</code></td>\n</tr>\n<tr>\n<td><strong>What goes in</strong></td>\n<td>parameters in brackets</td>\n<td>parameters after <code>?</code></td>\n</tr>\n<tr>\n<td><strong>What comes back</strong></td>\n<td>the <code>return</code> value</td>\n<td>a reply, usually JSON</td>\n</tr>\n<tr>\n<td><strong>When it goes wrong</strong></td>\n<td>an error in your notebook</td>\n<td>a status code and a message</td>\n</tr>\n<tr>\n<td><strong>Where it runs</strong></td>\n<td>your laptop</td>\n<td>somebody else's server</td>\n</tr>\n</tbody>\n</table>\n<span class=\"paragraph\">You cannot see the code behind an API, so its documentation is how you learn its parameters and what it returns.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "554e289048502368930abe609e37acf7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">The course runs its own API at <code>oim.zhili.dev</code>. Its Massachusetts endpoints come from the state's <a href=\"https://www.mass.gov/info-details/division-of-local-services-municipal-databank\" rel=\"noopener noreferrer\" target=\"_blank\">Division of Local Services</a>: every city and town, its population and income, and its property tax rates and bills. The documentation is at <a href=\"https://oim.zhili.dev/docs\" rel=\"noopener noreferrer\" target=\"_blank\">oim.zhili.dev/docs</a>, and the API also lists its own endpoints. <strong>Before any code</strong>, open <a href=\"https://oim.zhili.dev/mass\" rel=\"noopener noreferrer\" target=\"_blank\">oim.zhili.dev/mass</a> and <a href=\"https://oim.zhili.dev/ma/towns?county=Norfolk\" rel=\"noopener noreferrer\" target=\"_blank\">oim.zhili.dev/ma/towns?county=Norfolk</a> in your browser and read what comes back. <code>requests</code> is already in your project from notebook 3.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "8e41e132c0014809fc7c6d99010a66d6",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "afdea3774b798b782ef68b655c7e9fad",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "4b5a93d2e8ce98582c6bbd2317ff5d1a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><code>/ma/towns</code> takes a <code>county</code>. Pass parameters as a dictionary with <code>params=</code>, and <code>requests</code> builds the address. <code>.url</code> shows the address it built.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "14cde2c50bca4b2639420fbb27ccefe8",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "273ad27da5202e9987d8f1064ce63260",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Why a dictionary.</strong> A value with a space in it has to be encoded before it can go in an address, and <code>params=</code> does that for you. Ask for <code>{\"name\": \"West Newbury\"}</code> and <code>.url</code> ends in <code>name=West+Newbury</code>.</span>\n<span class=\"paragraph\">The reply is a dictionary with two keys. <code>pagination</code> states how much there is.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "38507227e42cfbedc8c8954016b16b92",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "85d1e963f1492b3256b7696534a75f64",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><code>items</code> is a table: a list of records, one per town, the same shape as the orders in notebook 2.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "a71705731d61b6a8136fd49323b520cb",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "42a13f4f3662c1b41e9650a0fcad9bf4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">Wrap the request in a function and the endpoint becomes a Python function. <code>get_towns</code> takes a county and returns its towns, and the cell that calls it never sees the address.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "4109b7e974f26a60556ee3f973cb12d3",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "887930193010547e7f6c8af54f576e31",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "2b42f203181527333e0b5e30e6c3ee36",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"c-read-the-documentation\">\u270f\ufe0f C \u00b7 Read the documentation</h2>\n<span class=\"paragraph\">Open <a href=\"https://oim.zhili.dev/docs\" rel=\"noopener noreferrer\" target=\"_blank\">oim.zhili.dev/docs</a> and find <code>/ma/towns</code>. Use its parameters to ask for the five Norfolk towns with the highest income per person, highest first. Let the server do the sorting.</span>\n<span class=\"paragraph\"><em>Check yourself: Dover, Wellesley, Cohasset, Needham, Westwood.</em></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "2c8b7518589165dd64e0ae0b892da438",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"d-from-a-name-to-a-history\">\u270f\ufe0f D \u00b7 From a Name to a History</h2>\n<ol>\n<li>Find Wellesley's <code>dor_code</code> with the <code>name</code> parameter of <code>/ma/towns</code>.</li>\n<li>Use it to ask <code>/ma/towns/{dor_code}/history</code> for fiscal year 2026.</li>\n<li>Check the bill a second way: the average value times the tax rate, divided by 1,000.</li>\n</ol>\n<span class=\"paragraph\"><em>Check yourself: <code>317</code>. Then $2,020,758 \u00d7 10.17 / 1,000 = $20,551.11, and the reply's bill is $20,551.</em></span>\n<span class=\"paragraph\"><strong>Going further.</strong> Write <code>town_history(name)</code>, which takes a town's name, makes both requests, and returns the history.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TXez",
+      "code_hash": "791d5450bb1270c077aadb7767186041",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"3-more-than-one-page\">3. More Than One Page</h1>\n<span class=\"paragraph\">Leave <code>county</code> out and <code>/ma/towns</code> has every town in the state to give you. Read how many it sends.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dNNg",
+      "code_hash": "a8af7dc0d3029782a8e02b74a19d0330",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "yCnT",
+      "code_hash": "f08188965e2ca3d6b7bae9b82363bb02",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Why a server sends pages.</strong> It answers many people at once, so it limits what one request can cost it. The course shop has more than 15,000 orders behind <code>/shop/orders</code>, with a few more every day, and one reply holding all of them would be slow to send and slow to read. You can ask for bigger pages up to a limit, and past it the server refuses.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wlCL",
+      "code_hash": "c7fc10556c32764f544faf48140c6d25",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "kqZH",
+      "code_hash": "456896db175c75dd58608079c2c68df5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>422</strong> means the request had the right shape and a value the server will not accept. Its reply names the limit.</span>\n<span class=\"paragraph\">So reading everything takes one request per page. <code>get_page</code> asks for one page. <code>per_page=100</code> in its brackets is a <strong>default</strong>: <code>get_page(2)</code> uses 100, and <code>get_page(2, 20)</code> uses 20. The server's parameters have defaults too, which is why leaving out <code>page</code> gave page 1.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "wAgl",
+      "code_hash": "6faf21dd04d541a6216521c2c7181fe4",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "rEll",
+      "code_hash": "fac3aeaf89e0bdbcc0f9cfba304ef1c5",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "dGlV",
+      "code_hash": "1a426f997ebbbda468b5b1b4a41f0795",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"e-every-town\">\u270f\ufe0f E \u00b7 Every town</h2>\n<span class=\"paragraph\">Write <code>get_all_towns()</code>. It reads page 1, takes <code>pages</code> from its <code>pagination</code>, reads the pages after it with <code>range(2, pages + 1)</code>, and returns one list of every town.</span>\n<span class=\"paragraph\"><em>Check yourself: 351 towns, the same number as <code>pagination[\"total\"]</code>. The first is Abington and the last is Yarmouth.</em></span>\n<span class=\"paragraph\">The count you collected against the total the server reports is a check you can run on any API that sends pages.</span>\n<span class=\"paragraph\"><strong>Going further.</strong> Which town has the highest average single-family tax bill in the state, and which the lowest?</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SdmI",
+      "code_hash": "dcb8df5206efe5e43e96963f6ebfa97d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"4-sending-data\">4. Sending Data</h1>\n<span class=\"paragraph\">Every request so far has been a <strong>GET</strong>, which asks for data and changes nothing. A <strong>POST</strong> sends data for the server to keep. Submitting a form on a website is a POST.</span>\n<span class=\"paragraph\">The course API has a board, <a href=\"https://oim.zhili.dev/live\" rel=\"noopener noreferrer\" target=\"_blank\">oim.zhili.dev/live</a>, with one line per student. A POST to <code>/message</code> writes yours.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
+      "code_hash": "581690e023997bfeb94e6fa4377a7396",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>The server has to know who sent it.</strong> A request can carry <strong>headers</strong>, lines that travel beside the address. Here the header <code>x-token</code> holds your GitHub username, and the board shows your first name. Your username is public, so it can sit in a cell. A real API's key goes in a header the same way, but a key is a secret and never goes in a cell: <a href=\"/assignments/mini-project-2/\">Mini Project 2</a> says where to keep one.</span>\n<span class=\"paragraph\"><strong>The message goes in the body.</strong> <code>json=</code> puts it there, which is where a POST carries its data. <code>params=</code> puts values in the address, which is for asking.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "yOPj",
+      "code_hash": "f6db42935d7668e7cafa636b45f39caa",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h2 id=\"f-write-on-the-board\">\u270f\ufe0f F \u00b7 Write on the board</h2>\n<ol>\n<li>Look up a town you know with the <code>name</code> parameter of <code>/ma/towns</code>. Keep its name as <code>town_name</code> and its average single-family bill as <code>town_bill</code>.</li>\n<li>Add a cell with the code below, put your GitHub username in place of the brackets, and run it.</li>\n</ol>\n<div class=\"language-python codehilite\"><pre><span></span><code><span class=\"n\">board_reply</span> <span class=\"o\">=</span> <span class=\"n\">requests</span><span class=\"o\">.</span><span class=\"n\">post</span><span class=\"p\">(</span>\n    <span class=\"s2\">\"https://oim.zhili.dev/message\"</span><span class=\"p\">,</span>\n    <span class=\"n\">headers</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"x-token\"</span><span class=\"p\">:</span> <span class=\"s2\">\"&lt;your-github-username&gt;\"</span><span class=\"p\">},</span>\n    <span class=\"n\">json</span><span class=\"o\">=</span><span class=\"p\">{</span><span class=\"s2\">\"message\"</span><span class=\"p\">:</span> <span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">town_name</span><span class=\"si\">}</span><span class=\"s2\">: $</span><span class=\"si\">{</span><span class=\"n\">town_bill</span><span class=\"si\">:</span><span class=\"s2\">,</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">},</span>\n    <span class=\"n\">timeout</span><span class=\"o\">=</span><span class=\"mi\">10</span><span class=\"p\">,</span>\n<span class=\"p\">)</span>\n<span class=\"n\">board_reply</span><span class=\"o\">.</span><span class=\"n\">status_code</span><span class=\"p\">,</span> <span class=\"n\">board_reply</span><span class=\"o\">.</span><span class=\"n\">json</span><span class=\"p\">()</span>\n</code></pre></div>\n<span class=\"paragraph\"><em>Check yourself: </em><em>201</em><em>, which means the server created something, and your town on the board.</em></span>\n<ol start=\"3\">\n<li>Delete the <code>headers=</code> line and run it again. In a markdown cell under it, answer: what did the server answer, and why does it need to know who sent a message?</li>\n</ol>\n<span class=\"paragraph\"><strong>Going further.</strong> Post something more useful than one town's bill: choose a question somebody would ask, answer it from live data, and post the answer, in 140 characters or fewer.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fwwy",
+      "code_hash": "0d706c28f83befd260cc045b42689f83",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><blockquote>\n<span class=\"paragraph\"><strong>Advanced \u00b7 G \u00b7 Take it down.</strong> <code>requests.delete</code> on the same address, with the same header, removes your line. Run it twice and compare the two replies.</span>\n</blockquote></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "LJZf",
+      "code_hash": "19549899e0e3b0cbc9e6733515af5a2b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><h1 id=\"this-weeks-work\">\ud83d\ude80 This Week's Work</h1>\n<ol>\n<li><strong>Notebook 3, sections 4 to 6</strong>, if you have not finished them</li>\n<li><strong>Everything above in this notebook</strong> that is not marked <strong>Advanced</strong>, in your repository under <code>notebooks/</code></li>\n<li><strong><a href=\"/assignments/mini-project-1/\">Mini Project 1</a></strong>, due Sunday 10/11</li>\n<li><strong><a href=\"/assignments/mini-project-2/\">Mini Project 2</a></strong>, due Sunday 10/25</li>\n<li><strong>Commit as you go</strong>, with messages that state what changed, and push before you stop</li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "urSm",
+      "code_hash": "84938202538efdb9400af5c614f1d3e7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>What you can do now:</strong></span>\n<ul class=\"task-list\">\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can write a function with <code>def</code>, with parameters, a default and a <code>return</code></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can state why a piece of work belongs in a function</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can find an endpoint's parameters in an API's documentation and pass them with <code>params=</code></li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can read every page of an API that sends pages, and check the count against the total</li>\n<li class=\"task-list-item\"><input type=\"checkbox\" disabled/> I can send data to an API with a POST and a header</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

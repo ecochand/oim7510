@@ -73,14 +73,7 @@
     {
       "id": "PKri",
       "code_hash": "3ec179977eb886c2c66062090edededa",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"Symbol\": \"GOOG\", \"Price\": \"text/plain+float:133.1\", \"Currency\": \"USD\"}"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -99,14 +92,7 @@
     {
       "id": "SFPL",
       "code_hash": "eea132fed27efd6f1db408185f7d665e",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>True</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -125,14 +111,7 @@
     {
       "id": "RGSE",
       "code_hash": "d36c2544a9da3d7ca41366697fa9ad45",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>0</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -151,14 +130,7 @@
     {
       "id": "emfo",
       "code_hash": "c6eaa2401b0fa36823b5bb26bdb54aba",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"Symbol: GOOG\", \"Price: 133.1\", \"Currency: USD\"]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -177,14 +149,7 @@
     {
       "id": "nWHF",
       "code_hash": "a098e7088e3366c7409a5de0cd5ca558",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"shipped\": 4, \"pending\": 2, \"cancelled\": 1}"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
@@ -216,77 +181,35 @@
     {
       "id": "ROlb",
       "code_hash": "b3baada9d1fcfdd58bb210c538eb3881",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"AAPL\": \"text/plain+float:260.81\", \"NVDA\": \"text/plain+float:186.0\", \"MSFT\": \"text/plain+float:404.88\", \"GOOG\": \"text/plain+float:308.42\"}"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
-      "id": "VTeu",
-      "code_hash": "1ac612db125e3b2944b69318890e73bd",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>260.81</pre>"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
-      "id": "zciM",
-      "code_hash": "9ea9563c14eb10e3276f1cd1791ae8fe",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/plain": ""
-          }
-        }
-      ],
-      "console": [
-        {
-          "type": "stream",
-          "name": "stdout",
-          "text": "None\n",
-          "mimetype": "text/plain"
-        }
-      ]
-    },
-    {
-      "id": "kCLv",
-      "code_hash": "b50461773b4c27ca9e03919d8e438f90",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"AAPL\", \"MSFT\", \"GOOG\"]"
-          }
-        }
-      ],
-      "console": []
-    },
-    {
-      "id": "KdNC",
-      "code_hash": "571a4d079ad41236356dc3e364d5d4c8",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;MSFT&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
       "id": "qnkX",
+      "code_hash": "1ac612db125e3b2944b69318890e73bd",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "9ea9563c14eb10e3276f1cd1791ae8fe",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "b50461773b4c27ca9e03919d8e438f90",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "92e54dd9ea57d441b5d32120a9509452",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "ulZA",
       "code_hash": "38e3929260a968d03b1c60e535823939",
       "outputs": [
         {
@@ -299,33 +222,19 @@
       "console": []
     },
     {
-      "id": "TqIu",
+      "id": "ecfG",
       "code_hash": "cf013d266ae6857b91858009b7c8ab48",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>30</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "ixPL",
+      "id": "Pvdt",
       "code_hash": "0fd3c963e7d9be796c2ba5556e1583b6",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "{\"France\": 4, \"Germany\": 4, \"Brazil\": 4, \"Belgium\": 1, \"Switzerland\": 2, \"Venezuela\": 3, \"Austria\": 3, \"Mexico\": 1, \"USA\": 4, \"Sweden\": 1, \"Finland\": 2, \"Argentina\": 1}"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "Vxnm",
+      "id": "ZBYS",
       "code_hash": "3576afafe4f102de73f70bcc988d0156",
       "outputs": [
         {
@@ -338,20 +247,13 @@
       "console": []
     },
     {
-      "id": "DnEU",
+      "id": "aLJB",
       "code_hash": "28bb1887819d424fa39aa23560629d78",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[\"GOOG\", 3]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "ulZA",
+      "id": "nHfw",
       "code_hash": "7c943e39264a8aef1d3cc8633eb583a7",
       "outputs": [
         {
@@ -364,7 +266,7 @@
       "console": []
     },
     {
-      "id": "ecfG",
+      "id": "xXTn",
       "code_hash": "e71c30995427d2372c2b45f530459055",
       "outputs": [
         {
@@ -377,20 +279,13 @@
       "console": []
     },
     {
-      "id": "Pvdt",
+      "id": "AjVT",
       "code_hash": "8cb4b4c9b56148cf5915a10cbe0dd092",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;GOOG cost $13,136.00&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "ZBYS",
+      "id": "pHFh",
       "code_hash": "509a47f88e82e63dc61ce34410d09c99",
       "outputs": [
         {
@@ -403,7 +298,7 @@
       "console": []
     },
     {
-      "id": "aLJB",
+      "id": "NCOB",
       "code_hash": "bf81f0030fc2e70a06a4810783a2cb1a",
       "outputs": [
         {
@@ -416,20 +311,13 @@
       "console": []
     },
     {
-      "id": "nHfw",
+      "id": "aqbW",
       "code_hash": "95a3924e5bdeb1262241b6861ecbb4f2",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[20, 10]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "xXTn",
+      "id": "TRpd",
       "code_hash": "c92111f8ba93cd61e7dac40805e86c03",
       "outputs": [
         {
@@ -442,20 +330,13 @@
       "console": []
     },
     {
-      "id": "AjVT",
+      "id": "TXez",
       "code_hash": "f01f1fda7f571e14bf2a6509ace69186",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "text/html": "<pre class='text-xs'>&#x27;Independence Day&#x27;</pre>"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "pHFh",
+      "id": "dNNg",
       "code_hash": "cb4baa718dd7852085fc8ba738deffb8",
       "outputs": [
         {
@@ -468,20 +349,13 @@
       "console": []
     },
     {
-      "id": "NCOB",
+      "id": "yCnT",
       "code_hash": "3ec454296bb0dc1ab5b1eba9bb86ad77",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[7, 4, [\"AAPL\", \"GOOG\", \"MSFT\", \"TSLA\"]]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "aqbW",
+      "id": "wlCL",
       "code_hash": "e8e9d094fc7d0401397d4d636d248303",
       "outputs": [
         {
@@ -494,7 +368,7 @@
       "console": []
     },
     {
-      "id": "TRpd",
+      "id": "kqZH",
       "code_hash": "63c7a81e8331a57d1b8de839772f6fb3",
       "outputs": [
         {
@@ -507,20 +381,13 @@
       "console": []
     },
     {
-      "id": "TXez",
+      "id": "wAgl",
       "code_hash": "fd30a3b2532bb06bb2b05ca93f53b70c",
-      "outputs": [
-        {
-          "type": "data",
-          "data": {
-            "application/json": "[[\"AAPL\", \"GOOG\", \"MSFT\", \"TSLA\"], [\"AMZN\", \"NVDA\"]]"
-          }
-        }
-      ],
+      "outputs": [],
       "console": []
     },
     {
-      "id": "dNNg",
+      "id": "rEll",
       "code_hash": "c6c75ddcafc956ac599c5182c747b1f7",
       "outputs": [
         {
@@ -533,7 +400,7 @@
       "console": []
     },
     {
-      "id": "yCnT",
+      "id": "dGlV",
       "code_hash": "1f8ec4989f418d94de26cf9165d7d390",
       "outputs": [
         {
@@ -546,7 +413,7 @@
       "console": []
     },
     {
-      "id": "wlCL",
+      "id": "SdmI",
       "code_hash": "2687f8e179dd9abafc8e640ae9eef324",
       "outputs": [
         {
@@ -559,7 +426,20 @@
       "console": []
     },
     {
-      "id": "kqZH",
+      "id": "GGRN",
+      "code_hash": "8a69c6643e4ff7f5c9de135ccd252c97",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><ol>\n<li>list : because order matters</li>\n<li>set : want unique names</li>\n<li>dictionary</li>\n<li>tuple : </li>\n</ol></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lgWD",
       "code_hash": "eaa7dc8bc1c38a0f67724dfe79a290ae",
       "outputs": [
         {
@@ -572,13 +452,72 @@
       "console": []
     },
     {
-      "id": "wAgl",
-      "code_hash": "c8f862e56b4e11f6d7863336e449abd5",
-      "outputs": [],
+      "id": "CWTO",
+      "code_hash": "0aabe523817c95923c0061f0585e2f4b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">**similar to mini project one</span></span>"
+          }
+        }
+      ],
       "console": []
     },
     {
-      "id": "rEll",
+      "id": "yOPj",
+      "code_hash": "c8f862e56b4e11f6d7863336e449abd5",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[[\"AAPL\", 100, \"text/plain+float:173.93\"], [\"MSFT\", 50, \"text/plain+float:319.53\"], [\"GOOG\", 80, \"text/plain+float:131.36\"], [\"AMZN\", 200, \"text/plain+float:129.33\"], [\"NVDA\", 20, \"text/plain+float:410.17\"], [\"TSLA\", 150, \"text/plain+float:255.7\"]]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "oVSD",
+      "code_hash": "b262a89aaded0c66b8e3f853f25302bc",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>116302.7</pre>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "<class 'tuple'>\n<class 'tuple'>\n<class 'tuple'>\n<class 'tuple'>\n<class 'tuple'>\n<class 'tuple'>\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "fOeD",
+      "code_hash": "5da20396125b425e0d0c8fefb20a45a0",
+      "outputs": [
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'subtotal' was defined by another cell",
+          "traceback": []
+        },
+        {
+          "type": "error",
+          "ename": "multiple-defs",
+          "evalue": "The variable 'total_cost' was defined by another cell",
+          "traceback": []
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "fwwy",
       "code_hash": "80ac93ce1158d39d28b9c7f255b5c0d2",
       "outputs": [
         {
@@ -591,13 +530,13 @@
       "console": []
     },
     {
-      "id": "dGlV",
+      "id": "LJZf",
       "code_hash": "fa923984c3255ec447f3c2f9d1ae94e5",
       "outputs": [],
       "console": []
     },
     {
-      "id": "SdmI",
+      "id": "urSm",
       "code_hash": "14f7cd4877cce0e4ddc59b2059d2e199",
       "outputs": [
         {
@@ -610,13 +549,20 @@
       "console": []
     },
     {
-      "id": "lgWD",
+      "id": "jxvo",
       "code_hash": "8e41e132c0014809fc7c6d99010a66d6",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
       "console": []
     },
     {
-      "id": "yOPj",
+      "id": "mWxS",
       "code_hash": "b6080cd361c22f299a5a16f332dc3b04",
       "outputs": [
         {
@@ -629,13 +575,27 @@
       "console": []
     },
     {
-      "id": "fwwy",
-      "code_hash": "b0a00ff4650826e66e32fe0666f52a91",
-      "outputs": [],
-      "console": []
+      "id": "CcZR",
+      "code_hash": "a532eb8141386bdb461a41af4ac65c93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>200</pre>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "https://api.open-meteo.com/v1/forecast?latitude=42.2987&longitude=-71.2595&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America/New_York\n",
+          "mimetype": "text/plain"
+        }
+      ]
     },
     {
-      "id": "LJZf",
+      "id": "YWSi",
       "code_hash": "9ca0b6832430b8774e2b359e92902d58",
       "outputs": [
         {
@@ -648,13 +608,20 @@
       "console": []
     },
     {
-      "id": "urSm",
+      "id": "zlud",
       "code_hash": "25e9c1190b53d7f608172bbf33825be4",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"latitude\": \"text/plain+float:42.299843\", \"longitude\": \"text/plain+float:-71.27756\", \"generationtime_ms\": \"text/plain+float:0.044345855712890625\", \"utc_offset_seconds\": -14400, \"timezone\": \"America/New_York\", \"timezone_abbreviation\": \"GMT-4\", \"elevation\": \"text/plain+float:49.0\", \"current_units\": {\"time\": \"iso8601\", \"interval\": \"seconds\", \"temperature_2m\": \"\\u00b0F\", \"wind_speed_10m\": \"mp/h\"}, \"current\": {\"time\": \"2026-10-06T20:30\", \"interval\": 900, \"temperature_2m\": \"text/plain+float:50.7\", \"wind_speed_10m\": \"text/plain+float:5.6\"}}"
+          }
+        }
+      ],
       "console": []
     },
     {
-      "id": "jxvo",
+      "id": "tZnO",
       "code_hash": "bfc8683999bf41d5fa95b968a6d7ac0f",
       "outputs": [
         {
@@ -667,13 +634,39 @@
       "console": []
     },
     {
-      "id": "mWxS",
+      "id": "xvXZ",
       "code_hash": "11b5f79650a5781c25cfe837407d6333",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>50.7</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "VRvP",
+      "code_hash": "646519c4fcad15c1b093809a3c77d554",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>5.6</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MOnM",
+      "code_hash": null,
       "outputs": [],
       "console": []
     },
     {
-      "id": "CcZR",
+      "id": "CLip",
       "code_hash": "c3425bba2f14018ddc2c77f648f7f0c1",
       "outputs": [
         {
@@ -686,7 +679,7 @@
       "console": []
     },
     {
-      "id": "YWSi",
+      "id": "YECM",
       "code_hash": "633b6cde8fbf36c51e0cad83b24a6182",
       "outputs": [
         {
@@ -699,13 +692,20 @@
       "console": []
     },
     {
-      "id": "zlud",
+      "id": "cEAS",
       "code_hash": "80c6a8567fd12b007ce7e420740ff83e",
-      "outputs": [],
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[400, {\"error\": true, \"reason\": \"Latitude must be in range of -90 to 90\\u00b0. Given: 422.0.\"}]"
+          }
+        }
+      ],
       "console": []
     },
     {
-      "id": "tZnO",
+      "id": "iXej",
       "code_hash": "a808c15a06a4a161083f4687541bd128",
       "outputs": [
         {
@@ -718,13 +718,20 @@
       "console": []
     },
     {
-      "id": "xvXZ",
-      "code_hash": "5bd422ed104db59bf08fcd74f9c7c304",
-      "outputs": [],
+      "id": "EJmg",
+      "code_hash": "98e11a2e8fda07962c7b78d4d48cbbd7",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[200, {\"results\": [{\"id\": 4954738, \"name\": \"Wellesley\", \"latitude\": \"text/plain+float:42.29649\", \"longitude\": \"text/plain+float:-71.29256\", \"elevation\": \"text/plain+float:38.0\", \"feature_code\": \"PPL\", \"country_code\": \"US\", \"admin1_id\": 6254926, \"admin2_id\": 4945455, \"admin3_id\": 4954762, \"timezone\": \"America/New_York\", \"population\": 27982, \"postcodes\": [\"02482\"], \"country_id\": 6252001, \"country\": \"United States\", \"admin1\": \"Massachusetts\", \"admin2\": \"Norfolk\", \"admin3\": \"Town of Wellesley\"}], \"generationtime_ms\": \"text/plain+float:0.6444454\"}]"
+          }
+        }
+      ],
       "console": []
     },
     {
-      "id": "CLip",
+      "id": "UmEG",
       "code_hash": "79e04dc9b5727678afbbc571d99b4d01",
       "outputs": [
         {
@@ -737,13 +744,13 @@
       "console": []
     },
     {
-      "id": "YECM",
+      "id": "vEBW",
       "code_hash": "9e24f0f5b2cd162f0e0a7f9d94eefd0c",
       "outputs": [],
       "console": []
     },
     {
-      "id": "cEAS",
+      "id": "kLmu",
       "code_hash": "068ff4723243a56161860dcad659cc27",
       "outputs": [
         {
@@ -756,7 +763,7 @@
       "console": []
     },
     {
-      "id": "iXej",
+      "id": "IpqN",
       "code_hash": "9b744f95f434d09a4522ab2b8b9b534b",
       "outputs": [
         {
@@ -769,7 +776,20 @@
       "console": []
     },
     {
-      "id": "EJmg",
+      "id": "xiEx",
+      "code_hash": "4bcbabe272a8fde6f93496585664edec",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>&#x27;The wind speed is 5.6 mp/h.&#x27;</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dxZZ",
       "code_hash": "ad89aa8c2d83a0b134f6b703f4e3576d",
       "outputs": [
         {
@@ -782,7 +802,20 @@
       "console": []
     },
     {
-      "id": "UmEG",
+      "id": "fZty",
+      "code_hash": "6bdd67a0f2e6545aa8e5f7a910558681",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/plain+float:42.29649\", \"text/plain+float:-71.29256\", \"Massachusetts\"]"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "dlnW",
       "code_hash": "21d3ca8f95327f43ccfb133da060a48a",
       "outputs": [
         {
@@ -795,7 +828,33 @@
       "console": []
     },
     {
-      "id": "vEBW",
+      "id": "PwBK",
+      "code_hash": "167af7019d982f77fe59ea9a06dfdfe4",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\">G. it is in florida, code [0] chooses the first result, which in this example caused an issue</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bRmo",
+      "code_hash": "b00eafd4cd99921e71d74e5adcac21ab",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>10.1</pre>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TTti",
       "code_hash": "993c8a3d00fea66424451e25fc63bfe3",
       "outputs": [
         {
@@ -808,7 +867,7 @@
       "console": []
     },
     {
-      "id": "kLmu",
+      "id": "RKFZ",
       "code_hash": "4bf25d1302150d2ee75e97a52bb32a39",
       "outputs": [
         {
@@ -821,7 +880,7 @@
       "console": []
     },
     {
-      "id": "IpqN",
+      "id": "IaQp",
       "code_hash": "d33a80332bb754e18621714c2c9aee30",
       "outputs": [
         {
@@ -834,7 +893,7 @@
       "console": []
     },
     {
-      "id": "dxZZ",
+      "id": "IWgg",
       "code_hash": "a76520898c0a49d002fbce90b67204b1",
       "outputs": [
         {

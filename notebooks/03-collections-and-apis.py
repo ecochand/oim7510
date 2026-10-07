@@ -223,7 +223,7 @@ def _(closing_prices):
             if price_4 > highest_price: 
                 highest_price = price_4
                 highest_ticker = ticker_4
-    
+
     highest_ticker
     return
 
@@ -466,6 +466,17 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
+    1. list : because order matters
+    2. set : want unique names
+    3. dictionary
+    4. tuple :
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
     ## ✏️ D · The portfolio again
 
     Notebook 2 held the six holdings as a list of dictionaries. Here they are as a list of tuples, one holding per tuple.
@@ -481,6 +492,14 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    **similar to mini project one
+    """)
+    return
+
+
 @app.cell
 def _():
     holdings = [
@@ -492,6 +511,33 @@ def _():
         ("TSLA", 150, 255.70),
     ]
     holdings
+    return (holdings,)
+
+
+@app.cell
+def _(holdings):
+    total_cost = 0 
+    #use a for loop to iterate to get the shares and price of every stock and then calculate the sub total, adding it to total cost 
+    for stock in holdings: 
+            print(type(stock))
+            shares = stock[1]
+            price = stock[2]
+            subtotal = shares * price 
+            total_cost += subtotal 
+
+    total_cost
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    total_cost = 0
+    for _symbol, _shares, _price in holdings:
+        subtotal = _shares * _price
+        total_cost += subtotal
+    total_cost
+    """)
     return
 
 
@@ -561,6 +607,7 @@ def _(requests):
         "&temperature_unit=fahrenheit&wind_speed_unit=mph"
         "&timezone=America/New_York"
     )
+    print(babson_url)
     babson_reply = requests.get(babson_url, timeout=10)
     babson_reply.status_code
     return (babson_reply,)
@@ -592,6 +639,17 @@ def _(mo):
 @app.cell
 def _(babson_weather):
     babson_weather["current"]["temperature_2m"]
+    return
+
+
+@app.cell
+def _(babson_weather):
+    babson_weather["current"]["wind_speed_10m"]
+    return
+
+
+@app.cell
+def _():
     return
 
 
@@ -639,7 +697,7 @@ def _(mo):
 @app.cell
 def _(requests):
     misspelled_reply = requests.get(
-        "https://geocoding-api.open-meteo.com/v1/search?name=Wellesly&count=1",
+        "https://geocoding-api.open-meteo.com/v1/search?name=Wellesley&count=1",
         timeout=10,
     )
     misspelled_reply.status_code, misspelled_reply.json()
@@ -686,12 +744,38 @@ def _(mo):
     return
 
 
+@app.cell
+def _(babson_weather):
+    wind_speed = babson_weather["current"]["wind_speed_10m"]
+    wind_unit = babson_weather["current_units"]["wind_speed_10m"]
+    f"The wind speed is {wind_speed} {wind_unit}."
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     **F · Another town.** Search for `Wellesley` the way the misspelled search did, with the correct spelling. Take the first place out of `results`, then its `latitude`, `longitude` and `admin1`. *Check yourself: latitude 42.29649, in Massachusetts.*
     """)
     return
+
+
+@app.cell
+def _(requests):
+    wellesley_reply = requests.get(
+        "https://geocoding-api.open-meteo.com/v1/search?name=Wellesley&count=1",
+        timeout=10,
+    )
+    wellesley_data = wellesley_reply.json()
+
+    first_place = wellesley_data["results"][0]
+
+    latitude = first_place["latitude"]
+    longitude = first_place["longitude"]
+    admin1 = first_place["admin1"]
+
+    latitude, longitude, admin1
+    return latitude, longitude
 
 
 @app.cell(hide_code=True)
@@ -701,6 +785,26 @@ def _(mo):
 
     **Going further.** Use F's coordinates to ask for Wellesley's current temperature. Build the address with an f-string, so that changing the town changes the forecast.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    G. it is in florida, code [0] chooses the first result, which in this example caused an issue
+    """)
+    return
+
+
+@app.cell
+def _(latitude, longitude, requests):
+    weather_url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m"
+
+    wellesley_weather_reply = requests.get(weather_url, timeout=10)
+
+    wellesley_weather = wellesley_weather_reply.json()
+
+    wellesley_weather["current"]["temperature_2m"]
     return
 
 
