@@ -23,7 +23,8 @@ def _():
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    # Mini Project 1
+    # Mini Project 1 - B: A Reorder Simulation
+
 
     Your choice of project, what each one asks for, the due date and how it is graded are on the Mini Project 1 page of the course site, linked from the calendar. This notebook is the shape to build it in. Keep the headings, and replace each line in italics with your own.
 
@@ -35,9 +36,9 @@ def _(mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    ## 1. The Question
+    ## 1. *Who would use this, and what decision does it help them make? Two or three sentences, in words somebody outside this course would understand.*
 
-    *Who would use this, and what decision does it help them make? Two or three sentences, in words somebody outside this course would understand.*
+    This tool would be used by the person who is in charge of ordering oat milk. Possibly the owner or a manager. This will assist with the decision of quantity and timing of reording the oat milk, to avoid the existing issues the case mentions (over-ordering and storing, underordering and lost customers).
     """)
     return
 
