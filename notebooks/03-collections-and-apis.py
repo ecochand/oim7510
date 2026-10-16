@@ -158,11 +158,11 @@ def _(mo):
     **B ·** france, germany, usa, and brazil
 
 
-    **C ·**
+    **C ·**1. list : because order matters 2. set : want unique names 3. dictionary: stores names as keys and units as values, makes it easy to research sales  4. tuple : input cannot be changed
 
-    **D ·**
+    **D ·**the use of dictionaries would be best. in list form this would allow each answer to be clearly labeled
 
-    **G ·**
+    **G ·** it is in florida, code [0] chooses the first result, which in this example caused an issue
     """)
     return
 
@@ -468,8 +468,8 @@ def _(mo):
     mo.md(r"""
     1. list : because order matters
     2. set : want unique names
-    3. dictionary
-    4. tuple :
+    3. dictionary: stores names as keys and units as values, makes it easy to research sales
+    4. tuple : input cannot be changed
     """)
     return
 
@@ -496,6 +496,14 @@ def _(mo):
 def _(mo):
     mo.md(r"""
     **similar to mini project one
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    1. the use of dictionaries would be best. in list form this would allow each answer to be clearly labeled
     """)
     return
 
@@ -557,6 +565,15 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    1. i would start by listing the purchases and their information for each ticker. Adding new shares purchased and removing sold shares as they come in. This would allow an accurate calculation of total gains using the origional cost and the sold shares proceeds.
+    2. going further: the client would prefer the average cost method as it results in a lower total relaized gain compared to FIFO. The difference would reduce their capital gains.
+    """)
+    return
+
+
 @app.cell
 def _():
     year_trades = [
@@ -570,6 +587,78 @@ def _():
         ("2026-08-12", "AAPL", "sell", 40, 250.00),
     ]
     year_trades
+    return (year_trades,)
+
+
+@app.cell
+def _(year_trades):
+    holdings_fifo = {}
+    total_gain_fifo = 0
+
+    for date_fifo, ticker_fifo, action_fifo, shares_fifo, price_fifo in year_trades:
+
+        if ticker_fifo not in holdings_fifo:
+            holdings_fifo[ticker_fifo] = []
+
+        if action_fifo == "buy":
+            holdings_fifo[ticker_fifo].append([shares_fifo, price_fifo])
+
+        elif action_fifo == "sell":
+            shares_to_sell_fifo = shares_fifo
+            cost_fifo = 0
+
+            while shares_to_sell_fifo > 0:
+                old_shares_fifo, old_price_fifo = holdings_fifo[ticker_fifo][0]
+
+                shares_used_fifo = min(shares_to_sell_fifo, old_shares_fifo)
+
+                cost_fifo = cost_fifo + shares_used_fifo * old_price_fifo
+                shares_to_sell_fifo = shares_to_sell_fifo - shares_used_fifo
+                old_shares_fifo = old_shares_fifo - shares_used_fifo
+
+                if old_shares_fifo == 0:
+                    holdings_fifo[ticker_fifo].pop(0)
+                else:
+                    holdings_fifo[ticker_fifo][0][0] = old_shares_fifo
+
+            gain_fifo = shares_fifo * price_fifo - cost_fifo
+            total_gain_fifo = total_gain_fifo + gain_fifo
+
+            print(ticker_fifo, "Gain:", f"${gain_fifo:,.2f}")
+
+    print("Total Gain:", f"${total_gain_fifo:,.2f}")
+    print("Remaining Holdings:", holdings_fifo)
+    return
+
+
+@app.cell
+def _(year_trades):
+    holdings_avg = {}
+    total_gain_avg = 0
+
+    for date_avg, ticker_avg, action_avg, shares_avg, price_avg in year_trades:
+
+        if ticker_avg not in holdings_avg:
+            holdings_avg[ticker_avg] = [0, 0]
+
+        if action_avg == "buy":
+            holdings_avg[ticker_avg][0] += shares_avg
+            holdings_avg[ticker_avg][1] += shares_avg * price_avg
+
+        elif action_avg == "sell":
+            avg_price = holdings_avg[ticker_avg][1] / holdings_avg[ticker_avg][0]
+
+            cost_avg = shares_avg * avg_price
+            gain_avg = shares_avg * price_avg - cost_avg
+
+            total_gain_avg += gain_avg
+
+            holdings_avg[ticker_avg][0] -= shares_avg
+            holdings_avg[ticker_avg][1] -= cost_avg
+
+            print(ticker_avg, "Gain:", f"${gain_avg:,.2f}")
+
+    print("Total Average Cost Gain:", f"${total_gain_avg:,.2f}")
     return
 
 
