@@ -189,12 +189,106 @@ def _(mo):
     return
 
 
+@app.function
+def count_shares(portfolio):
+    total = 0
+
+    for ticker, shares, price in portfolio:
+        total = total + shares
+
+    return total
+
+
+@app.cell
+def _(holdings, retirement_holdings):
+    print(count_shares(holdings))
+    print(count_shares(retirement_holdings))
+    return
+
+
+@app.function
+def find_largest(portfolio, n=1):
+    largest_ticker = ""
+    largest_cost = 0
+
+    for ticker, shares, price in portfolio:
+        cost = shares * price
+
+        if cost > largest_cost:
+            largest_cost = cost
+            largest_ticker = ticker
+
+    return (largest_ticker, largest_cost)
+
+
+@app.cell
+def _(holdings, retirement_holdings):
+    print(find_largest(holdings))
+    print(find_largest(retirement_holdings))
+    return
+
+
+@app.function
+def find_largest_n(portfolio, n):
+    costs = []
+
+    for ticker, shares, price in portfolio:
+        cost = round(shares * price, 2)
+        costs.append((cost, ticker))
+
+    costs.sort(reverse=True)
+
+    largest = []
+
+    for cost, ticker in costs[:n]:
+        largest.append((ticker, cost))
+
+    return largest
+
+
+@app.cell
+def _(holdings, retirement_holdings):
+    print(find_largest_n(holdings, 3))
+    print(find_largest_n(retirement_holdings, 2))
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
     ## ✏️ B · Without `return`
 
     Copy `count_shares` into a new cell under a new name, and put `print(...)` where the `return` was. Call it and keep the result in a name. In a markdown cell under it, answer: what does that name hold, and what could the next cell do with it?
+    """)
+    return
+
+
+@app.function
+def count_shares_print(portfolio):
+    total = 0
+
+    for ticker, shares, price in portfolio:
+        total = total + shares
+
+    print(total)
+
+
+@app.cell
+def _(holdings):
+    shares_result = count_shares_print(holdings)
+    return (shares_result,)
+
+
+@app.cell
+def _(shares_result):
+    print(shares_result)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    print() displays a value but cannot return it. This is why we get none, as the value was not saved. Using return allows the cell to reference the total.
     """)
     return
 
@@ -346,6 +440,70 @@ def _(mo):
     return
 
 
+@app.cell
+def _(requests):
+    town_reply = requests.get(
+        "https://oim.zhili.dev/ma/towns",
+        params={"name": "Wellesley"},
+        timeout=10,
+    )
+
+    town_reply.json()
+    return
+
+
+@app.cell
+def _(requests):
+    history_reply = requests.get(
+        "https://oim.zhili.dev/ma/towns/317/history",
+        params={"fiscal_year": 2026},
+        timeout=10,
+    )
+
+    history_reply.json()
+    return
+
+
+@app.cell
+def _():
+    average_value = 2020758
+    tax_rate = 10.17
+
+    calculated_bill = average_value * tax_rate / 1000
+
+    print(f"Calculated Tax Bill: ${calculated_bill:,.2f}")
+    return
+
+
+@app.cell
+def _(requests):
+    def town_history(name):
+        town_response = requests.get(
+            "https://oim.zhili.dev/ma/towns",
+            params={"name": name},
+            timeout=10,
+        )
+
+        town_data = town_response.json()
+        town_code = town_data["items"][0]["dor_code"]
+
+        history_response = requests.get(
+            f"https://oim.zhili.dev/ma/towns/{town_code}/history",
+            params={"fiscal_year": 2026},
+            timeout=10,
+        )
+
+        return history_response.json()
+
+    return (town_history,)
+
+
+@app.cell
+def _(town_history):
+    town_history("Wellesley")
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -424,6 +582,84 @@ def _(mo):
 
     **Going further.** Which town has the highest average single-family tax bill in the state, and which the lowest?
     """)
+    return
+
+
+@app.cell
+def _(requests):
+    def get_all_towns():
+        first_reply = requests.get(
+            "https://oim.zhili.dev/ma/towns",
+            params={"page": 1},
+            timeout=10,
+        )
+
+        first_data = first_reply.json()
+
+        all_towns = first_data["items"]
+        pages = first_data["pagination"]["pages"]
+
+        for page in range(2, pages + 1):
+            next_reply = requests.get(
+                "https://oim.zhili.dev/ma/towns",
+                params={"page": page},
+                timeout=10,
+            )
+
+            next_data = next_reply.json()
+            all_towns.extend(next_data["items"])
+
+        return all_towns
+
+    return (get_all_towns,)
+
+
+@app.cell
+def _(get_all_towns):
+    all_ma_towns = get_all_towns()
+
+    print("Total towns:", len(all_ma_towns))
+    print("First town:", all_ma_towns[0]["name"])
+    print("Last town:", all_ma_towns[-1]["name"])
+    return (all_ma_towns,)
+
+
+@app.cell
+def _(all_ma_towns, requests):
+    check_reply = requests.get(
+        "https://oim.zhili.dev/ma/towns",
+        params={"page": 1},
+        timeout=10,
+    )
+
+    total_reported = check_reply.json()["pagination"]["total"]
+
+    print("API reported:", total_reported)
+    print("Collected:", len(all_ma_towns))
+    print("Match:", len(all_ma_towns) == total_reported)
+    return
+
+
+@app.cell
+def _(all_ma_towns):
+    highest_bill = None
+    lowest_bill = None
+
+    for town in all_ma_towns:
+        bill = town["average_single_family_bill_dollars"]
+
+        if bill is not None:
+            if highest_bill is None or bill > highest_bill["average_single_family_bill_dollars"]:
+                highest_bill = town
+
+            if lowest_bill is None or bill < lowest_bill["average_single_family_bill_dollars"]:
+                lowest_bill = town
+
+    print("Highest:", highest_bill["name"],
+          highest_bill["average_single_family_bill_dollars"])
+
+    print("Lowest:", lowest_bill["name"],
+          lowest_bill["average_single_family_bill_dollars"])
     return
 
 
