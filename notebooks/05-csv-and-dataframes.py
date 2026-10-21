@@ -12,7 +12,7 @@
 
 import marimo
 
-__generated_with = "0.25.1"
+__generated_with = "0.24.2"
 app = marimo.App(width="medium", sql_output="polars")
 
 
@@ -199,6 +199,32 @@ def _(mo):
     return
 
 
+@app.cell
+def _(towns_from_file):
+    #1 
+
+    million_dollar_counts = {} #this dictionary stores counts
+
+    towns_from_file[0]
+
+    for town in towns_from_file: 
+            if int(town['average_single_family_value_dollars']) >= 1000000:
+                county = town['county']
+                if county not in million_dollar_counts: #if this is the first time seeing this county
+                        million_dollar_counts[county] = 0
+                million_dollar_counts[county] += 1
+                #could try using .get
+            
+    million_dollar_counts
+    return
+
+
+@app.cell
+def _():
+    #2 use for loop to solve 2nd problem 
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -342,7 +368,7 @@ def _(mo, town_table):
         ORDER BY towns DESC
         """
     )
-    return (towns_over_threshold,)
+    return
 
 
 @app.cell(hide_code=True)
