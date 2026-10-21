@@ -712,6 +712,28 @@ def _(mo):
     return
 
 
+app._unparsable_cell(
+    r"""
+    town_name = "Manchester"
+    town_bill =
+    """,
+    name="_"
+)
+
+
+@app.cell
+def _(requests):
+    board_reply = requests.post(
+        "https://oim.zhili.dev/message",
+        headers={"x-token": "ecochand"},
+        json={"message": f"Hi from Emma"},
+        timeout=10,
+    )
+    board_reply.status_code, board_reply.json()
+
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
