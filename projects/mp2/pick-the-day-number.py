@@ -43,8 +43,17 @@ def _():
     return (mo,)
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #3. Inputs
+    """)
+    return
+
+
 @app.cell
 def _():
+    #Inputs
     place = "Wellesley"
     state = "Massachusetts"
 
@@ -60,6 +69,14 @@ def _():
         place,
         state,
     )
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #4. The Work
+    """)
+    return
 
 
 @app.cell
@@ -109,6 +126,7 @@ def _(get_coordinates, place, state):
 @app.cell
 def _(requests):
     #finding 7 day weather forecast 
+
     def get_forecast(latitude, longitude):
         url = "https://api.open-meteo.com/v1/forecast"
 
@@ -130,7 +148,26 @@ def _(requests):
         response = requests.get(url, params=params)
         response.raise_for_status()
 
-        return response.json()["daily"]
+        daily = response.json()["daily"]
+
+        records = []
+
+        for _date, _high, _low, _rain, _wind in zip(
+            daily["time"],
+            daily["temperature_2m_max"],
+            daily["temperature_2m_min"],
+            daily["precipitation_probability_max"],
+            daily["wind_speed_10m_max"]
+        ):
+            records.append({
+                "Date": _date,
+                "High (F)": _high,
+                "Low (F)": _low,
+                "Rain (%)": _rain,
+                "Wind (mph)": _wind
+            })
+
+        return records
 
     return (get_forecast,)
 
@@ -140,7 +177,7 @@ def _(get_forecast, latitude, longitude):
     forecast = get_forecast(latitude, longitude)
 
     print("Forecast retrieved successfully!")
-    print("Number of days:", len(forecast["time"]))
+    print("Number of days:", len(forecast))
 
     return (forecast,)
 
@@ -150,33 +187,31 @@ def _(forecast, highest_high_f, lowest_high_f, max_rain_chance, max_wind_mph):
     #one record per day
     days = []
 
-    for date, high, low, rain, wind in zip(
-        forecast["time"],
-        forecast["temperature_2m_max"],
-        forecast["temperature_2m_min"],
-        forecast["precipitation_probability_max"],
-        forecast["wind_speed_10m_max"]
-    ):
-        passes = (
-            lowest_high_f <= high <= highest_high_f
-            and rain <= max_rain_chance
-            and wind <= max_wind_mph
+    for _forecast_day in forecast:
+        _high = _forecast_day["High (F)"]
+        _rain = _forecast_day["Rain (%)"]
+        _wind = _forecast_day["Wind (mph)"]
+
+        _passes = (
+            lowest_high_f <= _high <= highest_high_f
+            and _rain <= max_rain_chance
+            and _wind <= max_wind_mph
         )
 
-        broken_rules = (
-            int(high < lowest_high_f or high > highest_high_f)
-            + int(rain > max_rain_chance)
-            + int(wind > max_wind_mph)
+        _broken_rules = (
+            int(_high < lowest_high_f or _high > highest_high_f)
+            + int(_rain > max_rain_chance)
+            + int(_wind > max_wind_mph)
         )
 
         days.append({
-            "Date": date,
-            "High (F)": high,
-            "Low (F)": low,
-            "Rain (%)": rain,
-            "Wind (mph)": wind,
-            "Passes": passes,
-            "Broken Rules": broken_rules
+            "Date": _forecast_day["Date"],
+            "High (F)": _high,
+            "Low (F)": _forecast_day["Low (F)"],
+            "Rain (%)": _rain,
+            "Wind (mph)": _wind,
+            "Passes": _passes,
+            "Broken Rules": _broken_rules
         })
 
     print("Days evaluated:", len(days))
@@ -184,20 +219,29 @@ def _(forecast, highest_high_f, lowest_high_f, max_rain_chance, max_wind_mph):
 
 
 @app.cell
-def _(days, mo):
-    #displaying table 
+def _(forecast):
+    #save wellesley data to CSV file 
+    import csv
+    from pathlib import Path
 
-    mo.ui.table([
-        {
-            "Date": record["Date"],
-            "High (F)": record["High (F)"],
-            "Low (F)": record["Low (F)"],
-            "Rain (%)": record["Rain (%)"],
-            "Wind (mph)": record["Wind (mph)"],
-            "Passes": record["Passes"]
-        }
-        for record in days
-    ])
+    # Create the data folder if it does not exist
+    data_folder = Path("projects/mp2/data")
+    data_folder.mkdir(parents=True, exist_ok=True)
+
+    # Name the CSV file
+    file_path = data_folder / "wellesley_forecast.csv"
+
+    # Save the forecast records
+    with open(file_path, "w", newline="") as _file:
+        writer = csv.DictWriter(
+            _file,
+            fieldnames=forecast[0].keys()
+        )
+
+        writer.writeheader()
+        writer.writerows(forecast)
+
+    print(f"Saved {len(forecast)} weather records to {file_path}")
 
     return
 
@@ -205,18 +249,38 @@ def _(days, mo):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    5. The Answer
+    #5. The Answer
     """)
     return
 
 
 @app.cell
 def _(days):
-    #best day recommendation 
+    #displaying table 
+    print(f"{'Date':<15} {'High (F)':<12} {'Low (F)':<12} {'Rain (%)':<12} {'Wind (mph)':<12} {'Passes':<10}")
+    print("-" * 75)
 
-    passing_days = [
-        record for record in days if record["Passes"]
-    ]
+    for _record in days:
+        print(
+            f"{_record['Date']:<15} "
+            f"{_record['High (F)']:<12} "
+            f"{_record['Low (F)']:<12} "
+            f"{_record['Rain (%)']:<12} "
+            f"{_record['Wind (mph)']:<12} "
+            f"{str(_record['Passes']):<10}"
+        )
+
+    return
+
+
+@app.cell
+def _(days, place, state):
+    #best day recommendation 
+    passing_days = []
+
+    for _candidate in days:
+        if _candidate["Passes"]:
+            passing_days.append(_candidate)
 
     if passing_days:
         best_day = min(
@@ -228,10 +292,10 @@ def _(days):
         )
 
         print(
-            f"The best day is {best_day['Date']} because "
-            f"it passes all weather rules, with a "
-            f"{best_day['Rain (%)']}% chance of rain "
-            f"and wind of {best_day['Wind (mph)']} mph."
+            f"The best day for an outdoor event in {place}, {state} "
+            f"is {best_day['Date']} because it meets all weather "
+            f"requirements, with a {best_day['Rain (%)']}% chance "
+            f"of rain and wind of {best_day['Wind (mph)']} mph."
         )
 
     elif days:
@@ -241,7 +305,7 @@ def _(days):
         )
 
         print(
-            f"No days meet all weather requirements. "
+            f"No days meet all weather requirements in {place}, {state}. "
             f"The best alternative is {best_day['Date']} "
             f"because it breaks the fewest rules "
             f"({best_day['Broken Rules']})."
@@ -249,6 +313,75 @@ def _(days):
 
     else:
         print("No forecast days available.")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #6. How I know these numbers are right
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    These checks are used to confirm the results. First I am comparing the number of weather records returned to the number of days listed in my final table, they should both show 7 records.
+
+    Second, I compared the first day weather conditions to the established requirments. This checked the temperature, precipitation, and wind speed to the pass/fail results in the table. These calculations should also agree and therefore confirm that the weather requirments were correcltly applied.
+    """)
+    return
+
+
+@app.cell
+def _(days, forecast):
+    forecast_count = len(forecast)
+    table_count = len(days)
+
+    print(f"Forecast records: {forecast_count}")
+    print(f"Table records: {table_count}")
+
+    if forecast_count == table_count == 7:
+        print("Check passed: All 7 days are included.")
+    else:
+        print("Check failed: The record counts do not match.")
+
+    return
+
+
+@app.cell
+def _(
+    days,
+    forecast,
+    highest_high_f,
+    lowest_high_f,
+    max_rain_chance,
+    max_wind_mph,
+):
+    check_day = forecast[0]
+
+    check_high = (
+        lowest_high_f <= check_day["High (F)"]
+        <= highest_high_f
+    )
+
+    check_rain = check_day["Rain (%)"] <= max_rain_chance
+
+    check_wind = check_day["Wind (mph)"] <= max_wind_mph
+
+    independent_result = check_high and check_rain and check_wind
+
+    table_result = days[0]["Passes"]
+
+    print(f"Date checked: {check_day['Date']}")
+    print(f"Independent result: {independent_result}")
+    print(f"Table result: {table_result}")
+
+    if independent_result == table_result:
+        print("Check passed: Both methods agree.")
+    else:
+        print("Check failed: Results do not match.")
 
     return
 
@@ -256,7 +389,16 @@ def _(days):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    6. How I know these numbers are right
+    #7. Working with the Agent
+    One recommendation that I did not accept as is was the use of a "mo.ui.table" command. I did not recognize this command and also professor advised us to use print statements to create the table. I recognized this suggestion did not align and made the changes to reflect the profesors requirments of f strings and for loops. The new table results from section 5 prove that the print code is working correctly.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #8. Reading it back
     """)
     return
 
