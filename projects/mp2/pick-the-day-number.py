@@ -32,7 +32,7 @@ def _():
 
 @app.cell
 def _():
-    place = "Wellesley"
+    place = "Lexington"
     state = "Massachusetts"
 
     lowest_high_f = 55
