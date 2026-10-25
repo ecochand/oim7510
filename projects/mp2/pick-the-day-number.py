@@ -399,6 +399,10 @@ def _(mo):
 def _(mo):
     mo.md(r"""
     #8. Reading it back
+
+    The first function the agent helped me create was the get_forecast() function. This function takes the coordinates of the get_coordinates() function and uses them to get the weather forecast from the open meteo website. The forecast function returns the 7 records including dates, temperature ranges, rain possibilities, and high wind speed. I had to ask about the zip function, I recognized this and knew I had learned this before but forgotton its function. The agent helped me understand that it combines multiple lists of data into one list to be stored together in one record.
+
+    I will be changing the tool by changing the town input. I expect the coordinates to change and therefore the 7 day forecast will change from the origional town to the new town. I will change it from Wellesley to Wayland, and it will likely change the best day, unless these two locations share similar weather.
     """)
     return
 
