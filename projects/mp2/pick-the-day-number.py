@@ -7,7 +7,8 @@ app = marimo.App(width="medium")
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    #Section 1: Option C "Pick the day"
+    # 1. Section 1: The Question
+    Option C "Pick the day"
 
     A student club is planning an outdoor event somewhere in Massachusetts in the next week and needs to pick the day. The organizer wants a table of the next seven days, today included, whether each day meets the club's rules, and the best day, for whatever town they type in.
     """)
@@ -16,9 +17,21 @@ def _(mo):
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""
-    #Section 2 my plan
+    mo.md("""
+    # 2. Section 2: My plan before AI
     My plan is to collect the desired town in Massachusetts from the code user. Then find the towns location using the open meteo interface. Next I will retrive the weather data for multiple days that the event could be hosted, as it is an outdoor event. Next a table will present these results to the user to analyze and the code will also present a recommendation of which day is best including the score out of 10.
+
+    My tool will need a function to find the towns location, retrieve the weather forecast, and a way to evaluate the days and calculate a score out of 10.
+
+    These will use the open meteo addresses of Geocoding API and the weather forecasting API.
+
+     https://open-meteo.com/en/docs/geocoding-api
+
+     https://open-meteo.com/en/docs
+
+    I will know I have every record by checking that seven results of dates are returned and also shown in the final table.
+
+    For section 6, I will check that the number of dates and the number of weather records are both 7. This will confirm that I collected all the days of forecasts needed.
     """)
     return
 
@@ -32,7 +45,7 @@ def _():
 
 @app.cell
 def _():
-    place = "Lexington"
+    place = "Wellesley"
     state = "Massachusetts"
 
     lowest_high_f = 55
@@ -189,6 +202,14 @@ def _(days, mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    5. The Answer
+    """)
+    return
+
+
 @app.cell
 def _(days):
     #best day recommendation 
@@ -235,7 +256,7 @@ def _(days):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    #Results Explanaion
+    6. How I know these numbers are right
     """)
     return
 
