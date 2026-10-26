@@ -412,5 +412,116 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #9. Going Further
+    Score the weather on a ranking of 10
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    For this section I chose to go further on the origional pass fail weather evaluation and develop the score ranking. I started by creating a new function, score_weather(), this function assigns points based on the weather conditons such as rain, wind, and temperature. Four points are assigned to temperature and precipitation while two are assigned to wind speed, as I think that wind speed is less important of a deciding factor.
+
+    Next I used this to calculate a score for each of the seven days and the results are shown in a table. This format allowed me to easily compare weather conditions, especially with the addition of the identified highest scoring day. The highest scoring day was decided using additional factors such as the precipitation and wind speed.
+    """)
+    return
+
+
+@app.cell
+def _(highest_high_f, lowest_high_f, max_rain_chance, max_wind_mph):
+    #calclulates score
+    def score_weather(high, rain, wind):
+        score = 0
+
+        if lowest_high_f <= high <= highest_high_f:
+            score += 4
+
+        if rain <= max_rain_chance:
+            score += 4
+
+        if wind <= max_wind_mph:
+            score += 2
+
+        return score
+
+    return (score_weather,)
+
+
+@app.cell
+def _(days, score_weather):
+    scored_days = []
+
+    for _scored_day in days:
+        _score = score_weather(
+            _scored_day["High (F)"],
+            _scored_day["Rain (%)"],
+            _scored_day["Wind (mph)"]
+        )
+
+        scored_days.append({
+            "Date": _scored_day["Date"],
+            "High (F)": _scored_day["High (F)"],
+            "Rain (%)": _scored_day["Rain (%)"],
+            "Wind (mph)": _scored_day["Wind (mph)"],
+            "Score": _score
+        })
+    return (scored_days,)
+
+
+@app.cell
+def _(scored_days):
+
+    print(f"{'Date':<15} {'High (F)':<12} {'Rain (%)':<12} {'Wind (mph)':<12} {'Score':<10}")
+    print("-" * 65)
+
+    for _scored_record in scored_days:
+        print(
+            f"{_scored_record['Date']:<15} "
+            f"{_scored_record['High (F)']:<12} "
+            f"{_scored_record['Rain (%)']:<12} "
+            f"{_scored_record['Wind (mph)']:<12} "
+            f"{str(_scored_record['Score']) + '/10':<10}"
+        )
+    return
+
+
+@app.cell
+def _(place, scored_days, state):
+    if scored_days:
+        best_scored_day = max(
+            scored_days,
+            key=lambda record: (
+                record["Score"],
+                -record["Rain (%)"],
+                -record["Wind (mph)"]
+            )
+        )
+
+        print(
+            f"The highest-scoring day for an outdoor event in "
+            f"{place}, {state} is {best_scored_day['Date']} "
+            f"with a weather score of {best_scored_day['Score']}/10, "
+            f"a {best_scored_day['Rain (%)']}% chance of rain, "
+            f"and wind of {best_scored_day['Wind (mph)']} mph."
+        )
+    else:
+        print("No scored forecast days available.")
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #10. Time Spent
+
+    I think I spent about four hours on this
+    """)
+    return
+
+
 if __name__ == "__main__":
     app.run()
