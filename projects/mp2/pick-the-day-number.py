@@ -517,8 +517,7 @@ def _(place, scored_days, state):
 def _(mo):
     mo.md(r"""
     #10. Time Spent
-
-    I think I spent about four hours on this
+    4
     """)
     return
 
