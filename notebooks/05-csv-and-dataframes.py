@@ -214,14 +214,50 @@ def _(towns_from_file):
                         million_dollar_counts[county] = 0
                 million_dollar_counts[county] += 1
                 #could try using .get
-            
+        
     million_dollar_counts
     return
 
 
 @app.cell
-def _():
+def _(towns_from_file):
     #2 use for loop to solve 2nd problem 
+
+    smallest_town = towns_from_file[0]
+    largest_town = towns_from_file[0]
+
+    for population_town in towns_from_file:
+        if int(population_town["population"]) < int(smallest_town["population"]):
+            smallest_town = population_town
+
+        if int(population_town["population"]) > int(largest_town["population"]):
+            largest_town = population_town
+
+    print("Smallest:", smallest_town["name"], smallest_town["population"])
+    print("Largest:", largest_town["name"], largest_town["population"])
+    return
+
+
+@app.cell
+def _(towns_from_file):
+    most_expensive_by_county = {}
+
+    for county_town in towns_from_file:
+        county_name = county_town["county"]
+        home_value = int(county_town["average_single_family_value_dollars"])
+
+        if county_name not in most_expensive_by_county:
+            most_expensive_by_county[county_name] = county_town
+
+        elif home_value > int(most_expensive_by_county[county_name]["average_single_family_value_dollars"]):
+            most_expensive_by_county[county_name] = county_town
+
+    for county_name, expensive_town in most_expensive_by_county.items():
+        print(
+            county_name,
+            expensive_town["name"],
+            f'${int(expensive_town["average_single_family_value_dollars"]):,}'
+        )
     return
 
 
@@ -345,6 +381,29 @@ def _(mo):
     return
 
 
+@app.cell
+def _(pl, town_table):
+    county_counts = town_table.group_by("county").agg(
+        pl.len().alias("town_count")
+    )
+
+    print(county_counts.sort("county"))
+    return
+
+
+@app.cell
+def _(pl, town_table):
+    top_five_towns = (
+        town_table
+        .filter(pl.col("population") > 50000)
+        .sort("average_single_family_bill_dollars", descending=True)
+        .head(5)
+    )
+
+    print(top_five_towns)
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -363,7 +422,7 @@ def _(mo, town_table):
         f"""
         SELECT county, COUNT(*) AS towns
         FROM town_table
-        WHERE average_single_family_value_dollars >= 1000000
+        WHERE average_single_family_value_dollars >= 2000000
         GROUP BY county
         ORDER BY towns DESC
         """
@@ -387,6 +446,14 @@ def _(mo):
     In the SQL cell, `1000000` is the bar a town's average home value has to reach. Before you change it to `2000000`, predict in a markdown cell under this question: which counties' counts can go down, and can any go up? Then make the same change in the polars cell that counts million-dollar towns, and run both. *Check yourself: both give Dukes, Middlesex and Norfolk 2 each and Nantucket 1, which is 7 towns.*
 
     **Going further.** Write a SQL query of your own on `town_table`, and check its answer in polars.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    My prediction is that counties with towns that have a average single family home value between 1 and 2 million will have decreasing counts. Whereas counties without towns in the same range will stay the same. I do not think a countys count will increase.
     """)
     return
 
@@ -441,6 +508,42 @@ def _(mo):
 
     **Going further.** Color the bars or dots by a column with `color=`, and explain what the colors add.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    Question: Which five MA towns with populations that exceed 50k have the highest average single family property tax bills?
+    """)
+    return
+
+
+@app.cell
+def _(alt, pl, town_table):
+    chart_towns = (
+        town_table
+        .with_columns(
+            pl.col("population").cast(pl.Int64),
+            pl.col("average_single_family_bill_dollars").cast(pl.Int64)
+        )
+        .filter(pl.col("population") > 50000)
+        .sort("average_single_family_bill_dollars", descending=True)
+        .head(5)
+    )
+
+    tax_chart = alt.Chart(chart_towns).mark_bar().encode(
+        x=alt.X("name:N", title="Massachusetts Town", sort="-y"),
+        y=alt.Y(
+            "average_single_family_bill_dollars:Q",
+            title="Average Single-Family Tax Bill ($)"
+        )
+    ).properties(
+        title="Top 5 Property Tax Bills in MA Towns Over 50,000 People"
+    )
+
+    tax_chart
+ 
     return
 
 
