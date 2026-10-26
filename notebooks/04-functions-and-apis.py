@@ -712,13 +712,25 @@ def _(mo):
     return
 
 
-app._unparsable_cell(
-    r"""
-    town_name = "Manchester"
-    town_bill =
-    """,
-    name="_"
-)
+@app.cell
+def _(requests):
+    essex_url = "https://oim.zhili.dev/ma/towns"
+
+    essex_response = requests.get(
+        essex_url,
+        params={"name": "Essex"}
+    )
+
+    essex_response.raise_for_status()
+    essex_data = essex_response.json()
+
+    essex_town = essex_data["items"][0]
+
+    town_name = essex_town["name"]
+    town_bill = essex_town["average_single_family_bill_dollars"]
+
+    print(f"{town_name}: ${town_bill:,.2f}")
+    return (town_bill,)
 
 
 @app.cell
@@ -730,7 +742,58 @@ def _(requests):
         timeout=10,
     )
     board_reply.status_code, board_reply.json()
+    return
 
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    #3.
+
+    When run without the header, the server returned a 401 error with the message "missing x token header." I did not have my github username included, the server needs to know who sent the message to then identify the user.
+    """)
+    return
+
+
+@app.cell
+def _(requests, town_bill):
+    #going further
+
+    comparison_url = "https://oim.zhili.dev/ma/towns"
+
+    comparison_response = requests.get(
+        comparison_url,
+        params={"name": "Wellesley"}
+    )
+
+    comparison_response.raise_for_status()
+    comparison_data = comparison_response.json()
+
+    wellesley_bill = comparison_data["items"][0]["average_single_family_bill_dollars"]
+
+    difference = town_bill - wellesley_bill
+
+    message = (
+        f"Essex's avg property tax bill is ${town_bill:,} "
+        f"vs. Wellesley's ${wellesley_bill:,}. "
+        f"Difference: ${abs(difference):,}."
+    )
+
+    print(message)
+    print("Character count:", len(message))
+    return (message,)
+
+
+@app.cell
+def _(message, requests):
+    comparison_post = requests.post(
+        "https://oim.zhili.dev/message",
+        headers={"x-token": "ecochand"},
+        json={"message": message},
+        timeout=10,
+    )
+
+    comparison_post.status_code, comparison_post.json()
     return
 
 
