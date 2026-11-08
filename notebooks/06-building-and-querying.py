@@ -100,7 +100,7 @@ def _(mo, pl, requests):
         town_rows = pl.DataFrame(_records).select(town_columns)
 
     county_rows.shape, town_rows.shape
-    return
+    return county_rows, town_rows
 
 
 @app.cell(hide_code=True)
@@ -130,12 +130,14 @@ def _(mo):
 
 
 @app.cell
-def _(duckdb, mo):
+def _(county_rows, duckdb, mo, town_rows):
     _file = mo.notebook_dir().parent / "data" / "ma-towns.duckdb"
     _file.parent.mkdir(exist_ok=True)
     _file.unlink(missing_ok=True)
 
     with duckdb.connect(_file) as _con:
+        _con.register("county_rows", county_rows)
+        _con.register("town_rows", town_rows)
         _con.execute("""
             CREATE TABLE counties (
                 name                      VARCHAR PRIMARY KEY,
@@ -230,6 +232,41 @@ def _(mo):
     return
 
 
+@app.cell
+def _(database, duckdb):
+    with duckdb.connect(database) as _con:
+        _con.execute("""
+            CREATE TABLE town_bills (
+                town_name VARCHAR,
+                fiscal_year INTEGER,
+                average_bill INTEGER,
+                FOREIGN KEY (town_name) REFERENCES towns(name),
+                PRIMARY KEY (town_name, fiscal_year)
+            )
+        """)
+
+        _con.execute("""
+            INSERT INTO town_bills VALUES
+                ('Wellesley', 2024, 18690),
+                ('Wellesley', 2025, 19792)
+        """)
+
+    return
+
+
+@app.cell
+def _(database, duckdb):
+
+    with duckdb.connect(database) as _con:
+        result = _con.execute("""
+            SELECT * FROM town_bills
+        """).fetchall()
+
+    result
+
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -262,6 +299,57 @@ def _(mo):
     *Check yourself: the three messages contain `Duplicate key`, `CHECK constraint failed` and `foreign key`.*
 
     **Going further.** Find a rule the scenario of your database project states that a constraint cannot hold, and write the query that checks it instead.
+    """)
+    return
+
+
+@app.cell
+def _(database, duckdb):
+    with duckdb.connect(database) as _con:
+        tests = [
+            ("Duplicate name", """
+                INSERT INTO towns
+                (name, county, population)
+                VALUES ('Wellesley', 'Norfolk', 10000)
+            """),
+            ("Population of zero", """
+                INSERT INTO towns
+                (name, county, population)
+                VALUES ('Test Town', 'Norfolk', 0)
+            """),
+            ("Nonexistent county", """
+                INSERT INTO towns
+                (name, county, population)
+                VALUES ('Fake Town', 'Fake County', 1000)
+            """)
+        ]
+
+        for label, query in tests:
+            try:
+                _con.execute(query)
+            except Exception as e:
+                print(label, ":", e)
+
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    with duckdb.connect(database) as _con:
+        result = _con.execute("\"\"
+            SELECT
+                c.name,
+                c.towns AS expected_towns,
+                COUNT(t.name) AS actual_towns
+            FROM counties AS c
+            LEFT JOIN towns AS t
+                ON c.name = t.county
+            GROUP BY c.name, c.towns
+            HAVING COUNT(t.name) <> c.towns
+        "\"\").fetchall()
+
+    result
     """)
     return
 
@@ -299,6 +387,46 @@ def _(mo):
 
     **Going further.** Ask the same question of `counties` and `towns` together: which county is each of those five in, and what share of its county's people does each hold? That needs both tables at once, which the topic slides call a join.
     """)
+    return
+
+
+@app.cell
+def _(database, duckdb):
+    with duckdb.connect(database) as _con:
+        top_five_towns = _con.execute("""
+            SELECT
+                name,
+                population,
+                average_single_family_bill_dollars
+            FROM towns
+            WHERE population > 50000
+            ORDER BY average_single_family_bill_dollars DESC
+            LIMIT 5
+        """).fetchall()
+
+    top_five_towns
+    return
+
+
+@app.cell
+def _(database, duckdb):
+    with duckdb.connect(database) as _con:
+        _county_share = _con.execute("""
+            SELECT
+                t.name AS town,
+                c.name AS county,
+                t.population AS town_population,
+                c.population AS county_population,
+                ROUND(100.0 * t.population / c.population, 2) AS population_share
+            FROM towns AS t
+            JOIN counties AS c
+                ON t.county = c.name
+            WHERE t.population > 50000
+            ORDER BY t.average_single_family_bill_dollars DESC
+            LIMIT 5
+        """).fetchall()
+
+    _county_share
     return
 
 
