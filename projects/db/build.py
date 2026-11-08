@@ -129,6 +129,26 @@ def _(ask):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## 2. The Data
+
+    I used a Python script called make_data.py to generate fictional café data using a fixed random seed of 42.
+
+    The dataset includes 45 loyalty members, 24 products, 8 options, and 1,200 orders. The orders cover November 9, 2025, through November 8, 2026, with November 8 as the as_of date.
+
+    I intentionally included five members who never placed an order, products with no recent sales, and orders with multiple payment methods.
+
+    To test the payment validation rule, I intentionally created two mismatches:
+    - Order 101 has payments totaling $0.25 more than its order total.
+    - Order 202 has payments totaling $0.50 more than its order total.
+
+    These mismatches will be identified using SQL in Part B.
+    """)
+    return
+
+
 @app.cell
 def _():
     return
