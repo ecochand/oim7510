@@ -31,7 +31,7 @@ def _(mo):
 
 
 @app.cell
-def _(database, duckdb):
+def _(database, duckdb, mo):
     # Remove the existing database so each build starts fresh
     if database.exists():
         database.unlink()
@@ -120,6 +120,28 @@ def _(database, duckdb):
                 FOREIGN KEY (order_id) REFERENCES orders(order_id)
             )
         """)
+
+    # Load CSV files into the seven tables
+        _data_dir = mo.notebook_dir() / "data"
+
+        _tables = [
+            "members",
+            "products",
+            "options",
+            "orders",
+            "order_lines",
+            "line_options",
+            "payments"
+        ]
+
+        for _table in _tables:
+            _csv_path = _data_dir / f"{_table}.csv"
+
+            _con.execute(
+                f"INSERT INTO {_table} SELECT * FROM read_csv_auto(?)",
+                [str(_csv_path)]
+            )
+
     return
 
 
