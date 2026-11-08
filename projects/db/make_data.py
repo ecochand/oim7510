@@ -133,7 +133,11 @@ for order_id in range(1, 1201):
         order_date,
         datetime.min.time()
     ).replace(
-        hour=rng.randint(7, 19),
+        hour=rng.choices(
+            range(7, 20),
+            weights=[7, 12, 16, 15, 12, 10, 8, 6, 5, 4, 3, 1, 1],
+            k=1
+        )[0],
         minute=rng.randint(0, 59)
     )
 

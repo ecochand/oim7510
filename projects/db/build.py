@@ -8,6 +8,7 @@ app = marimo.App(width="medium")
 def _():
     import marimo as mo
     import duckdb
+    import polars as pl
 
     database = mo.notebook_dir() / "database.duckdb"
 
@@ -15,7 +16,7 @@ def _():
         with duckdb.connect(database, read_only=True) as _con:
             return _con.sql(sql).pl()
 
-    return ask, database, duckdb, mo
+    return ask, database, duckdb, mo, pl
 
 
 @app.cell(hide_code=True)
@@ -168,6 +169,59 @@ def _(mo):
 
     These mismatches will be identified using SQL in Part B.
     """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## 3. A Look at the Data
+
+    I chose to examine the number of café orders by hour of the day to evaluate whether the generated data reflects realistic customer purchasing patterns.
+    """)
+    return
+
+
+@app.cell
+def _():
+    import polars as pl
+
+    return (pl,)
+
+
+@app.cell
+def _(mo, pl):
+    orders_data = pl.read_csv(
+        mo.notebook_dir() / "data" / "orders.csv",
+        try_parse_dates=True
+    )
+
+    orders_by_hour = (
+        orders_data
+        .with_columns(
+            pl.col("order_datetime").dt.hour().alias("hour")
+        )
+        .group_by("hour")
+        .agg(pl.len().alias("number_of_orders"))
+        .sort("hour")
+    )
+
+    orders_by_hour
+    return (orders_by_hour,)
+
+
+@app.cell
+def _(mo, orders_by_hour):
+    orders_chart = mo.ui.altair_chart(
+        orders_by_hour.plot.bar(
+            x="hour",
+            y="number_of_orders"
+        ).properties(
+            title="Babson Bean Café Orders by Hour of Day"
+        )
+    )
+
+    orders_chart
     return
 
 
