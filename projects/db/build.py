@@ -143,6 +143,50 @@ def _(database, duckdb, mo):
                 [str(_csv_path)]
             )
 
+    # Create a reusable view for sales and profitability
+        _con.execute("""
+            CREATE VIEW order_line_financials AS
+            SELECT
+                ol.line_id,
+                ol.order_id,
+                o.order_datetime,
+                o.member_id,
+                p.product_id,
+                p.product_name,
+                p.category,
+                ol.quantity,
+
+                ol.quantity * (
+                    ol.price_charged
+                    + COALESCE(opt.option_revenue, 0)
+                ) AS revenue,
+
+                ol.quantity * (
+                    p.cost
+                    + COALESCE(opt.option_cost, 0)
+                ) AS cost
+
+            FROM order_lines AS ol
+
+            JOIN orders AS o
+                ON ol.order_id = o.order_id
+
+            JOIN products AS p
+                ON ol.product_id = p.product_id
+
+            LEFT JOIN (
+                SELECT
+                    lo.line_id,
+                    SUM(lo.price_charged) AS option_revenue,
+                    SUM(op.cost) AS option_cost
+                FROM line_options AS lo
+                JOIN options AS op
+                    ON lo.option_id = op.option_id
+                GROUP BY lo.line_id
+            ) AS opt
+                ON ol.line_id = opt.line_id
+        """)
+
     return
 
 
@@ -313,8 +357,104 @@ def _(mo):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## 6. Answers You Already Knew
+
+    I created three SQL queries to verify that the database contains the data I intended to generate. Since I know how the data was created in make_data.py, I can compare the SQL results against my expected answers.
+    """)
+    return
+
+
 @app.cell
-def _():
+def _(ask):
+    known_orders = ask("""
+        SELECT COUNT(*) AS total_orders
+        FROM orders
+    """)
+
+    known_orders
+    return
+
+
+@app.cell
+def _(ask):
+    known_options = ask("""
+        SELECT COUNT(*) AS total_options
+        FROM options
+    """)
+
+    known_options
+    return
+
+
+@app.cell
+def _(ask):
+    known_inactive_members = ask("""
+        SELECT m.member_id, m.first_name
+        FROM members AS m
+        LEFT JOIN orders AS o
+            ON m.member_id = o.member_id
+        WHERE o.order_id IS NULL
+        ORDER BY m.member_id
+    """)
+
+    known_inactive_members
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    The results matched my expectations:
+
+    1. The database contains 1,200 orders, as specified in my data-generation script.
+    2. The database contains eight drink options.
+    3. Members 41 through 45 have never placed an order, which I intentionally designed into the dataset.
+
+    These results help confirm that the database was populated correctly and that the relationships between members and orders work as intended.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    ## 7. A View
+
+    I created a view called order_line_financials to calculate revenue and estimated costs for each order line, including any drink options.
+
+    The café can use this view to monitor weekly sales without repeatedly calculating the same information. It will also help answer business questions about profitability in Part B.
+    """)
+    return
+
+
+@app.cell
+def _(ask):
+    weekly_sales = ask("""
+        SELECT
+            DATE_TRUNC('week', order_datetime) AS week,
+            ROUND(SUM(revenue), 2) AS total_revenue,
+            ROUND(SUM(cost), 2) AS total_cost,
+            ROUND(SUM(revenue - cost), 2) AS estimated_profit
+        FROM order_line_financials
+        GROUP BY week
+        ORDER BY week DESC
+        LIMIT 8
+    """)
+
+    weekly_sales
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    The order_line_financials view allows Babson Bean Café to track weekly revenue, estimated costs, and profit without repeating calculations across multiple tables.
+
+    The view includes revenue from products and their selected options. I can also use this view in Part B to analyze revenue and profitability by menu category.
+    """)
     return
 
 
