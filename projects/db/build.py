@@ -225,6 +225,94 @@ def _(mo, orders_by_hour):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    The initial data showed orders distributed relatively evenly throughout the day, which did not seem realistic for a campus café. I updated the data-generation script to create more orders during the morning and lunch hours, when students and faculty would likely be purchasing coffee and food. The revised distribution better represents expected café purchasing patterns.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## 4. Row Counts
+
+    The following query displays the number of records in each of the seven database tables. This helps verify that the data was loaded successfully and that the dataset meets the minimum requirements.
+    """)
+    return
+
+
+@app.cell
+def _(ask):
+    row_counts = ask("""
+        SELECT 'members' AS table_name, COUNT(*) AS row_count FROM members
+        UNION ALL
+        SELECT 'products', COUNT(*) FROM products
+        UNION ALL
+        SELECT 'options', COUNT(*) FROM options
+        UNION ALL
+        SELECT 'orders', COUNT(*) FROM orders
+        UNION ALL
+        SELECT 'order_lines', COUNT(*) FROM order_lines
+        UNION ALL
+        SELECT 'line_options', COUNT(*) FROM line_options
+        UNION ALL
+        SELECT 'payments', COUNT(*) FROM payments
+    """)
+
+    row_counts
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    The database contains 45 loyalty members, 24 menu products, 8 options, and 1,200 orders. These counts meet the minimum data requirements for the Babson Bean Café scenario.
+
+    The order_lines, line_options, and payments tables contain additional records because an order can include multiple products, options, and payment methods.
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    ## 5. A Row It Refuses
+
+    The café requires every order line to have a quantity greater than zero.
+
+    I will test this rule by attempting to insert an order line with a quantity of zero. The database should reject the record because the quantity column has a CHECK constraint.
+    """)
+    return
+
+
+@app.cell
+def _(database, duckdb):
+    try:
+        with duckdb.connect(database) as _con:
+            _con.execute("""
+                INSERT INTO order_lines
+                    (line_id, order_id, product_id, quantity, price_charged)
+                VALUES (999999, 1, 1, 0, 5.25)
+            """)
+        print("Unexpected result: The database accepted the invalid row.")
+
+    except duckdb.ConstraintException as _error:
+        print("The database correctly rejected the row.")
+        print("Error:", _error)
+
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md("""
+    The database rejected the invalid order line because its quantity was zero. This confirms that the CHECK constraint on the quantity column is working as intended and prevents orders from containing products with invalid quantities.
+    """)
+    return
+
+
 @app.cell
 def _():
     return
