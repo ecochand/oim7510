@@ -6,5 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "marimo[recommended]>=0.24.2",
+    "pymssql==2.4.5",
+    "python-dotenv>=1.2.4",
     "requests>=2.34.2",
 ]
