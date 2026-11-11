@@ -250,7 +250,6 @@ def _(database, duckdb):
                 ('Wellesley', 2024, 18690),
                 ('Wellesley', 2025, 19792)
         """)
-
     return
 
 
@@ -263,7 +262,6 @@ def _(database, duckdb):
         """).fetchall()
 
     result
-
     return
 
 
@@ -329,7 +327,6 @@ def _(database, duckdb):
                 _con.execute(query)
             except Exception as e:
                 print(label, ":", e)
-
     return
 
 
@@ -443,11 +440,13 @@ def _(mo):
 @app.cell
 def _(ask):
     ask("""
-        SELECT county, count(*) AS towns
+        SELECT county, count(name) AS number_of_towns, sum(population) AS total_population, round(avg(population)) AS average_population,
+        avg(average_single_family_bill_dollars) AS avg_bill,
+        max(average_single_family_bill_dollars) AS max_bill,
+        min(average_single_family_bill_dollars) AS min_bill
         FROM towns
-        WHERE average_single_family_bill_dollars > 10000
         GROUP BY county
-        ORDER BY towns DESC
+        ORDER BY avg(average_single_family_bill_dollars) DESC
     """)
     return
 
