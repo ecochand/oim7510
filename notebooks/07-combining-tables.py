@@ -665,6 +665,58 @@ def _(ask_server):
     return
 
 
+@app.cell
+def _(ask_server):
+    ask_server("""
+        SELECT
+            (SELECT SUM(Freight)
+             FROM Sales.SalesOrderHeader) AS original_freight,
+
+            (SELECT SUM(h.Freight)
+             FROM Sales.SalesOrderHeader AS h
+             JOIN Sales.SalesOrderDetail AS d
+                 ON h.SalesOrderID = d.SalesOrderID) AS joined_freight
+    """)
+    return
+
+
+@app.cell
+def _(ask_server):
+    ask_server("""
+        SELECT COUNT(*) AS customers_without_orders
+        FROM Sales.Customer AS c
+        LEFT JOIN Sales.SalesOrderHeader AS h
+            ON c.CustomerID = h.CustomerID
+        WHERE h.SalesOrderID IS NULL
+    """)
+    return
+
+
+@app.cell
+def _(ask_server):
+    ask_server("""
+        SELECT COUNT(*) AS products_never_sold
+        FROM Production.Product AS p
+        LEFT JOIN Sales.SalesOrderDetail AS d
+            ON p.ProductID = d.ProductID
+        WHERE d.SalesOrderID IS NULL
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    The join returns 121,317 rows for detail count and this matches the number of rows in sales.salesorderdetail. This is due to the fact that each order can contain mulitple products, however each order detail has one specific order. When the tables are joined the total number of rows stays the same as the detail table, as each detail ro wmatches one order header.
+    """)
+    return
+
+
+@app.cell
+def _():
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
