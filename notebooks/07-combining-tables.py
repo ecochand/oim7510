@@ -15,7 +15,7 @@
 
 import marimo
 
-__generated_with = "0.25.1"
+__generated_with = "0.24.2"
 app = marimo.App(width="medium", sql_output="polars")
 
 
@@ -216,6 +216,66 @@ def _(mo):
     return
 
 
+@app.cell
+def _(ask, towns_database):
+    ask(towns_database, """
+        SELECT COUNT(*) AS total_rows
+        FROM towns AS t
+        JOIN counties AS c
+            ON t.county = c.name
+    """)
+    return
+
+
+@app.cell
+def _(ask, towns_database):
+    ask(towns_database, """
+        SELECT
+            t.name AS town,
+            c.name AS county,
+            ROUND(
+                100.0 * t.population / c.population,
+                1
+            ) AS county_population_share
+        FROM towns AS t
+        JOIN counties AS c
+            ON t.county = c.name
+        ORDER BY county_population_share DESC
+        LIMIT 5
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    The questy results in 351 rows which matches the number of rows in the towns table. This is due to the fact that each town belongs to exactly one country, so when joining the tables the total number of towns is not changed. Additionally, Nantucket accounts for 100% of the population share as they are the only town in Nantucket Country.
+    """)
+    return
+
+
+@app.cell
+def _(ask, towns_database):
+    ask(towns_database, """
+        SELECT
+            c.name AS county,
+            t.name AS town,
+            ROUND(
+                100.0 * t.population / c.population,
+                1
+            ) AS population_share
+        FROM towns AS t
+        JOIN counties AS c
+            ON t.county = c.name
+        QUALIFY ROW_NUMBER() OVER (
+            PARTITION BY c.name
+            ORDER BY t.population DESC
+        ) = 1
+        ORDER BY population_share DESC
+    """)
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -273,6 +333,35 @@ def _(mo):
     *Check yourself: four territories, Columbia, Bentonville, Dallas and Austin.*
 
     **Going further.** List the employees with the number of territories each covers, and check that the counts add up to the rows of `employee_territories`. Then find the same four territories with `WHERE NOT EXISTS (...)`.
+    """)
+    return
+
+
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            t.TerritoryDescription
+        FROM territories AS t
+        LEFT JOIN employee_territories AS et
+            ON t.TerritoryID = et.TerritoryID
+        WHERE et.TerritoryID IS NULL
+    """)
+    return
+
+
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            e.FirstName,
+            e.LastName,
+            COUNT(et.TerritoryID) AS territory_count
+        FROM employees AS e
+        LEFT JOIN employee_territories AS et
+            ON e.EmployeeID = et.EmployeeID
+        GROUP BY e.EmployeeID, e.FirstName, e.LastName
+        ORDER BY territory_count DESC
     """)
     return
 
@@ -378,6 +467,51 @@ def _(mo):
     return
 
 
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            ShipCountry,
+            ROUND(SUM(Freight), 2) AS total_freight
+        FROM orders
+        GROUP BY ShipCountry
+        ORDER BY total_freight DESC
+    """)
+    return
+
+
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            COUNT(DISTINCT ShipCountry) AS total_countries,
+            ROUND(SUM(Freight), 2) AS total_freight
+        FROM orders
+    """)
+    return
+
+
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            o.OrderID,
+            o.Freight,
+            lc.line_count
+        FROM orders AS o
+        LEFT JOIN (
+            SELECT
+                OrderID,
+                COUNT(*) AS line_count
+            FROM order_details
+            GROUP BY OrderID
+        ) AS lc
+            ON o.OrderID = lc.OrderID
+        ORDER BY o.OrderID
+    """)
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
@@ -394,6 +528,53 @@ def _(mo):
     *Check yourself: Beverages first, with about 13,375,939, and all eight, added before rounding, give 63,856,337.63.*
 
     **Going further.** Compute revenue by category for each year, and find the category that grew the most.
+    """)
+    return
+
+
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            c.CategoryName,
+            ROUND(
+                SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)),
+                2
+            ) AS total_revenue
+        FROM orders AS o
+        JOIN order_details AS od
+            ON o.OrderID = od.OrderID
+        JOIN products AS p
+            ON od.ProductID = p.ProductID
+        JOIN categories AS c
+            ON p.CategoryID = c.CategoryID
+        WHERE o.ShipCountry = 'USA'
+        GROUP BY c.CategoryName
+        ORDER BY total_revenue DESC
+    """)
+    return
+
+
+@app.cell
+def _(ask, northwind_database):
+    ask(northwind_database, """
+        SELECT
+            ROUND(
+                SUM(od.UnitPrice * od.Quantity * (1 - od.Discount)),
+                2
+            ) AS total_usa_revenue
+        FROM orders AS o
+        JOIN order_details AS od
+            ON o.OrderID = od.OrderID
+        WHERE o.ShipCountry = 'USA'
+    """)
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I joined the orders, order_details, products, and categories tables together to calculate revenue by category for orders shipped to the US. I calculated revenue by multioplying unit price by quantity and then adjusting for discounts, I found that beverages had the highest revenue. I further verfied these results by calculating total US revenue using only orders and order_details and the totals matched.
     """)
     return
 
@@ -466,6 +647,20 @@ def _(mo):
     3. Find the customers in `Sales.Customer` who never placed an order, and the products in `Production.Product` that never sold. *Check yourself: 701 customers and 238 products.*
 
     **Going further.** Answer one question of your own about AdventureWorks that needs three tables, and check it against a total you can get from one of them.
+    """)
+    return
+
+
+@app.cell
+def _(ask_server):
+    ask_server("""
+        SELECT
+            (SELECT COUNT(*) FROM Sales.SalesOrderHeader) AS header_count,
+            (SELECT COUNT(*) FROM Sales.SalesOrderDetail) AS detail_count,
+            (SELECT COUNT(*)
+             FROM Sales.SalesOrderHeader AS h
+             JOIN Sales.SalesOrderDetail AS d
+                 ON h.SalesOrderID = d.SalesOrderID) AS joined_count
     """)
     return
 
