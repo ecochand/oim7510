@@ -8,7 +8,6 @@ app = marimo.App(width="medium")
 def _():
     import marimo as mo
     import duckdb
-    import altair as alt
     from datetime import date
 
     database = mo.notebook_dir() / "database.duckdb"
@@ -723,27 +722,46 @@ def _(as_of, ask):
     """)
 
     monthly_revenue
-    return (monthly_revenue,)
+    return
 
 
 @app.cell
-def _(alt, monthly_revenue):
-    monthly_revenue_chart = (
-        monthly_revenue
-        .plot.bar(
-            x="month",
-            y="total_revenue"
-        )
-        .properties(
-            title="Babson Bean Café Monthly Revenue"
-        )
-        .encode(
-            x=alt.X("month:T", title="Month"),
-            y=alt.Y("total_revenue:Q", title="Revenue ($)")
-        )
-    )
+def _(ask):
+    highest_revenue_month = ask(f"""
+        SELECT
+            DATE_TRUNC('month', order_datetime)::DATE AS month,
+            ROUND(SUM(revenue), 2) AS total_revenue
+        FROM order_line_financials
+        WHERE order_datetime >= DATE '2025-12-01'
+          AND order_datetime < DATE '2026-11-01'
+        GROUP BY month
+        ORDER BY total_revenue DESC
+        LIMIT 1
+    """)
 
-    monthly_revenue_chart
+    highest_revenue_month
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I went beyond the eight required business questions by creating a chart of monthly café revenue. The chart uses the order_line_financials view to include both product and add-on revenue.
+
+    The visualization helps identify monthly sales patterns that may not be as obvious in a table. The highest-revenue full month was december, generating $2,226.50 in revenue.
+
+    I excluded the partial November months when identifying the highest-revenue month to make the comparison more consistent. This analysis could help café management plan inventory and staffing around periods of higher demand.
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md("""
+    ## 5. Time Spent
+
+    4
+    """)
     return
 
 
