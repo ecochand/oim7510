@@ -1,4 +1,5 @@
 import marimo
+import altair as alt
 
 __generated_with = "0.24.2"
 app = marimo.App(width="medium")
@@ -39,6 +40,69 @@ def _(mo):
     This is due to the fact that every order line belongs to exactly one order and references exactly one product. Therefore, each order line should match one row in each of the other two tables, without creating additional rows or losing any.
 
     I will confirm this prediction by counting the rows produced by the joins before grouping the results by category.
+    """)
+    return
+
+
+@app.cell
+def _(ask):
+    reading_original = ask("""
+        SELECT COUNT(*) AS order_line_rows
+        FROM order_lines
+    """)
+
+    reading_original
+    return
+
+
+@app.cell
+def _(ask):
+    reading_join = ask("""
+        SELECT COUNT(*) AS joined_rows
+        FROM orders AS o
+        JOIN order_lines AS ol
+            ON o.order_id = ol.order_id
+        JOIN products AS p
+            ON ol.product_id = p.product_id
+    """)
+
+    reading_join
+    return
+
+
+@app.cell
+def _(ask):
+    reading_comparison = ask("""
+        SELECT
+            (SELECT COUNT(*) FROM order_lines) AS original_rows,
+            (
+                SELECT COUNT(*)
+                FROM orders AS o
+                JOIN order_lines AS ol
+                    ON o.order_id = ol.order_id
+                JOIN products AS p
+                    ON ol.product_id = p.product_id
+            ) AS joined_rows
+    """)
+
+    reading_comparison
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    **Prediction Results**
+
+    My prediction was correct. The order_lines table contained 2,376 rows, and joining orders, order_lines, and products also produced 2,376 rows.
+
+    The number of rows remained the same because each order line belongs to exactly one order and references exactly one product. Therefore, every order line matches one record in each of the other tables.
+
+    **What One Row Means**
+
+    One row in the joined result represents one product line within a specific café order, including information about the order and the product purchased.
+
+    For Question 2, the final grouped result represents one menu category, showing its total revenue, cost, gross profit, and gross margin across all recorded sales, including add-ons.
     """)
     return
 
@@ -627,20 +691,59 @@ def _(mo):
     mo.md("""
     ## 2. Working With the Agent
 
-    One piece of AI-generated output that I changed was the distribution of café orders throughout the day. The original make_data.py script assigned order times randomly between 7 AM and 7 PM, resulting in a relatively even distribution of sales throughout the day.
+    One piece of AI-generated output that I changed was how café orders were distributed throughout the day. The original script assigned order times randomly between 7 AM and 7 PM, creating a relatively even distribution.
 
-    After visualizing the data in Part A, I realized this was not realistic for a campus café. I expected more customer traffic during the morning and lunchtime hours, when students and faculty are more likely to purchase coffee and food.
+    I updated make_data.py to assign higher probabilities to morning and lunchtime purchases because these are likely busier periods for a campus café.
 
-    I updated make_data.py to assign higher probabilities to morning and lunchtime orders rather than distributing them evenly. I then regenerated the CSV files and rebuilt the database.
-
-    The revised chart in build.py, under "A Look at the Data," shows the updated distribution. This experience reinforced the importance of reviewing AI-generated data for business realism rather than assuming it accurately represents actual customer behavior.
+    I reviewed this change using the orders-by-hour chart in Section 3 of build.py.
     """)
     return
 
 
 @app.cell
-def _(rng):
-    hour=rng.randint(7, 19),
+def _(mo):
+    mo.md("""
+    ## 4. Going Further
+
+    For my Going Further analysis, I chose to visualize the café's monthly revenue. This allows the business to understand how sales change over time and identify periods with higher or lower revenue.
+    """)
+    return
+
+
+@app.cell
+def _(as_of, ask):
+    monthly_revenue = ask(f"""
+        SELECT
+            DATE_TRUNC('month', order_datetime)::DATE AS month,
+            ROUND(SUM(revenue), 2) AS total_revenue
+        FROM order_line_financials
+        WHERE order_datetime < DATE '{as_of}' + INTERVAL '1 day'
+        GROUP BY month
+        ORDER BY month
+    """)
+
+    monthly_revenue
+    return (monthly_revenue,)
+
+
+@app.cell
+def _(alt, monthly_revenue):
+    monthly_revenue_chart = (
+        monthly_revenue
+        .plot.bar(
+            x="month",
+            y="total_revenue"
+        )
+        .properties(
+            title="Babson Bean Café Monthly Revenue"
+        )
+        .encode(
+            x=alt.X("month:T", title="Month"),
+            y=alt.Y("total_revenue:Q", title="Revenue ($)")
+        )
+    )
+
+    monthly_revenue_chart
     return
 
 
