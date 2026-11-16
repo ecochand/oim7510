@@ -255,7 +255,7 @@ def _(as_of, ask):
 
     q4
 
-    return
+    return (q4,)
 
 
 @app.cell(hide_code=True)
@@ -294,7 +294,7 @@ def _(as_of, ask):
     """)
 
     q5
-    return
+    return (q5,)
 
 
 @app.cell(hide_code=True)
@@ -490,6 +490,157 @@ def _(mo):
 
     Decaf was the only unprofitable add-on, generating a loss of $30.30 because customers were not charged for it despite the café incurring a cost.
     """)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md("""
+    ## 1. How I Know These Numbers Are Right
+
+    To verify the accuracy of my database results, I checked two business questions using alternative SQL queries. I compared these results against the original answers and the data intentionally generated in Part A.
+    """)
+    return
+
+
+@app.cell
+def _(as_of, ask):
+
+    payment_verification = ask(f"""
+        WITH line_totals AS (
+            SELECT
+                ol.order_id,
+                SUM(ol.quantity * ol.price_charged)
+                    AS product_total
+            FROM order_lines AS ol
+            GROUP BY ol.order_id
+        ),
+
+        option_totals AS (
+            SELECT
+                ol.order_id,
+                SUM(ol.quantity * lo.price_charged)
+                    AS option_total
+            FROM order_lines AS ol
+            JOIN line_options AS lo
+                ON ol.line_id = lo.line_id
+            GROUP BY ol.order_id
+        ),
+
+        payment_totals AS (
+            SELECT
+                order_id,
+                SUM(amount) AS total_paid
+            FROM payments
+            GROUP BY order_id
+        )
+
+        SELECT
+            o.order_id,
+            ROUND(
+                lt.product_total + COALESCE(opt.option_total, 0),
+                2
+            ) AS order_total,
+            ROUND(COALESCE(pt.total_paid, 0), 2) AS total_paid,
+            ROUND(
+                COALESCE(pt.total_paid, 0)
+                - lt.product_total
+                - COALESCE(opt.option_total, 0),
+                2
+            ) AS difference
+
+        FROM orders AS o
+        JOIN line_totals AS lt
+            ON o.order_id = lt.order_id
+        LEFT JOIN option_totals AS opt
+            ON o.order_id = opt.order_id
+        LEFT JOIN payment_totals AS pt
+            ON o.order_id = pt.order_id
+
+        WHERE o.order_datetime < DATE '{as_of}' + INTERVAL '1 day'
+          AND ABS(
+              COALESCE(pt.total_paid, 0)
+              - lt.product_total
+              - COALESCE(opt.option_total, 0)
+          ) > 0.001
+
+        ORDER BY o.order_id
+    """)
+
+    payment_verification
+
+    return (payment_verification,)
+
+
+@app.cell
+def _(as_of, ask):
+    inactive_verification = ask(f"""
+        SELECT
+            m.member_id,
+            m.first_name
+        FROM members AS m
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM orders AS o
+            WHERE o.member_id = m.member_id
+              AND o.order_datetime < DATE '{as_of}' + INTERVAL '1 day'
+        )
+        ORDER BY m.member_id
+    """)
+
+    inactive_verification
+    return (inactive_verification,)
+
+
+@app.cell
+def _(inactive_verification, payment_verification, q4, q5):
+    print(
+        "Question 4 matches:",
+        q4.equals(payment_verification)
+    )
+
+    print(
+        "Question 5 matches:",
+        q5.select(["member_id", "first_name"]).equals(
+            inactive_verification
+        )
+    )
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    I verified two of my business questions using alternative SQL queries.
+
+    For Question 4, I recalculated order totals directly from the order_lines and line_options tables instead of using my financial view. Both approaches identified the same two payment mismatches: Order 101 had an overpayment of $0.25, and Order 202 had an overpayment of $0.50.
+
+    For Question 5, I used NOT EXISTS instead of a LEFT JOIN to identify members without orders. Both queries returned the same five members: Members 41, 42, 43, 44, and 45.
+
+    The comparisons returned True for both questions, confirming that the independently calculated results agree.
+    """)
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md("""
+    ## 2. Working With the Agent
+
+    One piece of AI-generated output that I changed was the distribution of café orders throughout the day. The original make_data.py script assigned order times randomly between 7 AM and 7 PM, resulting in a relatively even distribution of sales throughout the day.
+
+    After visualizing the data in Part A, I realized this was not realistic for a campus café. I expected more customer traffic during the morning and lunchtime hours, when students and faculty are more likely to purchase coffee and food.
+
+    I updated make_data.py to assign higher probabilities to morning and lunchtime orders rather than distributing them evenly. I then regenerated the CSV files and rebuilt the database.
+
+    The revised chart in build.py, under "A Look at the Data," shows the updated distribution. This experience reinforced the importance of reviewing AI-generated data for business realism rather than assuming it accurately represents actual customer behavior.
+    """)
+    return
+
+
+@app.cell
+def _(rng):
+    hour=rng.randint(7, 19),
     return
 
 

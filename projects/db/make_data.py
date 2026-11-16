@@ -4,6 +4,10 @@ import random
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
+import random
+
+rng = random.Random(42)
+
 # Use the same random data every time
 rng = random.Random(42)
 
