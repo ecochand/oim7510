@@ -99,7 +99,7 @@ def _(mo):
 
     **What One Row Means**
 
-    One row in the joined result represents one product line within a specific café order, including information about the order and the product purchased.
+    One row in the joined result represents one product line within a specific cafe order, including information about the order and the product purchased.
 
     For Question 2, the final grouped result represents one menu category, showing its total revenue, cost, gross profit, and gross margin across all recorded sales, including add-ons.
     """)
@@ -266,7 +266,7 @@ def _(mo):
 
     This query compares the total amount charged for each order, including products and add-ons, against the total amount paid.
 
-    The café requires payments to equal the order total. I intentionally created two mismatches in the generated data to test whether the query can identify them.
+    The cafe requires payments to equal the order total. I intentionally created two mismatches in the generated data to test whether the query can identify them.
     """)
     return
 
@@ -326,7 +326,7 @@ def _(mo):
     mo.md(r"""
     Of the 1,200 orders, two had payment totals that did not match their purchase totals. Order 101 had a purchase total of $8.25 but payments totaling $8.50, resulting in an overpayment of $0.25. Order 202 had a purchase total of $27.75 but payments totaling $28.25, resulting in an overpayment of $0.50.
 
-    The remaining 1,198 orders had matching payment and purchase totals. These two mismatches were intentionally created in make_data.py, confirming that the SQL query correctly identifies violations of the café's payment rule.
+    The remaining 1,198 orders had matching payment and purchase totals. These two mismatches were intentionally created in make_data.py, confirming that the SQL query correctly identifies violations of the cafe's payment rule.
     """)
     return
 
@@ -336,7 +336,7 @@ def _(mo):
     mo.md("""
     ## Question 5: Which loyalty members have never placed an order?
 
-    This query identifies loyalty members who joined the program but have never made a purchase. It helps the café identify customers who signed up but have not used their membership.
+    This query identifies loyalty members who joined the program but have never made a purchase. It helps the cafe identify customers who signed up but have not used their membership.
     """)
     return
 
@@ -494,7 +494,7 @@ def _(mo):
     mo.md("""
     ## Question 8: Which drink add-ons generate the most gross profit?
 
-    This query identifies the café's most profitable drink add-ons by comparing the revenue and cost associated with each option. It accounts for the number of drinks purchased, since an add-on is charged for every unit on an order line.
+    This query identifies the cafe's most profitable drink add-ons by comparing the revenue and cost associated with each option. It accounts for the number of drinks purchased, since an add-on is charged for every unit on an order line.
     """)
     return
 
@@ -551,7 +551,7 @@ def _(mo):
 
     Although Vanilla Syrup and Caramel Syrup generated less total profit, they had the highest gross margins at 76.00% each.
 
-    Decaf was the only unprofitable add-on, generating a loss of $30.30 because customers were not charged for it despite the café incurring a cost.
+    Decaf was the only unprofitable add-on, generating a loss of $30.30 because customers were not charged for it despite the cafe incurring a cost.
     """)
     return
 
@@ -680,7 +680,7 @@ def _(mo):
 
     For Question 5, I used NOT EXISTS instead of a LEFT JOIN to identify members without orders. Both queries returned the same five members: Members 41, 42, 43, 44, and 45.
 
-    The comparisons returned True for both questions, confirming that the independently calculated results agree.
+    The comparisons returned true for both questions, confirming that the independently calculated results agree.
     """)
     return
 
@@ -690,9 +690,9 @@ def _(mo):
     mo.md("""
     ## 2. Working With the Agent
 
-    One piece of AI-generated output that I changed was how café orders were distributed throughout the day. The original script assigned order times randomly between 7 AM and 7 PM, creating a relatively even distribution.
+    One piece of AI-generated output that I changed was how cafe orders were distributed throughout the day. The original script assigned order times randomly between 7am and 7pm, creating a relatively even distribution.
 
-    I updated make_data.py to assign higher probabilities to morning and lunchtime purchases because these are likely busier periods for a campus café.
+    I updated make_data.py to assign higher probabilities to morning and lunchtime purchases because these are likely busier periods for a campus cafe.
 
     I reviewed this change using the orders-by-hour chart in Section 3 of build.py.
     """)
@@ -704,7 +704,7 @@ def _(mo):
     mo.md("""
     ## 4. Going Further
 
-    For my Going Further analysis, I chose to visualize the café's monthly revenue. This allows the business to understand how sales change over time and identify periods with higher or lower revenue.
+    For my going further analysis, I chose to visualize the cafe's monthly revenue. This allows the business to understand how sales change over time and identify periods with higher or lower revenue.
     """)
     return
 
@@ -726,14 +726,16 @@ def _(as_of, ask):
 
 
 @app.cell
-def _(ask):
+def _(as_of, ask):
     highest_revenue_month = ask(f"""
         SELECT
             DATE_TRUNC('month', order_datetime)::DATE AS month,
             ROUND(SUM(revenue), 2) AS total_revenue
         FROM order_line_financials
-        WHERE order_datetime >= DATE '2025-12-01'
-          AND order_datetime < DATE '2026-11-01'
+    WHERE order_datetime >=
+        DATE_TRUNC('month', DATE '{as_of}') - INTERVAL '11 months'
+      AND order_datetime <
+        DATE_TRUNC('month', DATE '{as_of}')
         GROUP BY month
         ORDER BY total_revenue DESC
         LIMIT 1
@@ -746,11 +748,11 @@ def _(ask):
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    I went beyond the eight required business questions by creating a chart of monthly café revenue. The chart uses the order_line_financials view to include both product and add-on revenue.
+    I went beyond the eight required business questions by creating a chart of monthly cafe revenue. The chart uses the order_line_financials view to include both product and add-on revenue.
 
-    The visualization helps identify monthly sales patterns that may not be as obvious in a table. The highest-revenue full month was december, generating $2,226.50 in revenue.
+    The visualization helps identify monthly sales patterns that may not be as obvious in a table. The highest-revenue full month was December, generating $2,226.50 in revenue.
 
-    I excluded the partial November months when identifying the highest-revenue month to make the comparison more consistent. This analysis could help café management plan inventory and staffing around periods of higher demand.
+    I excluded the partial November months when identifying the highest-revenue month to make the comparison more consistent. This analysis could help cafe management plan inventory and staffing around periods of higher demand.
     """)
     return
 
