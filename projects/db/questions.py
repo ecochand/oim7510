@@ -1,5 +1,4 @@
 import marimo
-import altair as alt
 
 __generated_with = "0.24.2"
 app = marimo.App(width="medium")
@@ -9,6 +8,7 @@ app = marimo.App(width="medium")
 def _():
     import marimo as mo
     import duckdb
+    import altair as alt
     from datetime import date
 
     database = mo.notebook_dir() / "database.duckdb"
