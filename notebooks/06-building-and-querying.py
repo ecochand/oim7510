@@ -486,6 +486,108 @@ def _(mo):
     return
 
 
+@app.cell
+def _(ask):
+    ask("""
+    SELECT
+        c.name AS county,
+        COUNT(t.name) AS town_count,
+        c.towns AS expected_count
+    FROM counties AS c
+    JOIN towns AS t
+        ON c.name = t.county
+    GROUP BY c.name, c.towns
+    ORDER BY town_count DESC;
+    """)
+    return
+
+
+@app.cell
+def _(ask):
+    ask("""
+    SELECT SUM(town_count) AS total_towns
+    FROM (
+        SELECT county, COUNT(*) AS town_count
+        FROM towns
+        GROUP BY county
+    ) AS county_counts;
+    """)
+    return
+
+
+@app.cell
+def _(ask):
+    ask("""
+    SELECT
+        county,
+        SUM(population) AS total_population,
+        SUM(
+            CASE
+                WHEN average_single_family_bill_dollars > 10000
+                THEN population
+                ELSE 0
+            END
+        ) AS population_over_10000,
+        ROUND(
+            100.0 * SUM(
+                CASE
+                    WHEN average_single_family_bill_dollars > 10000
+                    THEN population
+                    ELSE 0
+                END
+            ) / SUM(population),
+            2
+        ) AS percent_over_10000
+    FROM towns
+    GROUP BY county
+    ORDER BY county;
+    """)
+    return
+
+
+@app.cell
+def _(ask):
+    ask("""
+    SELECT
+        SUM(population) AS total_population
+    FROM towns;
+    """)
+    return
+
+
+app._unparsable_cell(
+    r"""
+    Going Further
+    Q: What is the average population of towns in each county in MA?
+    A: I used group by to calculate the average town population for each county. Then I used polars to group the same data and calculate the county's average population. Both resulted in the same result. 
+    """,
+    name="_"
+)
+
+
+@app.cell
+def _(ask):
+    ask("""
+    SELECT
+        county,
+        ROUND(AVG(population), 0) AS average_population
+    FROM towns
+    GROUP BY county
+    ORDER BY average_population DESC;
+    """)
+
+    return
+
+
+@app.cell
+def _(pl, town_rows):
+    town_rows.group_by("county").agg(
+        pl.col("population").mean().round(0).alias("average_population")
+    ).sort("average_population", descending=True)
+
+    return
+
+
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
